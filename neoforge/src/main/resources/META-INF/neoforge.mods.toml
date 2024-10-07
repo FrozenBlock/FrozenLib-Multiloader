@@ -1,0 +1,128 @@
+modLoader = "javafml"
+loaderVersion = "${neoforge_loader_version_range}"
+license = "${mod_license}"
+
+[[mods]]
+modId = "${mod_id}"
+version = "${mod_version}"
+displayName = "${mod_name}"
+displayURL = "https://frozenblock.net"
+logoFile = "${mod_id}.png"
+credits = "${credits}"
+authors = "${mod_author}"
+description = "${mod_description}"
+
+[mods.frozenlib.entrypoints]
+main = ["net.frozenblock.lib.FrozenLibNeoForge"]
+client = ["net.frozenblock.lib.FrozenLibNeoForgeClient"]
+server = ["net.frozenblock.lib.FrozenLibNeoForge"]
+
+[mods.frozenlib.registry]
+protocol_version = 4
+
+[[mixins]]
+config = "mixin/${mod_id}.advancement.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.block.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.cape.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.clothconfig.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.core.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.debug.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.entity.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.event.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.feature_flag.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.gravity.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.file.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.item.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.menu.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.mobcategory.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.recipe.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.resource.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.registry.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.screenshake.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.sound.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.spotting_icons.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.storage.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.weather.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.wind.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.worldgen.biome.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.worldgen.heightmap.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.worldgen.structure.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}.worldgen.surface.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}_quiltmc_datafixerupper.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}_quiltmc_registry.mixins.json"
+
+[[mixins]]
+config = "mixin/${mod_id}_quiltmc_resource_loader.mixins.json"
+
+[[mixins]]
+config = "${mod_id}.neoforge.mixins.json"
+
+[["dependencies.${mod_id}"]]
+modId = "neoforge"
+type = "required"
+versionRange = "[${neoforge_version},)"
+ordering = "NONE"
+side = "BOTH"
+
+[["dependencies.${mod_id}"]]
+modId = "minecraft"
+type = "required"
+versionRange = "${minecraft_version_range_neoforge}"
+ordering = "NONE"
+side = "BOTH"

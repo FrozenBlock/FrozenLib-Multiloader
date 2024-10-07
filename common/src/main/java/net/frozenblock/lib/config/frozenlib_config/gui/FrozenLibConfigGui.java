@@ -1,0 +1,206 @@
+/*
+ * Copyright (C) 2024 FrozenBlock
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+package net.frozenblock.lib.config.frozenlib_config.gui;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import me.shedaniel.clothconfig2.api.ConfigBuilder;
+import me.shedaniel.clothconfig2.api.ConfigCategory;
+import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
+import net.frozenblock.lib.FrozenLibConstants;
+import net.frozenblock.lib.cape.api.CapeUtil;
+import net.frozenblock.lib.cape.impl.Cape;
+import net.frozenblock.lib.cape.impl.networking.CapeCustomizePacket;
+import net.frozenblock.lib.config.api.instance.Config;
+import net.frozenblock.lib.config.clothconfig.ClothConfigUtils;
+import net.frozenblock.lib.config.frozenlib_config.FrozenLibConfig;
+import net.frozenblock.lib.env.api.EnvType;
+import net.frozenblock.lib.env.api.Environment;
+import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
+@Environment(EnvType.CLIENT)
+public final class FrozenLibConfigGui {
+
+	private static void setupEntries(@NotNull ConfigCategory category, @NotNull ConfigEntryBuilder entryBuilder) {
+		var config = FrozenLibConfig.get(true);
+		var modifiedConfig = FrozenLibConfig.getWithSync();
+		Config<?> configInstance = FrozenLibConfig.INSTANCE;
+		var defaultConfig = FrozenLibConfig.INSTANCE.defaultInstance();
+		var dataFixer = config.dataFixer;
+
+		if (FrozenLibPlatformHelper.HELPER.isDevelopmentEnvironment()) {
+			var isDebug = category.addEntry(
+				ClothConfigUtils.syncedEntry(
+					entryBuilder.startBooleanToggle(text("is_debug"), modifiedConfig.isDebug)
+						.setDefaultValue(defaultConfig.isDebug)
+						.setSaveConsumer(newValue -> config.isDebug = newValue)
+						.setTooltip(tooltip("is_debug"))
+						.build(),
+					config.getClass(),
+					"isDebug",
+					configInstance
+				)
+			);
+		}
+
+		var useWindOnNonFrozenServers = category.addEntry(
+			ClothConfigUtils.syncedEntry(
+				entryBuilder.startBooleanToggle(text("use_wind_on_non_frozenlib_servers"), modifiedConfig.useWindOnNonFrozenServers)
+					.setDefaultValue(defaultConfig.useWindOnNonFrozenServers)
+					.setSaveConsumer(newValue -> config.useWindOnNonFrozenServers = newValue)
+					.setTooltip(tooltip("use_wind_on_non_frozenlib_servers"))
+					.build(),
+					config.getClass(),
+					"useWindOnNonFrozenServers",
+					configInstance
+				)
+		);
+
+		var saveItemCooldowns = category.addEntry(
+			ClothConfigUtils.syncedEntry(
+				entryBuilder.startBooleanToggle(text("save_item_cooldowns"), modifiedConfig.saveItemCooldowns)
+					.setDefaultValue(defaultConfig.saveItemCooldowns)
+					.setSaveConsumer(newValue -> config.saveItemCooldowns = newValue)
+					.setTooltip(tooltip("save_item_cooldowns"))
+					.build(),
+					config.getClass(),
+					"saveItemCooldowns",
+					configInstance
+				)
+		);
+
+		var removeExperimentalWarning = category.addEntry(
+			ClothConfigUtils.syncedEntry(
+				entryBuilder.startBooleanToggle(text("remove_experimental_warning"), modifiedConfig.removeExperimentalWarning)
+					.setDefaultValue(defaultConfig.removeExperimentalWarning)
+					.setSaveConsumer(newValue -> config.removeExperimentalWarning = newValue)
+					.setTooltip(tooltip("remove_experimental_warning"))
+					.build(),
+					config.getClass(),
+					"removeExperimentalWarning",
+					configInstance
+				)
+		);
+
+		var wardenSpawnTrackerCommand = category.addEntry(
+			ClothConfigUtils.syncedEntry(
+				entryBuilder.startBooleanToggle(text("warden_spawn_tracker_command"), modifiedConfig.wardenSpawnTrackerCommand)
+					.setDefaultValue(defaultConfig.wardenSpawnTrackerCommand)
+					.setSaveConsumer(newValue -> config.wardenSpawnTrackerCommand = newValue)
+					.setTooltip(tooltip("warden_spawn_tracker_command"))
+					.build(),
+					config.getClass(),
+					"wardenSpawnTrackerCommand",
+					configInstance
+				)
+		);
+
+		var fileTransferServer = category.addEntry(
+			ClothConfigUtils.syncedEntry(
+				entryBuilder.startBooleanToggle(text("file_transfer_server"), modifiedConfig.fileTransferServer)
+					.setDefaultValue(defaultConfig.fileTransferServer)
+					.setSaveConsumer(newValue -> config.fileTransferServer = newValue)
+					.setTooltip(tooltip("file_transfer_server"))
+					.build(),
+				config.getClass(),
+				"fileTransferServer",
+				configInstance
+			)
+		);
+
+		var fileTransferClient = category.addEntry(
+			ClothConfigUtils.syncedEntry(
+				entryBuilder.startBooleanToggle(text("file_transfer_client"), modifiedConfig.fileTransferClient)
+					.setDefaultValue(defaultConfig.fileTransferClient)
+					.setSaveConsumer(newValue -> config.fileTransferClient = newValue)
+					.setTooltip(tooltip("file_transfer_client"))
+					.build(),
+				config.getClass(),
+				"fileTransferClient",
+				configInstance
+			)
+		);
+
+		var disabledDataFixTypes = ClothConfigUtils.syncedEntry(
+			entryBuilder.startStrList(text("disabled_datafix_types"), modifiedConfig.dataFixer.disabledDataFixTypes)
+				.setDefaultValue(defaultConfig.dataFixer.disabledDataFixTypes)
+				.setSaveConsumer(newValue -> dataFixer.disabledDataFixTypes = newValue)
+				.setTooltip(tooltip("disabled_datafix_types"))
+				.requireRestart()
+				.build(),
+			dataFixer.getClass(),
+			"disabledDataFixTypes",
+			configInstance
+		);
+
+		var datafixerCategory = ClothConfigUtils.createSubCategory(entryBuilder, category, text("datafixer"),
+			false,
+			tooltip("datafixer"),
+			disabledDataFixTypes
+		);
+
+		UUID playerUUID = Minecraft.getInstance().getUser().getProfileId();
+		List<String> usableCapes = new ArrayList<>();
+		CapeUtil.getUsableCapes(playerUUID).forEach(cape -> usableCapes.add(cape.registryId().toString()));
+		if (usableCapes.size() > 1) {
+			var capeEntry = category.addEntry(
+				entryBuilder.startSelector(text("cape"), usableCapes.toArray(), modifiedConfig.cape)
+					.setDefaultValue(defaultConfig.cape)
+					.setNameProvider(o -> {
+						ResourceLocation capeId = ResourceLocation.parse(((String) o));
+						return CapeUtil.getCape(capeId).map(Cape::capeName).orElse(Component.translatable("cape.frozenlib.invalid"));
+					})
+					.setSaveConsumer(newValue -> {
+						ResourceLocation capeId = ResourceLocation.parse((String) newValue);
+						config.cape = (String) newValue;
+						if (Minecraft.getInstance().getConnection() != null) {
+							FrozenLibPlatformHelper.PACKET.sendToServer(CapeCustomizePacket.createPacket(playerUUID, capeId));
+						}
+					})
+					.setTooltip(tooltip("cape"))
+					.build()
+			);
+		}
+	}
+
+	public static Screen createScreen(Screen parent) {
+		var configBuilder = ConfigBuilder.create().setParentScreen(parent).setTitle(text("component.title"));
+		configBuilder.setSavingRunnable(FrozenLibConfig.INSTANCE::save);
+		var config = configBuilder.getOrCreateCategory(text("config"));
+		ConfigEntryBuilder entryBuilder = configBuilder.entryBuilder();
+		setupEntries(config, entryBuilder);
+		return configBuilder.build();
+	}
+
+	@Contract(value = "_ -> new", pure = true)
+	public static @NotNull Component text(String key) {
+		return Component.translatable("option." + FrozenLibConstants.MOD_ID + "." + key);
+	}
+
+	@Contract(value = "_ -> new", pure = true)
+	public static @NotNull Component tooltip(String key) {
+		return Component.translatable("tooltip." + FrozenLibConstants.MOD_ID + "." + key);
+	}
+}

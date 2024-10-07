@@ -1,0 +1,20 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.frozenblock.lib.item.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    "AbstractContainerMenuMixin",
+    "ItemCooldownsMixin",
+    "ItemStackMixin",
+    "LivingEntityMixin",
+    "ServerItemCooldownsMixin",
+    "ServerPlayerMixin",
+    "bonemeal.BoneMealItemMixin",
+    "sherd.DecoratedPotPatternsMixin",
+    "shovel.ShovelItemMixin"
+  ]
+}

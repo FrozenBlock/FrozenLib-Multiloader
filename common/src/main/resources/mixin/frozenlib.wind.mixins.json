@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.frozenblock.lib.wind.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    "AbstractWindChargeMixin",
+    "BreezeMixin",
+    "EntityMixin",
+    "ServerLevelMixin"
+  ],
+  "client": [
+    "client.EntityMixin"
+  ]
+}

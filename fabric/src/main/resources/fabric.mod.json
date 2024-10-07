@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${mod_version}",
+  "name": "${mod_name}",
+  "description": "${mod_description}",
+  "authors": [
+    "${mod_author}"
+  ],
+  "contact": {
+    "homepage": "https://frozenblock.net",
+    "sources": "https://github.com/FrozenBlock/FrozenLib-ML"
+  },
+  "license": "${mod_license}",
+  "icon": "${mod_id}.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.frozenblock.lib.FrozenLibFabric"
+    ],
+    "client": [
+      "net.frozenblock.lib.FrozenLibFabricClient"
+    ],
+    "server": [
+      "net.frozenblock.lib.FrozenLibFabric"
+    ],
+    "modmenu": [
+      "net.frozenblock.lib.modmenu.api.ModMenuIntegration"
+    ],
+    "terrablender": [
+      "net.frozenblock.lib.FabricTerraBlenderCompat"
+    ]
+  },
+  "mixins": [
+    "mixin/frozenlib.advancement.mixins.json",
+    "mixin/frozenlib.block.mixins.json",
+    "mixin/frozenlib.cape.mixins.json",
+    "mixin/frozenlib.clothconfig.mixins.json",
+    "mixin/frozenlib.core.mixins.json",
+    "mixin/frozenlib.debug.mixins.json",
+    "mixin/frozenlib.entity.mixins.json",
+    "mixin/frozenlib.event.mixins.json",
+    "mixin/frozenlib.feature_flag.mixins.json",
+    "mixin/frozenlib.gravity.mixins.json",
+    "mixin/frozenlib.item.mixins.json",
+    "mixin/frozenlib.menu.mixins.json",
+    "mixin/frozenlib.mobcategory.mixins.json",
+    "mixin/frozenlib.recipe.mixins.json",
+    "mixin/frozenlib.screenshake.mixins.json",
+    "mixin/frozenlib.sound.mixins.json",
+    "mixin/frozenlib.spotting_icons.mixins.json",
+    "mixin/frozenlib.storage.mixins.json",
+    "mixin/frozenlib.weather.mixins.json",
+    "mixin/frozenlib.wind.mixins.json",
+    "mixin/frozenlib.worldgen.biome.mixins.json",
+    "mixin/frozenlib.worldgen.heightmap.mixins.json",
+    "mixin/frozenlib.worldgen.structure.mixins.json",
+    "mixin/frozenlib.worldgen.surface.mixins.json",
+
+    "mixin/frozenlib_quiltmc_datafixerupper.mixins.json",
+    "mixin/frozenlib_quiltmc_registry.mixins.json",
+    "mixin/frozenlib_quiltmc_resource_loader.mixins.json",
+
+    "frozenlib.fabric.mixins.json",
+    "frozenlib.modmenu.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${fabric_loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version_range_fabric}",
+    "java": ">=${java_version}"
+  },
+  "suggests": {
+    "cloth-config": "*"
+  }
+}
