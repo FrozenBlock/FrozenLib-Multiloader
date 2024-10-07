@@ -1,6 +1,6 @@
 package net.frozenblock.lib;
 
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.PlatformHelper;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.Bootstrap;
 import org.jetbrains.annotations.ApiStatus;
@@ -29,7 +29,7 @@ public class FrozenLibConstants {
 	// MOD LOADERS
 	public static final boolean IS_FABRIC = hasMod("fabricloader") && !hasMod("quilt_loader") && !hasMod("connector");
 	public static final boolean IS_QUILT = hasMod("quilt_loader");
-	public static final boolean IS_FORGE = FrozenLibPlatformHelper.HELPER.isNeoForge() || hasMod("connector");
+	public static final boolean IS_FORGE = PlatformHelper.isNeoForge() || hasMod("connector");
 	// EXTERNAL MODS
 	public static final boolean HAS_ARCHITECTURY = hasMod("architectury");
 	public static final boolean HAS_C2ME = hasMod("c2me");
@@ -49,7 +49,7 @@ public class FrozenLibConstants {
 	 * It's smart to use this for at least registries.
 	 */
 	@ApiStatus.Internal
-	public static boolean UNSTABLE_LOGGING = FrozenLibPlatformHelper.HELPER.isDevelopmentEnvironment();
+	public static boolean UNSTABLE_LOGGING = PlatformHelper.isDevelopmentEnvironment();
 	/**
 	 * This is set to true when {@link Bootstrap#bootStrap()} is finished.
 	 */
@@ -58,11 +58,11 @@ public class FrozenLibConstants {
 
 	@ApiStatus.Internal
 	private static boolean isDatagen() {
-		return FrozenLibPlatformHelper.HELPER.isDatagen();
+		return PlatformHelper.isDatagen();
 	}
 
 	public static boolean hasMod(String modID) {
-		return FrozenLibPlatformHelper.HELPER.isModLoaded(modID);
+		return PlatformHelper.isModLoaded(modID);
 	}
 
 	@ApiStatus.Internal

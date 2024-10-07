@@ -21,7 +21,7 @@ package org.quiltmc.qsl.frozenblock.core.registry.impl.sync.server;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
 import net.frozenblock.lib.networking.impl.PacketSender;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.RegistryHelper;
 import net.frozenblock.lib.platform.impl.ServerPayloadContext;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.chat.Component;
@@ -59,14 +59,13 @@ public final class ServerRegistrySync {
 		}));*/
 
 		// TODO: [Liuk] also these. CONFIG PACKETS.
-		var helper = FrozenLibPlatformHelper.REGISTRY;
-		helper.registerC2S(ClientPackets.Handshake.PACKET_TYPE, ClientPackets.Handshake.CODEC);
-		helper.registerC2S(ClientPackets.ModProtocol.PACKET_TYPE, ClientPackets.ModProtocol.CODEC);
-		helper.registerC2S(ClientPackets.End.PACKET_TYPE, ClientPackets.End.CODEC);
+		RegistryHelper.registerC2S(ClientPackets.Handshake.PACKET_TYPE, ClientPackets.Handshake.CODEC);
+		RegistryHelper.registerC2S(ClientPackets.ModProtocol.PACKET_TYPE, ClientPackets.ModProtocol.CODEC);
+		RegistryHelper.registerC2S(ClientPackets.End.PACKET_TYPE, ClientPackets.End.CODEC);
 
-		helper.registerServerReceiver(ClientPackets.Handshake.PACKET_TYPE, ServerRegistrySync::handleHandshake);
-		helper.registerServerReceiver(ClientPackets.ModProtocol.PACKET_TYPE, ServerRegistrySync::handleModProtocol);
-		helper.registerServerReceiver(ClientPackets.End.PACKET_TYPE, ServerRegistrySync::handleEnd);
+		RegistryHelper.registerServerReceiver(ClientPackets.Handshake.PACKET_TYPE, ServerRegistrySync::handleHandshake);
+		RegistryHelper.registerServerReceiver(ClientPackets.ModProtocol.PACKET_TYPE, ServerRegistrySync::handleModProtocol);
+		RegistryHelper.registerServerReceiver(ClientPackets.End.PACKET_TYPE, ServerRegistrySync::handleEnd);
 	}
 
 	public static void handleHandshake(ClientPackets.Handshake handshake, ServerPayloadContext ctx) {

@@ -2,12 +2,12 @@ package net.frozenblock.lib.platform;
 
 import java.util.List;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
-import net.frozenblock.lib.item.api.ICreativeTabHelper;
+import net.frozenblock.lib.platform.api.CreativeTabHelper;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 
-public class FabricCreativeModTabHelper implements ICreativeTabHelper {
+public class FabricCreativeModTabHelper implements CreativeTabHelper {
 
 	private final FabricItemGroupEntries event;
 	public FabricCreativeModTabHelper(FabricItemGroupEntries event) {

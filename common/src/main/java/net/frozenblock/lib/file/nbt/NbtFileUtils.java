@@ -20,7 +20,7 @@ package net.frozenblock.lib.file.nbt;
 import java.io.File;
 import java.io.IOException;
 import net.frozenblock.lib.FrozenLibLogUtils;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.PlatformHelper;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtIo;
 import org.jetbrains.annotations.Contract;
@@ -31,7 +31,7 @@ import org.jetbrains.annotations.Nullable;
  * A class used to save and read NBT to/from files.
  */
 public class NbtFileUtils {
-	public static final File CONFIG_PATH = FrozenLibPlatformHelper.HELPER.getConfigDir().toFile();
+	public static final File CONFIG_PATH = PlatformHelper.getConfigDir().toFile();
 
 	/**
 	 * Saves an NBT file to the config directory.

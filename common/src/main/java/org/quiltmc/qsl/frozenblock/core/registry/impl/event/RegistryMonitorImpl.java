@@ -19,7 +19,8 @@
 package org.quiltmc.qsl.frozenblock.core.registry.impl.event;
 
 import java.util.function.Predicate;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+
+import net.frozenblock.lib.platform.api.RegistryHelper;
 import net.minecraft.core.MappedRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.core.WritableRegistry;
@@ -57,7 +58,7 @@ public class RegistryMonitorImpl<V> implements RegistryMonitor<V> {
 			throw new UnsupportedOperationException("Registry " + this.registry + " is not supported!");
 		}
 
-		var delayed = FrozenLibPlatformHelper.REGISTRY.createDelayedRegistry((MappedRegistry<V>) this.registry);
+		var delayed = RegistryHelper.createDelayedRegistry((MappedRegistry<V>) this.registry);
 		var context = new MutableRegistryEntryContextImpl<>(delayed);
 
 		this.registry.holders().forEach(entry -> {

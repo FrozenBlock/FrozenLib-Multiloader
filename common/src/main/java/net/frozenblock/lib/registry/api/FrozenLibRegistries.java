@@ -25,7 +25,7 @@ import lombok.experimental.UtilityClass;
 import net.frozenblock.lib.FrozenLibConstants;
 import net.frozenblock.lib.integration.api.ModIntegration;
 import net.frozenblock.lib.integration.api.ModIntegrationSupplier;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.RegistryHelper;
 import net.frozenblock.lib.sound.api.predicate.SoundPredicate;
 import net.frozenblock.lib.spotting_icons.api.SpottingIconPredicate;
 import net.frozenblock.lib.wind.api.WindDisturbanceLogic;
@@ -100,7 +100,7 @@ public class FrozenLibRegistries {
 	public static <T> MappedRegistry<T> createSimple(
 		ResourceKey<? extends Registry<T>> key, Lifecycle lifecycle, FrozenLibRegistryAttribute attribute, BuiltInRegistries.RegistryBootstrap<T> bootstrap
 	) {
-		MappedRegistry<T> newRegistry = FrozenLibPlatformHelper.REGISTRY.createBuildAndRegister(key, lifecycle, attribute, bootstrap);
+		MappedRegistry<T> newRegistry = RegistryHelper.createBuildAndRegister(key, lifecycle, attribute, bootstrap);
 		FROZENLIB_REGISTRIES.add(newRegistry);
 		return newRegistry;
 	}

@@ -39,7 +39,9 @@ import net.frozenblock.lib.file.transfer.FileTransferPacket;
 import net.frozenblock.lib.item.impl.network.CooldownChangePacket;
 import net.frozenblock.lib.item.impl.network.CooldownTickCountPacket;
 import net.frozenblock.lib.item.impl.network.ForcedCooldownPacket;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.PacketHelper;
+import net.frozenblock.lib.platform.api.PlatformHelper;
+import net.frozenblock.lib.platform.api.RegistryHelper;
 import net.frozenblock.lib.screenshake.impl.network.EntityScreenShakePacket;
 import net.frozenblock.lib.screenshake.impl.network.RemoveEntityScreenShakePacket;
 import net.frozenblock.lib.screenshake.impl.network.RemoveScreenShakePacket;
@@ -88,40 +90,38 @@ public final class FrozenLibNetworking {
 
 		ResourceLoaderEvents.END_DATA_PACK_RELOAD.register((server, resourceManager, error) -> {
 			if (error != null || server == null) return;
-			for (ServerPlayer player : FrozenLibPlatformHelper.PACKET.all(server)) {
+			for (ServerPlayer player : PacketHelper.all(server)) {
 				ConfigSyncPacket.sendS2C(player);
 			}
 		});
 
-		final var registryHelper = FrozenLibPlatformHelper.REGISTRY;
-
-		registryHelper.registerS2C(LocalPlayerSoundPacket.PACKET_TYPE, LocalPlayerSoundPacket.CODEC);
-		registryHelper.registerS2C(LocalSoundPacket.PACKET_TYPE, LocalSoundPacket.CODEC);
-		registryHelper.registerS2C(StartingMovingRestrictionSoundLoopPacket.PACKET_TYPE, StartingMovingRestrictionSoundLoopPacket.CODEC);
-		registryHelper.registerS2C(MovingRestrictionSoundPacket.PACKET_TYPE, MovingRestrictionSoundPacket.CODEC);
-		registryHelper.registerS2C(FadingDistanceSwitchingSoundPacket.PACKET_TYPE, FadingDistanceSwitchingSoundPacket.CODEC);
-		registryHelper.registerS2C(MovingFadingDistanceSwitchingRestrictionSoundPacket.PACKET_TYPE, MovingFadingDistanceSwitchingRestrictionSoundPacket.CODEC);
-		registryHelper.registerS2C(FlyBySoundPacket.PACKET_TYPE, FlyBySoundPacket.CODEC);
-		registryHelper.registerS2C(CooldownChangePacket.PACKET_TYPE, CooldownChangePacket.CODEC);
-		registryHelper.registerS2C(ForcedCooldownPacket.PACKET_TYPE, ForcedCooldownPacket.CODEC);
-		registryHelper.registerS2C(CooldownTickCountPacket.PACKET_TYPE, CooldownTickCountPacket.CODEC);
-		registryHelper.registerS2C(ScreenShakePacket.PACKET_TYPE, ScreenShakePacket.CODEC);
-		registryHelper.registerS2C(EntityScreenShakePacket.PACKET_TYPE, EntityScreenShakePacket.CODEC);
-		registryHelper.registerS2C(RemoveScreenShakePacket.PACKET_TYPE, RemoveScreenShakePacket.CODEC);
-		registryHelper.registerS2C(RemoveEntityScreenShakePacket.PACKET_TYPE, RemoveEntityScreenShakePacket.CODEC);
-		registryHelper.registerS2C(SpottingIconPacket.PACKET_TYPE, SpottingIconPacket.CODEC);
-		registryHelper.registerS2C(SpottingIconRemovePacket.PACKET_TYPE, SpottingIconRemovePacket.CODEC);
-		registryHelper.registerS2C(WindSyncPacket.PACKET_TYPE, WindSyncPacket.CODEC);
-		registryHelper.registerS2C(WindDisturbancePacket.PACKET_TYPE, WindDisturbancePacket.CODEC);
+		RegistryHelper.registerS2C(LocalPlayerSoundPacket.PACKET_TYPE, LocalPlayerSoundPacket.CODEC);
+		RegistryHelper.registerS2C(LocalSoundPacket.PACKET_TYPE, LocalSoundPacket.CODEC);
+		RegistryHelper.registerS2C(StartingMovingRestrictionSoundLoopPacket.PACKET_TYPE, StartingMovingRestrictionSoundLoopPacket.CODEC);
+		RegistryHelper.registerS2C(MovingRestrictionSoundPacket.PACKET_TYPE, MovingRestrictionSoundPacket.CODEC);
+		RegistryHelper.registerS2C(FadingDistanceSwitchingSoundPacket.PACKET_TYPE, FadingDistanceSwitchingSoundPacket.CODEC);
+		RegistryHelper.registerS2C(MovingFadingDistanceSwitchingRestrictionSoundPacket.PACKET_TYPE, MovingFadingDistanceSwitchingRestrictionSoundPacket.CODEC);
+		RegistryHelper.registerS2C(FlyBySoundPacket.PACKET_TYPE, FlyBySoundPacket.CODEC);
+		RegistryHelper.registerS2C(CooldownChangePacket.PACKET_TYPE, CooldownChangePacket.CODEC);
+		RegistryHelper.registerS2C(ForcedCooldownPacket.PACKET_TYPE, ForcedCooldownPacket.CODEC);
+		RegistryHelper.registerS2C(CooldownTickCountPacket.PACKET_TYPE, CooldownTickCountPacket.CODEC);
+		RegistryHelper.registerS2C(ScreenShakePacket.PACKET_TYPE, ScreenShakePacket.CODEC);
+		RegistryHelper.registerS2C(EntityScreenShakePacket.PACKET_TYPE, EntityScreenShakePacket.CODEC);
+		RegistryHelper.registerS2C(RemoveScreenShakePacket.PACKET_TYPE, RemoveScreenShakePacket.CODEC);
+		RegistryHelper.registerS2C(RemoveEntityScreenShakePacket.PACKET_TYPE, RemoveEntityScreenShakePacket.CODEC);
+		RegistryHelper.registerS2C(SpottingIconPacket.PACKET_TYPE, SpottingIconPacket.CODEC);
+		RegistryHelper.registerS2C(SpottingIconRemovePacket.PACKET_TYPE, SpottingIconRemovePacket.CODEC);
+		RegistryHelper.registerS2C(WindSyncPacket.PACKET_TYPE, WindSyncPacket.CODEC);
+		RegistryHelper.registerS2C(WindDisturbancePacket.PACKET_TYPE, WindDisturbancePacket.CODEC);
 
 		// File Transfer & Capes
-		registryHelper.registerBidirectional(FileTransferPacket.PACKET_TYPE, FileTransferPacket.STREAM_CODEC);
-		registryHelper.registerServerReceiver(FileTransferPacket.PACKET_TYPE, (packet, ctx) -> {
+		RegistryHelper.registerBidirectional(FileTransferPacket.PACKET_TYPE, FileTransferPacket.STREAM_CODEC);
+		RegistryHelper.registerServerReceiver(FileTransferPacket.PACKET_TYPE, (packet, ctx) -> {
 			if (packet.request()) {
 				Path path = ctx.server().getServerDirectory().resolve(packet.transferPath()).resolve(packet.fileName());
 				try {
 					FileTransferPacket fileTransferPacket = FileTransferPacket.create(packet.transferPath(), path.toFile());
-					FrozenLibPlatformHelper.PACKET.sendToPlayer(ctx.player(), fileTransferPacket);
+					PacketHelper.sendToPlayer(ctx.player(), fileTransferPacket);
 				} catch (IOException ignored) {
 				}
 			} else {
@@ -134,8 +134,8 @@ public final class FrozenLibNetworking {
 			}
 		});
 
-		registryHelper.registerBidirectional(CapeCustomizePacket.PACKET_TYPE, CapeCustomizePacket.CODEC);
-		registryHelper.registerServerReceiver(CapeCustomizePacket.PACKET_TYPE, (packet, ctx) -> {
+		RegistryHelper.registerBidirectional(CapeCustomizePacket.PACKET_TYPE, CapeCustomizePacket.CODEC);
+		RegistryHelper.registerServerReceiver(CapeCustomizePacket.PACKET_TYPE, (packet, ctx) -> {
 			UUID uuid = ctx.player().getUUID();
 			ResourceLocation capeId = packet.getCapeId();
 			if (capeId == null || CapeUtil.canPlayerUserCape(uuid, capeId)) {
@@ -143,28 +143,28 @@ public final class FrozenLibNetworking {
 			}
 		});
 
-		registryHelper.registerS2C(LoadCapeRepoPacket.PACKET_TYPE, LoadCapeRepoPacket.STREAM_CODEC);
+		RegistryHelper.registerS2C(LoadCapeRepoPacket.PACKET_TYPE, LoadCapeRepoPacket.STREAM_CODEC);
 
-		registryHelper.registerBidirectional(ConfigSyncPacket.PACKET_TYPE, ConfigSyncPacket.CODEC);
+		RegistryHelper.registerBidirectional(ConfigSyncPacket.PACKET_TYPE, ConfigSyncPacket.CODEC);
 
-		registryHelper.registerServerReceiver(ConfigSyncPacket.PACKET_TYPE, (packet, ctx) -> {
+		RegistryHelper.registerServerReceiver(ConfigSyncPacket.PACKET_TYPE, (packet, ctx) -> {
 			if (ConfigSyncPacket.hasPermissionsToSendSync(ctx.player(), true))
 				ConfigSyncPacket.receive(packet, ctx.player().getServer());
 		});
 
 		// DEBUG
-		registryHelper.registerS2C(ImprovedGoalDebugPayload.PACKET_TYPE, ImprovedGoalDebugPayload.STREAM_CODEC);
-		registryHelper.registerS2C(GoalDebugRemovePayload.PACKET_TYPE, GoalDebugRemovePayload.STREAM_CODEC);
-		registryHelper.registerS2C(ImprovedGameEventListenerDebugPayload.PACKET_TYPE, ImprovedGameEventListenerDebugPayload.STREAM_CODEC);
-		registryHelper.registerS2C(ImprovedGameEventDebugPayload.PACKET_TYPE, ImprovedGameEventDebugPayload.STREAM_CODEC);
-		registryHelper.registerS2C(WindAccessPacket.PACKET_TYPE, WindAccessPacket.STREAM_CODEC);
+		RegistryHelper.registerS2C(ImprovedGoalDebugPayload.PACKET_TYPE, ImprovedGoalDebugPayload.STREAM_CODEC);
+		RegistryHelper.registerS2C(GoalDebugRemovePayload.PACKET_TYPE, GoalDebugRemovePayload.STREAM_CODEC);
+		RegistryHelper.registerS2C(ImprovedGameEventListenerDebugPayload.PACKET_TYPE, ImprovedGameEventListenerDebugPayload.STREAM_CODEC);
+		RegistryHelper.registerS2C(ImprovedGameEventDebugPayload.PACKET_TYPE, ImprovedGameEventDebugPayload.STREAM_CODEC);
+		RegistryHelper.registerS2C(WindAccessPacket.PACKET_TYPE, WindAccessPacket.STREAM_CODEC);
 
-		registryHelper.registerC2S(StructureDebugRequestPayload.PACKET_TYPE, StructureDebugRequestPayload.STREAM_CODEC);
-		registryHelper.registerServerReceiver(StructureDebugRequestPayload.PACKET_TYPE,
+		RegistryHelper.registerC2S(StructureDebugRequestPayload.PACKET_TYPE, StructureDebugRequestPayload.STREAM_CODEC);
+		RegistryHelper.registerServerReceiver(StructureDebugRequestPayload.PACKET_TYPE,
 			(packet, ctx) -> StructureDebugRequestPayload.sendBack(ctx.player(), ctx.player().serverLevel(), packet.chunkPos())
 		);
 
-		FrozenLibPlatformHelper.REGISTRY.finalizeAndBuildPackets();
+		RegistryHelper.finalizeAndBuildPackets();
 	}
 
 	public static void sendPacketToAllPlayers(@NotNull ServerLevel world, CustomPacketPayload payload) {
@@ -176,13 +176,13 @@ public final class FrozenLibNetworking {
 	}
 
 	public static boolean isLocalPlayer(Player player) {
-		if (FrozenLibPlatformHelper.HELPER.envType() == EnvType.SERVER) return false;
+		if (PlatformHelper.envType() == EnvType.SERVER) return false;
 
 		return Minecraft.getInstance().isLocalPlayer(player.getGameProfile().getId());
 	}
 
 	public static boolean connectedToIntegratedServer() {
-		if (FrozenLibPlatformHelper.HELPER.envType() == EnvType.SERVER) return false;
+		if (PlatformHelper.envType() == EnvType.SERVER) return false;
 		Minecraft minecraft = Minecraft.getInstance();
 		return minecraft.hasSingleplayerServer();
 	}
@@ -191,7 +191,7 @@ public final class FrozenLibNetworking {
 	 * @return if the client is connected to any server
 	 */
 	public static boolean connectedToServer() {
-		if (FrozenLibPlatformHelper.HELPER.envType() == EnvType.SERVER) return false;
+		if (PlatformHelper.envType() == EnvType.SERVER) return false;
 		Minecraft minecraft = Minecraft.getInstance();
 		ClientPacketListener listener = minecraft.getConnection();
 		if (listener == null) return false;
@@ -202,7 +202,7 @@ public final class FrozenLibNetworking {
 	 * @return if the current server is multiplayer (LAN/dedicated) or not (singleplayer)
 	 */
 	public static boolean isMultiplayer() {
-		if (FrozenLibPlatformHelper.HELPER.envType() == EnvType.SERVER) return true;
+		if (PlatformHelper.envType() == EnvType.SERVER) return true;
 		return !Minecraft.getInstance().isSingleplayer();
 	}
 

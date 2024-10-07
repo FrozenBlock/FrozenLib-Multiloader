@@ -28,7 +28,7 @@ import net.frozenblock.lib.cape.impl.networking.CapeCustomizePacket;
 import net.frozenblock.lib.cape.impl.networking.LoadCapeRepoPacket;
 import net.frozenblock.lib.event.event.ServerLifecycleEvents;
 import net.frozenblock.lib.event.event.ServerPlayConnectionEvents;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.PacketHelper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import org.jetbrains.annotations.ApiStatus;
@@ -38,8 +38,8 @@ public class ServerCapeData {
 	private static final Map<UUID, Cape> CAPES_IN_SERVER = new HashMap<>();
 
 	public static void sendAllCapesToPlayer(ServerPlayer recipent) {
-		CAPES_IN_SERVER.forEach((uuid, cape) -> FrozenLibPlatformHelper.PACKET.sendToPlayer(recipent, CapeCustomizePacket.createPacket(uuid, cape)));
-		CapeUtil.getCapeRepos().forEach(repoURL -> FrozenLibPlatformHelper.PACKET.sendToPlayer(recipent, new LoadCapeRepoPacket(repoURL)));
+		CAPES_IN_SERVER.forEach((uuid, cape) -> PacketHelper.sendToPlayer(recipent, CapeCustomizePacket.createPacket(uuid, cape)));
+		CapeUtil.getCapeRepos().forEach(repoURL -> PacketHelper.sendToPlayer(recipent, new LoadCapeRepoPacket(repoURL)));
 	}
 
 	public static void init() {
@@ -47,7 +47,7 @@ public class ServerCapeData {
 		ServerPlayConnectionEvents.DISCONNECT.register((serverGamePacketListener, minecraftServer) -> {
 			UUID uuid = serverGamePacketListener.getPlayer().getUUID();
 			if (CAPES_IN_SERVER.remove(uuid) != null) {
-				FrozenLibPlatformHelper.PACKET.sendToAllPlayers(minecraftServer, CapeCustomizePacket.createDisablePacket(uuid));
+				PacketHelper.sendToAllPlayers(minecraftServer, CapeCustomizePacket.createDisablePacket(uuid));
 			}
 		});
 

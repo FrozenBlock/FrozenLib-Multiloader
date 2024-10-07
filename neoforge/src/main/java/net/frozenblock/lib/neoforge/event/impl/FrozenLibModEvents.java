@@ -3,9 +3,9 @@ package net.frozenblock.lib.neoforge.event.impl;
 import net.frozenblock.lib.item.api.CreativeTabAPI;
 import net.frozenblock.lib.neoforge.event.api.FrozenLibNeoForgePacketRegisterEvent;
 import net.frozenblock.lib.networking.client.FrozenLibClientNetworking;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
 import net.frozenblock.lib.platform.NeoForgeCreativeTabHelper;
-import net.frozenblock.lib.platform.NeoForgeTintRegistryHelper;
+import net.frozenblock.lib.platform.api.PlatformHelper;
+import net.frozenblock.lib.platform.api.neoforge.TintRegistryHelperImpl;
 import net.frozenblock.lib.registry.api.FrozenLibRegistries;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
@@ -23,12 +23,12 @@ public class FrozenLibModEvents {
 
 	@SubscribeEvent
 	public static void registerItemColors(RegisterColorHandlersEvent.Item event) {
-		NeoForgeTintRegistryHelper.gatherItems(event);
+		TintRegistryHelperImpl.gatherItems(event);
 	}
 
 	@SubscribeEvent
 	public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
-		NeoForgeTintRegistryHelper.gatherBlocks(event);
+		TintRegistryHelperImpl.gatherBlocks(event);
 	}
 
 	@SubscribeEvent
@@ -43,7 +43,7 @@ public class FrozenLibModEvents {
 
 	@SubscribeEvent
 	public static void registerClientPacketReceivers(FrozenLibNeoForgePacketRegisterEvent event) {
-		if (!FrozenLibPlatformHelper.HELPER.envType().isClient()) return;
+		if (!PlatformHelper.envType().isClient()) return;
 		FrozenLibClientNetworking.registerClientReceivers();
 	}
 

@@ -19,7 +19,7 @@ package net.frozenblock.lib.debug.mixin;
 
 import net.frozenblock.lib.config.frozenlib_config.FrozenLibConfig;
 import net.frozenblock.lib.debug.networking.GoalDebugRemovePayload;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.PacketHelper;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
@@ -39,7 +39,7 @@ public class EntityMixin {
 	@Inject(method = "remove", at = @At("HEAD"))
 	public void devTools$remove(Entity.RemovalReason reason, CallbackInfo info) {
 		if (this.level instanceof ServerLevel serverLevel && FrozenLibConfig.IS_DEBUG) {
-			FrozenLibPlatformHelper.PACKET.sendToPlayersInLevel(
+			PacketHelper.sendToPlayersInLevel(
 				serverLevel,
 				new GoalDebugRemovePayload(this.id)
 			);

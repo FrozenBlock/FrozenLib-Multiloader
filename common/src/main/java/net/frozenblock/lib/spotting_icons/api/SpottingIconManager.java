@@ -22,7 +22,7 @@ import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.Unpooled;
 import net.frozenblock.lib.FrozenLibLogUtils;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.PacketHelper;
 import net.frozenblock.lib.spotting_icons.api.client.SpottingIconClientResourceCheck;
 import net.frozenblock.lib.spotting_icons.impl.SpottingIconPacket;
 import net.frozenblock.lib.spotting_icons.impl.SpottingIconRemovePacket;
@@ -63,7 +63,7 @@ public class SpottingIconManager {
 	public void setIcon(ResourceLocation texture, float startFade, float endFade, ResourceLocation restrictionID) {
 		this.icon = new SpottingIcon(texture, startFade, endFade, restrictionID);
 		if (!this.entity.level().isClientSide) {
-			FrozenLibPlatformHelper.PACKET.sendToPlayersTrackingEntity(this.entity, new SpottingIconPacket(this.entity.getId(), texture, startFade, endFade, restrictionID));
+			PacketHelper.sendToPlayersTrackingEntity(this.entity, new SpottingIconPacket(this.entity.getId(), texture, startFade, endFade, restrictionID));
 		} else {
 			this.clientHasIconResource = SpottingIconClientResourceCheck.hasTexture(this.icon.texture());
 		}
@@ -74,7 +74,7 @@ public class SpottingIconManager {
 		SpottingIconPredicate.getPredicate(this.icon.restrictionID).onRemoved(this.entity);
 		this.icon = null;
 		if (!this.entity.level().isClientSide) {
-			FrozenLibPlatformHelper.PACKET.sendToPlayersTrackingEntity(this.entity, new SpottingIconRemovePacket(this.entity.getId()));
+			PacketHelper.sendToPlayersTrackingEntity(this.entity, new SpottingIconRemovePacket(this.entity.getId()));
 		}
 	}
 
@@ -87,7 +87,7 @@ public class SpottingIconManager {
 			byteBuf.writeFloat(this.icon.endFadeDist);
 			byteBuf.writeResourceLocation(this.icon.restrictionID);
 
-			FrozenLibPlatformHelper.PACKET.sendToPlayer(
+			PacketHelper.sendToPlayer(
 				player,
 				new SpottingIconPacket(
 					this.entity.getId(),

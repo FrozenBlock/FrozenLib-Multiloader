@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import net.frozenblock.lib.FrozenLibLogUtils;
 import net.frozenblock.lib.event.impl.EventType;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.EntryPointHelper;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
@@ -47,7 +47,7 @@ public class FrozenEvent<T> {
 			// Check if the listener type is assignable from the event type
 			if (eventType.entrypoint().isAssignableFrom(type)) {
 				// Get the entrypoints for the specified listener type
-				List<?> entrypoints = FrozenLibPlatformHelper.ENTRY_POINT.getEntrypoints(eventType.entrypointIdentifier(), eventType.entrypoint());
+				List<?> entrypoints = EntryPointHelper.getEntrypoints(eventType.entrypointIdentifier(), eventType.entrypoint());
 
 				// Loop through the entrypoints
 				for (Object entrypoint : entrypoints) {

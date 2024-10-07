@@ -30,7 +30,7 @@ import net.frozenblock.lib.env.api.Environment;
 import net.frozenblock.lib.event.event.client.ClientEntityEvents;
 import net.frozenblock.lib.event.event.client.ClientLifecycleEvents;
 import net.frozenblock.lib.event.event.client.ClientPlayConnectionEvents;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.PacketHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.resources.ResourceLocation;
@@ -72,7 +72,7 @@ public class ClientCapeData {
 		ClientLifecycleEvents.CLIENT_STOPPING.register(client -> CAPES_IN_WORLD.clear());
 		ClientPlayConnectionEvents.DISCONNECT.register((clientPacketListener, minecraft) -> CAPES_IN_WORLD.clear());
 		ClientPlayConnectionEvents.JOIN.register((clientPacketListener, packetSender, minecraft) ->
-			FrozenLibPlatformHelper.PACKET.sendToServer(CapeCustomizePacket.createPacket(minecraft.getUser().getProfileId(), ResourceLocation.parse(FrozenLibConfig.get().cape))));
+			PacketHelper.sendToServer(CapeCustomizePacket.createPacket(minecraft.getUser().getProfileId(), ResourceLocation.parse(FrozenLibConfig.get().cape))));
 		ClientEntityEvents.ENTITY_LOAD.register((entity, clientLevel) -> {
 			if (entity instanceof AbstractClientPlayerCapeInterface capeInterface) {
 				getCapeTexture(entity.getUUID()).ifPresent(capeInterface::frozenLib$setCape);

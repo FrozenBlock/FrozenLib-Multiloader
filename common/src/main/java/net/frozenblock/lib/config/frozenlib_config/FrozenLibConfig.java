@@ -27,7 +27,7 @@ import net.frozenblock.lib.config.api.instance.json.JsonType;
 import net.frozenblock.lib.config.api.registry.ConfigRegistry;
 import net.frozenblock.lib.config.api.sync.SyncBehavior;
 import net.frozenblock.lib.config.api.sync.annotation.EntrySyncData;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.PlatformHelper;
 import org.quiltmc.qsl.frozenblock.misc.datafixerupper.api.QuiltDataFixerBuilder;
 import org.quiltmc.qsl.frozenblock.misc.datafixerupper.api.QuiltDataFixes;
 
@@ -54,7 +54,7 @@ public class FrozenLibConfig {
 				USE_WIND_ON_NON_FROZEN_SERVERS = config.useWindOnNonFrozenServers;
 				FILE_TRANSFER_SERVER = config.fileTransferServer;
 				FILE_TRANSFER_CLIENT = config.fileTransferClient;
-				IS_DEBUG = config.isDebug && FrozenLibPlatformHelper.HELPER.isDevelopmentEnvironment();
+				IS_DEBUG = config.isDebug && PlatformHelper.isDevelopmentEnvironment();
 			}
 		}
 	);

@@ -32,7 +32,8 @@ import net.frozenblock.lib.config.clothconfig.ClothConfigUtils;
 import net.frozenblock.lib.config.frozenlib_config.FrozenLibConfig;
 import net.frozenblock.lib.env.api.EnvType;
 import net.frozenblock.lib.env.api.Environment;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.PacketHelper;
+import net.frozenblock.lib.platform.api.PlatformHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -50,7 +51,7 @@ public final class FrozenLibConfigGui {
 		var defaultConfig = FrozenLibConfig.INSTANCE.defaultInstance();
 		var dataFixer = config.dataFixer;
 
-		if (FrozenLibPlatformHelper.HELPER.isDevelopmentEnvironment()) {
+		if (PlatformHelper.isDevelopmentEnvironment()) {
 			var isDebug = category.addEntry(
 				ClothConfigUtils.syncedEntry(
 					entryBuilder.startBooleanToggle(text("is_debug"), modifiedConfig.isDebug)
@@ -176,7 +177,7 @@ public final class FrozenLibConfigGui {
 						ResourceLocation capeId = ResourceLocation.parse((String) newValue);
 						config.cape = (String) newValue;
 						if (Minecraft.getInstance().getConnection() != null) {
-							FrozenLibPlatformHelper.PACKET.sendToServer(CapeCustomizePacket.createPacket(playerUUID, capeId));
+							PacketHelper.sendToServer(CapeCustomizePacket.createPacket(playerUUID, capeId));
 						}
 					})
 					.setTooltip(tooltip("cape"))

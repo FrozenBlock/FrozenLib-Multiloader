@@ -23,7 +23,7 @@ import java.util.Collection;
 import net.frozenblock.lib.config.api.instance.Config;
 import net.frozenblock.lib.config.api.registry.ConfigRegistry;
 import net.frozenblock.lib.config.impl.networking.ConfigSyncPacket;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.PacketHelper;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
@@ -48,7 +48,7 @@ public final class ConfigCommand {
 		for (Config<?> config : configs) {
 			config.load();
 		}
-		for (ServerPlayer player : FrozenLibPlatformHelper.PACKET.all(source.getServer())) {
+		for (ServerPlayer player : PacketHelper.all(source.getServer())) {
 			ConfigSyncPacket.sendS2C(player, configs);
 		}
 

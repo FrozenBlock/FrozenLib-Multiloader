@@ -28,7 +28,7 @@ import net.frozenblock.lib.config.frozenlib_config.FrozenLibConfig;
 import net.frozenblock.lib.item.api.tag.FrozenLibItemTags;
 import net.frozenblock.lib.item.impl.network.CooldownTickCountPacket;
 import net.frozenblock.lib.item.impl.network.ForcedCooldownPacket;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.PacketHelper;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
@@ -81,7 +81,7 @@ public class SaveableItemCooldowns {
 			int tickCount = itemCooldowns.tickCount;
 
 			// TODO: [Liuk] this causes a crash. Isn't registered. You register on both client and server, and register the receiving method on client.
-			FrozenLibPlatformHelper.PACKET.sendToPlayer(player, new CooldownTickCountPacket(tickCount));
+			PacketHelper.sendToPlayer(player, new CooldownTickCountPacket(tickCount));
 
 			for (SaveableCooldownInstance saveableCooldownInstance : saveableCooldownInstances) {
 				int cooldownLeft = saveableCooldownInstance.cooldownLeft();
@@ -91,7 +91,7 @@ public class SaveableItemCooldowns {
 				if (optionalItem.isPresent()) {
 					Item item = optionalItem.get();
 					itemCooldowns.cooldowns.put(item, new ItemCooldowns.CooldownInstance(startTime, endTime));
-					FrozenLibPlatformHelper.PACKET.sendToPlayer(player, new ForcedCooldownPacket(item, startTime, endTime));
+					PacketHelper.sendToPlayer(player, new ForcedCooldownPacket(item, startTime, endTime));
 				}
 			}
 		}

@@ -20,7 +20,7 @@ package net.frozenblock.lib.integration.api;
 import java.util.List;
 import java.util.function.Supplier;
 import lombok.experimental.UtilityClass;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.PlatformHelper;
 import net.frozenblock.lib.registry.api.FrozenLibRegistries;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -63,7 +63,7 @@ public class ModIntegrations {
 	public static void initializePreFreeze() {
 		for (var integration : FrozenLibRegistries.MOD_INTEGRATION) {
 			integration.getIntegration().initPreFreeze();
-			if (FrozenLibPlatformHelper.HELPER.envType().isClient()) {
+			if (PlatformHelper.envType().isClient()) {
 				integration.getIntegration().clientInitPreFreeze();
 			}
 		}
@@ -75,7 +75,7 @@ public class ModIntegrations {
     public static void initialize() {
         for (var integration : FrozenLibRegistries.MOD_INTEGRATION) {
             integration.getIntegration().init();
-			if (FrozenLibPlatformHelper.HELPER.envType().isClient()) {
+			if (PlatformHelper.envType().isClient()) {
 				integration.getIntegration().clientInit();
 			}
         }

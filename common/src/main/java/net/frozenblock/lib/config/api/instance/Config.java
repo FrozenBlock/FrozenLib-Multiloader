@@ -28,7 +28,7 @@ import net.frozenblock.lib.config.api.registry.ConfigSaveEvent;
 import net.frozenblock.lib.config.api.sync.annotation.UnsyncableConfig;
 import net.frozenblock.lib.config.impl.networking.client.ClientConfigSyncNetworking;
 import net.frozenblock.lib.env.api.EnvType;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.PlatformHelper;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -159,7 +159,7 @@ public abstract class Config<T> {
 			this.onSave();
 
 			if (FrozenLibConstants.isInitialized) {
-				if (FrozenLibPlatformHelper.HELPER.envType() == EnvType.CLIENT)
+				if (PlatformHelper.envType() == EnvType.CLIENT)
 					ClientConfigSyncNetworking.trySendC2S(this);
 
 				invokeSaveEvents();
@@ -196,7 +196,7 @@ public abstract class Config<T> {
                 }
             });
 
-			if (FrozenLibPlatformHelper.HELPER.envType() == EnvType.CLIENT) {
+			if (PlatformHelper.envType() == EnvType.CLIENT) {
 				ConfigSaveEvent.Client.EVENT.invoke(e -> {
                     try {
                         e.onSave(this);
@@ -221,7 +221,7 @@ public abstract class Config<T> {
                 }
             });
 
-			if (FrozenLibPlatformHelper.HELPER.envType() == EnvType.CLIENT) {
+			if (PlatformHelper.envType() == EnvType.CLIENT) {
 				ConfigLoadEvent.Client.EVENT.invoke(e -> {
                     try {
                         e.onLoad(this);

@@ -29,7 +29,7 @@ import java.util.function.Function;
 import net.frozenblock.lib.config.frozenlib_config.FrozenLibConfig;
 import net.frozenblock.lib.math.api.EasyNoiseSampler;
 import net.frozenblock.lib.networking.FrozenLibNetworking;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.PacketHelper;
 import net.frozenblock.lib.wind.impl.WindManagerInterface;
 import net.frozenblock.lib.wind.impl.WindStorage;
 import net.frozenblock.lib.wind.impl.networking.WindAccessPacket;
@@ -119,9 +119,9 @@ public class WindManager {
 	public void addWindDisturbanceAndSync(@NotNull WindDisturbance<?> windDisturbance) {
 		Optional<WindDisturbancePacket> optionalPacket = windDisturbance.toPacket();
 		if (optionalPacket.isPresent()) {
-			for (ServerPlayer player : FrozenLibPlatformHelper.PACKET.world(level)) {
+			for (ServerPlayer player : PacketHelper.world(level)) {
 				if (windDisturbance.isWithinViewDistance(player.getChunkTrackingView())) {
-					FrozenLibPlatformHelper.PACKET.sendToPlayer(player, optionalPacket.get());
+					PacketHelper.sendToPlayer(player, optionalPacket.get());
 				}
 			}
 		}
@@ -293,16 +293,16 @@ public class WindManager {
 	@ApiStatus.Internal
 	public void sendSync(@NotNull ServerLevel level) {
 		WindSyncPacket packet = this.createSyncPacket();
-		for (ServerPlayer player : FrozenLibPlatformHelper.PACKET.world(level)) {
+		for (ServerPlayer player : PacketHelper.world(level)) {
 			this.sendSyncToPlayer(packet, player);
 		}
 	}
 
 	@ApiStatus.Internal
 	public void sendSyncToPlayer(@NotNull WindSyncPacket packet, @NotNull ServerPlayer player) {
-		FrozenLibPlatformHelper.PACKET.sendToPlayer(player, packet);
+		PacketHelper.sendToPlayer(player, packet);
 		for (WindManagerExtension extension : this.attachedExtensions) {
-			FrozenLibPlatformHelper.PACKET.sendToPlayer(player, extension.syncPacket(packet));
+			PacketHelper.sendToPlayer(player, extension.syncPacket(packet));
 		}
 	}
 

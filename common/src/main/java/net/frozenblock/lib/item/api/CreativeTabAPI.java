@@ -23,6 +23,7 @@ import java.util.List;
 import lombok.experimental.UtilityClass;
 import net.frozenblock.lib.FrozenLibLogUtils;
 import net.frozenblock.lib.event.api.FrozenEvent;
+import net.frozenblock.lib.platform.api.CreativeTabHelper;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
@@ -192,6 +193,6 @@ public class CreativeTabAPI {
 
 	@FunctionalInterface
 	public interface ModifyEntries {
-		void modifyEntries(ICreativeTabHelper entries);
+		void modifyEntries(CreativeTabHelper entries);
 	}
 }

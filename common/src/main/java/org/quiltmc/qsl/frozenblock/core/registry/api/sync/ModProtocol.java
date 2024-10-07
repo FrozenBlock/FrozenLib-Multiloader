@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 import net.frozenblock.lib.event.api.FrozenEvent;
 import net.frozenblock.lib.event.entrypoint.CommonEventEntrypoint;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.ModProtocolHelper;
 import org.slf4j.Logger;
 
 public class ModProtocol {
@@ -44,7 +44,7 @@ public class ModProtocol {
 	public static final List<ModProtocolDef> ALL = new ArrayList<>();
 
 	public static void loadVersions() {
-		FrozenLibPlatformHelper.PROTOCOL.loadVersions();
+		ModProtocolHelper.loadVersions();
 	}
 
 

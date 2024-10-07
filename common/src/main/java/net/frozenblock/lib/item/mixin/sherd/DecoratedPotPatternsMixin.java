@@ -18,7 +18,7 @@
 package net.frozenblock.lib.item.mixin.sherd;
 
 import net.frozenblock.lib.item.impl.sherd.DecoratedPotPatternRegistryEntrypoint;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.EntryPointHelper;
 import net.minecraft.core.Registry;
 import net.minecraft.world.level.block.entity.DecoratedPotPattern;
 import net.minecraft.world.level.block.entity.DecoratedPotPatterns;
@@ -32,7 +32,7 @@ public class DecoratedPotPatternsMixin {
 
 	@Inject(method = "bootstrap", at = @At(value = "RETURN", shift = At.Shift.BEFORE))
 	private static void frozenLib$bootstrap(Registry<DecoratedPotPattern> registry, CallbackInfoReturnable<DecoratedPotPattern> info) {
-		FrozenLibPlatformHelper.ENTRY_POINT.getEntrypoints("frozenlib:decorated_pot_patterns", DecoratedPotPatternRegistryEntrypoint.class).forEach(entrypoint -> {
+		EntryPointHelper.getEntrypoints("frozenlib:decorated_pot_patterns", DecoratedPotPatternRegistryEntrypoint.class).forEach(entrypoint -> {
 			try {
 				entrypoint.bootstrap(registry);
 			} catch (Throwable ignored) {

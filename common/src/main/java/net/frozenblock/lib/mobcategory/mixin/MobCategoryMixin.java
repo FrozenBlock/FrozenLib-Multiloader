@@ -22,7 +22,7 @@ import java.util.Arrays;
 import net.frozenblock.lib.mobcategory.api.FrozenMobCategories;
 import net.frozenblock.lib.mobcategory.api.entrypoint.FrozenMobCategoryEntrypoint;
 import net.frozenblock.lib.mobcategory.impl.FrozenMobCategory;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.EntryPointHelper;
 import net.minecraft.world.entity.MobCategory;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Final;
@@ -69,7 +69,7 @@ public class MobCategoryMixin {
 		}
 
 		ArrayList<FrozenMobCategory> newCategories = new ArrayList<>();
-		FrozenLibPlatformHelper.ENTRY_POINT.getEntrypoints("frozenlib:mob_categories", FrozenMobCategoryEntrypoint.class)
+		EntryPointHelper.getEntrypoints("frozenlib:mob_categories", FrozenMobCategoryEntrypoint.class)
 				.forEach(entrypoint -> entrypoint.newCategories(newCategories));
 
 		for (FrozenMobCategory category : newCategories) {

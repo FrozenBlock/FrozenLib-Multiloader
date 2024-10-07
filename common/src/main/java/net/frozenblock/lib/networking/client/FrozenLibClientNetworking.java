@@ -43,7 +43,8 @@ import net.frozenblock.lib.item.impl.CooldownInterface;
 import net.frozenblock.lib.item.impl.network.CooldownChangePacket;
 import net.frozenblock.lib.item.impl.network.CooldownTickCountPacket;
 import net.frozenblock.lib.item.impl.network.ForcedCooldownPacket;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.PacketHelper;
+import net.frozenblock.lib.platform.api.RegistryHelper;
 import net.frozenblock.lib.platform.impl.ClientPayloadContext;
 import net.frozenblock.lib.screenshake.api.client.ScreenShaker;
 import net.frozenblock.lib.screenshake.impl.network.EntityScreenShakePacket;
@@ -102,39 +103,38 @@ public final class FrozenLibClientNetworking {
 			config.setSynced(false);
 		}
 
-		final var registryHelper = FrozenLibPlatformHelper.REGISTRY;
-		registryHelper.registerClientReceiver(LocalPlayerSoundPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveLocalPlayerSoundPacket);
-		registryHelper.registerClientReceiver(LocalSoundPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveLocalSoundPacket);
-		registryHelper.registerClientReceiver(StartingMovingRestrictionSoundLoopPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveStartingMovingRestrictionSoundLoopPacket);
-		registryHelper.registerClientReceiver(MovingRestrictionSoundPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveMovingRestrictionSoundPacket);
-		registryHelper.registerClientReceiver(FadingDistanceSwitchingSoundPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveFadingDistanceSwitchingSoundPacket);
-		registryHelper.registerClientReceiver(MovingFadingDistanceSwitchingRestrictionSoundPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveMovingFadingDistanceSwitchingSoundPacket);
-		registryHelper.registerClientReceiver(FlyBySoundPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveFlyBySoundPacket);
-		registryHelper.registerClientReceiver(CooldownChangePacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveCooldownChangePacket);
-		registryHelper.registerClientReceiver(ForcedCooldownPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveForcedCooldownPacket);
-		registryHelper.registerClientReceiver(CooldownTickCountPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveCooldownTickCountPacket);
-		registryHelper.registerClientReceiver(ScreenShakePacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveScreenShakePacket);
-		registryHelper.registerClientReceiver(EntityScreenShakePacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveScreenShakeFromEntityPacket);
-		registryHelper.registerClientReceiver(RemoveScreenShakePacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveRemoveScreenShakePacket);
-		registryHelper.registerClientReceiver(RemoveEntityScreenShakePacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveRemoveScreenShakeFromEntityPacket);
-		registryHelper.registerClientReceiver(SpottingIconPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveIconPacket);
-		registryHelper.registerClientReceiver(SpottingIconRemovePacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveIconRemovePacket);
-		registryHelper.registerClientReceiver(WindSyncPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveWindSyncPacket);
-		registryHelper.registerClientReceiver(WindDisturbancePacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveWindDisturbancePacket);
+		RegistryHelper.registerClientReceiver(LocalPlayerSoundPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveLocalPlayerSoundPacket);
+		RegistryHelper.registerClientReceiver(LocalSoundPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveLocalSoundPacket);
+		RegistryHelper.registerClientReceiver(StartingMovingRestrictionSoundLoopPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveStartingMovingRestrictionSoundLoopPacket);
+		RegistryHelper.registerClientReceiver(MovingRestrictionSoundPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveMovingRestrictionSoundPacket);
+		RegistryHelper.registerClientReceiver(FadingDistanceSwitchingSoundPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveFadingDistanceSwitchingSoundPacket);
+		RegistryHelper.registerClientReceiver(MovingFadingDistanceSwitchingRestrictionSoundPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveMovingFadingDistanceSwitchingSoundPacket);
+		RegistryHelper.registerClientReceiver(FlyBySoundPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveFlyBySoundPacket);
+		RegistryHelper.registerClientReceiver(CooldownChangePacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveCooldownChangePacket);
+		RegistryHelper.registerClientReceiver(ForcedCooldownPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveForcedCooldownPacket);
+		RegistryHelper.registerClientReceiver(CooldownTickCountPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveCooldownTickCountPacket);
+		RegistryHelper.registerClientReceiver(ScreenShakePacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveScreenShakePacket);
+		RegistryHelper.registerClientReceiver(EntityScreenShakePacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveScreenShakeFromEntityPacket);
+		RegistryHelper.registerClientReceiver(RemoveScreenShakePacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveRemoveScreenShakePacket);
+		RegistryHelper.registerClientReceiver(RemoveEntityScreenShakePacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveRemoveScreenShakeFromEntityPacket);
+		RegistryHelper.registerClientReceiver(SpottingIconPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveIconPacket);
+		RegistryHelper.registerClientReceiver(SpottingIconRemovePacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveIconRemovePacket);
+		RegistryHelper.registerClientReceiver(WindSyncPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveWindSyncPacket);
+		RegistryHelper.registerClientReceiver(WindDisturbancePacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveWindDisturbancePacket);
 
-		registryHelper.registerClientReceiver(FileTransferPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveFileTransferPacket);
-		registryHelper.registerClientReceiver(CapeCustomizePacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveCapeCustomizePacket);
+		RegistryHelper.registerClientReceiver(FileTransferPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveFileTransferPacket);
+		RegistryHelper.registerClientReceiver(CapeCustomizePacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveCapeCustomizePacket);
 
-		registryHelper.registerClientReceiver(LoadCapeRepoPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveLoadCapeRepoPacket);
+		RegistryHelper.registerClientReceiver(LoadCapeRepoPacket.PACKET_TYPE, FrozenLibClientNetworking::onReceiveLoadCapeRepoPacket);
 
-		registryHelper.registerClientReceiver(ConfigSyncPacket.PACKET_TYPE, (packet, ctx) -> ConfigSyncPacket.receive(packet, null));
+		RegistryHelper.registerClientReceiver(ConfigSyncPacket.PACKET_TYPE, (packet, ctx) -> ConfigSyncPacket.receive(packet, null));
 
 		// DEBUG
-		registryHelper.registerClientReceiver(ImprovedGoalDebugPayload.PACKET_TYPE, DebugRenderManager::onReceiveGoalDebugPacket);
-		registryHelper.registerClientReceiver(GoalDebugRemovePayload.PACKET_TYPE, DebugRenderManager::onReceiveGoalDebugRemovePacket);
-		registryHelper.registerClientReceiver(ImprovedGameEventListenerDebugPayload.PACKET_TYPE, DebugRenderManager::onReceiveGameEventListenerDebugPacket);
-		registryHelper.registerClientReceiver(ImprovedGameEventDebugPayload.PACKET_TYPE, DebugRenderManager::onReceiveGameEventDebugPacket);
-		registryHelper.registerClientReceiver(WindAccessPacket.PACKET_TYPE, DebugRenderManager::onReceiveWindAccessPacket);
+		RegistryHelper.registerClientReceiver(ImprovedGoalDebugPayload.PACKET_TYPE, DebugRenderManager::onReceiveGoalDebugPacket);
+		RegistryHelper.registerClientReceiver(GoalDebugRemovePayload.PACKET_TYPE, DebugRenderManager::onReceiveGoalDebugRemovePacket);
+		RegistryHelper.registerClientReceiver(ImprovedGameEventListenerDebugPayload.PACKET_TYPE, DebugRenderManager::onReceiveGameEventListenerDebugPacket);
+		RegistryHelper.registerClientReceiver(ImprovedGameEventDebugPayload.PACKET_TYPE, DebugRenderManager::onReceiveGameEventDebugPacket);
+		RegistryHelper.registerClientReceiver(WindAccessPacket.PACKET_TYPE, DebugRenderManager::onReceiveWindAccessPacket);
 	}
 
 	@ApiStatus.Internal
@@ -404,7 +404,7 @@ public final class FrozenLibClientNetworking {
 			Path path = ctx.client().gameDirectory.toPath().resolve(packet.transferPath()).resolve(packet.fileName());
 			try {
 				FileTransferPacket fileTransferPacket = FileTransferPacket.create(packet.transferPath(), path.toFile());
-				FrozenLibPlatformHelper.PACKET.sendToServer(fileTransferPacket);
+				PacketHelper.sendToServer(fileTransferPacket);
 			} catch (IOException ignored) {
 				FrozenLibLogUtils.LOGGER.error("Unable to create and send transfer packet for file {}!", packet.fileName());
 			}

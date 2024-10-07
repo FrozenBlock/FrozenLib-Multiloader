@@ -19,7 +19,7 @@ package net.frozenblock.lib.integration.api;
 
 import net.frozenblock.lib.env.api.EnvType;
 import net.frozenblock.lib.env.api.Environment;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.PlatformHelper;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -41,7 +41,7 @@ public abstract class ModIntegration {
 	public ModIntegration(String modID, String modRegistryID) {
 		this.modID = modID;
 		this.modRegistryID = modRegistryID;
-		this.isModLoaded = FrozenLibPlatformHelper.HELPER.isModLoaded(this.modID);
+		this.isModLoaded = PlatformHelper.isModLoaded(this.modID);
 	}
 
     public ModIntegration(String modID) {

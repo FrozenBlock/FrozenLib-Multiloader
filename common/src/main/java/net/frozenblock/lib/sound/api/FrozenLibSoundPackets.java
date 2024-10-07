@@ -18,7 +18,7 @@
 package net.frozenblock.lib.sound.api;
 
 import lombok.experimental.UtilityClass;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.PacketHelper;
 import net.frozenblock.lib.sound.api.networking.FadingDistanceSwitchingSoundPacket;
 import net.frozenblock.lib.sound.api.networking.FlyBySoundPacket;
 import net.frozenblock.lib.sound.api.networking.LocalPlayerSoundPacket;
@@ -53,7 +53,7 @@ public class FrozenLibSoundPackets {
 		boolean distanceDelay
 	) {
 		if (level instanceof ServerLevel serverLevel) {
-			FrozenLibPlatformHelper.PACKET.sendToPlayersTrackingBlockPos(
+			PacketHelper.sendToPlayersTrackingBlockPos(
 				serverLevel,
 				pos,
 				new LocalSoundPacket(Vec3.atCenterOf(pos), sound, source, volume, pitch, distanceDelay)
@@ -73,7 +73,7 @@ public class FrozenLibSoundPackets {
 		boolean distanceDelay
 	) {
 		if (level instanceof ServerLevel serverLevel) {
-			FrozenLibPlatformHelper.PACKET.sendToPlayersTrackingBlockPos(
+			PacketHelper.sendToPlayersTrackingBlockPos(
 				serverLevel,
 				BlockPos.containing(x, y, z),
 				new LocalSoundPacket(new Vec3(x, y, z), sound, source, volume, pitch, distanceDelay)
@@ -90,7 +90,7 @@ public class FrozenLibSoundPackets {
 		float pitch
 	) {
 		if (level instanceof ServerLevel serverLevel) {
-			FrozenLibPlatformHelper.PACKET.sendToPlayersTrackingEntityAndSelf(
+			PacketHelper.sendToPlayersTrackingEntityAndSelf(
 				entity,
 				new FlyBySoundPacket(entity.getId(), sound, category, volume, pitch)
 			);
@@ -108,7 +108,7 @@ public class FrozenLibSoundPackets {
 		boolean stopOnDeath
 	) {
 		if (level instanceof ServerLevel serverLevel) {
-			FrozenLibPlatformHelper.PACKET.sendToPlayersTrackingEntityAndSelf(
+			PacketHelper.sendToPlayersTrackingEntityAndSelf(
 				entity,
 				new MovingRestrictionSoundPacket(
 					entity.getId(),
@@ -135,7 +135,7 @@ public class FrozenLibSoundPackets {
 		boolean stopOnDeath
 	) {
 		if (level instanceof ServerLevel serverLevel && entity instanceof EntityLoopingSoundInterface soundInterface) {
-			FrozenLibPlatformHelper.PACKET.sendToPlayersTrackingEntity(
+			PacketHelper.sendToPlayersTrackingEntity(
 				entity,
 				new MovingRestrictionSoundPacket(
 					entity.getId(),
@@ -162,7 +162,7 @@ public class FrozenLibSoundPackets {
 		ResourceLocation id,
 		boolean stopOnDeath
 	) {
-		FrozenLibPlatformHelper.PACKET.sendToPlayer(
+		PacketHelper.sendToPlayer(
 			player,
 			new MovingRestrictionSoundPacket(
 				entity.getId(),
@@ -191,7 +191,7 @@ public class FrozenLibSoundPackets {
 		float maxDist
 	) {
 		if (level instanceof ServerLevel serverLevel && entity instanceof EntityLoopingFadingDistanceSoundInterface soundInterface) {
-			FrozenLibPlatformHelper.PACKET.sendToPlayersTrackingEntityAndSelf(
+			PacketHelper.sendToPlayersTrackingEntityAndSelf(
 				entity,
 				new MovingFadingDistanceSwitchingRestrictionSoundPacket(
 					entity.getId(),
@@ -234,7 +234,7 @@ public class FrozenLibSoundPackets {
 		float fadeDist,
 		float maxDist
 	) {
-		FrozenLibPlatformHelper.PACKET.sendToPlayer(
+		PacketHelper.sendToPlayer(
 			player,
 			new MovingFadingDistanceSwitchingRestrictionSoundPacket(
 				entity.getId(),
@@ -265,7 +265,7 @@ public class FrozenLibSoundPackets {
 		float fadeDist,
 		float maxDist
 	) {
-		FrozenLibPlatformHelper.PACKET.sendToPlayer(
+		PacketHelper.sendToPlayer(
 			player,
 			new MovingFadingDistanceSwitchingRestrictionSoundPacket(
 				entity.getId(),
@@ -295,7 +295,7 @@ public class FrozenLibSoundPackets {
 		float maxDist
 	) {
 		if (level instanceof ServerLevel serverLevel) {
-			FrozenLibPlatformHelper.PACKET.sendToPlayersTrackingBlockPos(
+			PacketHelper.sendToPlayersTrackingBlockPos(
 				serverLevel,
 				BlockPos.containing(pos),
 				new FadingDistanceSwitchingSoundPacket(
@@ -324,7 +324,7 @@ public class FrozenLibSoundPackets {
 		boolean stopOnDeath
 	) {
 		if (level instanceof ServerLevel serverLevel && entity instanceof EntityLoopingSoundInterface soundInterface) {
-			FrozenLibPlatformHelper.PACKET.sendToPlayersTrackingEntityAndSelf(
+			PacketHelper.sendToPlayersTrackingEntityAndSelf(
 				entity,
 				new StartingMovingRestrictionSoundLoopPacket(entity.getId(), startingSound, sound, category, volume, pitch, predicate, stopOnDeath)
 			);
@@ -343,7 +343,7 @@ public class FrozenLibSoundPackets {
 		ResourceLocation predicate,
 		boolean stopOnDeath
 	) {
-		FrozenLibPlatformHelper.PACKET.sendToPlayer(
+		PacketHelper.sendToPlayer(
 			player,
 			new StartingMovingRestrictionSoundLoopPacket(
 				entity.getId(),
@@ -359,7 +359,7 @@ public class FrozenLibSoundPackets {
     }
 
 	public static void createAndSendLocalPlayerSound(ServerPlayer player, Holder<SoundEvent> sound, float volume, float pitch) {
-		FrozenLibPlatformHelper.PACKET.sendToPlayer(player, new LocalPlayerSoundPacket(sound, volume, pitch));
+		PacketHelper.sendToPlayer(player, new LocalPlayerSoundPacket(sound, volume, pitch));
 	}
 
 }

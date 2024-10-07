@@ -24,7 +24,8 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+
+import net.frozenblock.lib.platform.api.PacketHelper;
 import net.frozenblock.lib.screenshake.api.ScreenShakeManager;
 import net.frozenblock.lib.screenshake.impl.EntityScreenShakeInterface;
 import net.frozenblock.lib.screenshake.impl.network.RemoveEntityScreenShakePacket;
@@ -90,7 +91,7 @@ public class ScreenShakeCommand {
 		vec3 = new Vec3(Math.round(vec3.x()), Math.round(vec3.y()), Math.round(vec3.z()));
 		ScreenShakePacket packet = new ScreenShakePacket(intensity, duration, durationFalloffStart, vec3, maxDistance, 0);
 		for (ServerPlayer serverPlayer : entities) {
-			FrozenLibPlatformHelper.PACKET.sendToPlayer(serverPlayer, packet);
+			PacketHelper.sendToPlayer(serverPlayer, packet);
 		}
 
 		int playerCount = entities.size();
@@ -137,7 +138,7 @@ public class ScreenShakeCommand {
 	private static int removeShakesFor(CommandSourceStack source, @NotNull Collection<? extends ServerPlayer> entities) {
 		CustomPacketPayload packet = new RemoveScreenShakePacket();
 		for (ServerPlayer serverPlayer : entities) {
-			FrozenLibPlatformHelper.PACKET.sendToPlayer(serverPlayer, packet);
+			PacketHelper.sendToPlayer(serverPlayer, packet);
 		}
 
 		int playerCount = entities.size();
@@ -161,7 +162,7 @@ public class ScreenShakeCommand {
 					CustomPacketPayload packet = new RemoveEntityScreenShakePacket(entity.getId());
 					affectedEntities.add(entity);
 					screenShakeInterface.frozenLib$getScreenShakeManager().getShakes().clear();
-					FrozenLibPlatformHelper.PACKET.sendToPlayersTrackingEntityAndSelf(entity, packet);
+					PacketHelper.sendToPlayersTrackingEntityAndSelf(entity, packet);
 					entityAmount += 1;
 				}
 			}

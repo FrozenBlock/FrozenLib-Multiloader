@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import net.frozenblock.lib.FrozenLibConstants;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.PacketHelper;
 import net.frozenblock.lib.screenshake.impl.EntityScreenShakeInterface;
 import net.frozenblock.lib.screenshake.impl.ScreenShakeManagerInterface;
 import net.frozenblock.lib.screenshake.impl.ScreenShakeStorage;
@@ -75,7 +75,7 @@ public class ScreenShakeManager {
 	}
 
 	public static void sendScreenShakePacketTo(ServerPlayer player, float intensity, int duration, int falloffStart, Vec3 pos, float maxDistance, int ticks) {
-		FrozenLibPlatformHelper.PACKET.sendToPlayer(player, new ScreenShakePacket(intensity, duration, falloffStart, pos, maxDistance, ticks));
+		PacketHelper.sendToPlayer(player, new ScreenShakePacket(intensity, duration, falloffStart, pos, maxDistance, ticks));
 	}
 
 	//With Entity
@@ -94,13 +94,13 @@ public class ScreenShakeManager {
 	public static void addEntityScreenShake(@NotNull Entity entity, float intensity, int duration, int falloffStart, float maxDistance, int ticks) {
 		if (entity.level() instanceof ServerLevel serverLevel) {
 			EntityScreenShakePacket packet = new EntityScreenShakePacket(entity.getId(), intensity, duration, falloffStart, maxDistance, ticks);
-			FrozenLibPlatformHelper.PACKET.sendToPlayersInLevel(serverLevel, packet);
+			PacketHelper.sendToPlayersInLevel(serverLevel, packet);
 			((EntityScreenShakeInterface) entity).frozenLib$addScreenShake(intensity, duration, falloffStart, maxDistance, ticks);
 		}
 	}
 
 	public static void sendEntityScreenShakeTo(ServerPlayer player, @NotNull Entity entity, float intensity, int duration, int falloffStart, float maxDistance, int ticks) {
-		FrozenLibPlatformHelper.PACKET.sendToPlayer(player, new EntityScreenShakePacket(entity.getId(), intensity, duration, falloffStart, maxDistance, ticks));
+		PacketHelper.sendToPlayer(player, new EntityScreenShakePacket(entity.getId(), intensity, duration, falloffStart, maxDistance, ticks));
 	}
 
 	public void tick(@NotNull ServerLevel level) {
@@ -109,7 +109,7 @@ public class ScreenShakeManager {
 			for (ScreenShake shake : this.getShakes()) {
 				if (this.level.getChunkSource().hasChunk(shake.chunkPos.x, shake.chunkPos.z)) {
 					shake.ticks += 1;
-					Collection<ServerPlayer> playersTrackingChunk = FrozenLibPlatformHelper.PACKET.tracking(this.level, shake.chunkPos);
+					Collection<ServerPlayer> playersTrackingChunk = PacketHelper.tracking(this.level, shake.chunkPos);
 					for (ServerPlayer serverPlayer : playersTrackingChunk) {
 						if (!shake.trackingPlayers.contains(serverPlayer)) {
 							ScreenShakeManager.sendScreenShakePacketTo(serverPlayer, shake.getIntensity(), shake.getDuration(), shake.getDurationFalloffStart(), shake.getPos(), shake.getMaxDistance(), shake.getTicks());

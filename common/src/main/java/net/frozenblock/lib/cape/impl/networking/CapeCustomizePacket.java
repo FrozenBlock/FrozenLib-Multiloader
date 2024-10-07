@@ -21,7 +21,7 @@ import java.util.UUID;
 import net.frozenblock.lib.FrozenLibConstants;
 import net.frozenblock.lib.cape.api.CapeUtil;
 import net.frozenblock.lib.cape.impl.Cape;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.PacketHelper;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
@@ -73,7 +73,7 @@ public final class CapeCustomizePacket implements CustomPacketPayload {
 
 	public static void sendCapeToAll(MinecraftServer server, UUID uuid, @Nullable ResourceLocation capeId) {
 		CapeCustomizePacket frozenCapePacket = CapeCustomizePacket.createPacket(uuid, capeId);
-		FrozenLibPlatformHelper.PACKET.sendToAllPlayers(server, frozenCapePacket);
+		PacketHelper.sendToAllPlayers(server, frozenCapePacket);
 	}
 
 	public static boolean shouldDisable(Cape cape) {

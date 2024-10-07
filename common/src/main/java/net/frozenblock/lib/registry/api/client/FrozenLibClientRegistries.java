@@ -22,8 +22,8 @@ import net.frozenblock.lib.FrozenLibConstants;
 import net.frozenblock.lib.entity.api.rendering.EntityTextureOverride;
 import net.frozenblock.lib.env.api.EnvType;
 import net.frozenblock.lib.env.api.Environment;
+import net.frozenblock.lib.platform.api.RegistryHelper;
 import net.frozenblock.lib.sided.neoforge.neoforge.api.NeoForgeFreezer;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
 import net.minecraft.core.RegistrationInfo;
 import net.minecraft.core.Registry;
 import net.minecraft.core.WritableRegistry;
@@ -43,7 +43,7 @@ public class FrozenLibClientRegistries {
 
 	private static <T> Registry<T> create(ResourceLocation id, boolean sync) {
 		final ResourceKey<Registry<T>> key = ResourceKey.createRegistryKey(id);
-		return FrozenLibPlatformHelper.REGISTRY.createBuilder(key, sync);
+		return RegistryHelper.createBuilder(key, sync);
 	}
 
 	private static void register(Registry<?> registry) {

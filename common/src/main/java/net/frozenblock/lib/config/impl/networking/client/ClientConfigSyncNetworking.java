@@ -6,7 +6,7 @@ import net.frozenblock.lib.config.api.registry.ConfigRegistry;
 import net.frozenblock.lib.config.impl.networking.ConfigSyncPacket;
 import net.frozenblock.lib.env.api.EnvType;
 import net.frozenblock.lib.env.api.Environment;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.PacketHelper;
 import net.minecraft.client.Minecraft;
 import org.jetbrains.annotations.NotNull;
 
@@ -21,7 +21,7 @@ public class ClientConfigSyncNetworking {
 		for (Config<?> config : configs) {
 			if (!config.supportsSync()) continue;
 			ConfigSyncPacket<?> packet = new ConfigSyncPacket<>(config.modId(), config.configClass().getName(), config.instance());
-			FrozenLibPlatformHelper.PACKET.sendToServer(packet);
+			PacketHelper.sendToServer(packet);
 		}
 	}
 

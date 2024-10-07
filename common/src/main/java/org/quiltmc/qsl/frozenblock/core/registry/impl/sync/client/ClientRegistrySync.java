@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import net.frozenblock.lib.env.api.EnvType;
 import net.frozenblock.lib.env.api.Environment;
 import net.frozenblock.lib.networking.impl.PacketSender;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.RegistryHelper;
 import net.frozenblock.lib.platform.impl.ClientPayloadContext;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -65,16 +65,15 @@ public final class ClientRegistrySync {
 
 	public static void registerHandlers() {
 		// TODO: [Liuk] this stuff. make them config packets. NOW. OR ELSE DIARRHEA.
-		final var helper = FrozenLibPlatformHelper.REGISTRY;
-		helper.registerS2C(ServerPackets.Handshake.PACKET_TYPE, ServerPackets.Handshake.CODEC);
-		helper.registerS2C(ServerPackets.End.PACKET_TYPE, ServerPackets.End.CODEC);
-		helper.registerS2C(ServerPackets.ErrorStyle.PACKET_TYPE, ServerPackets.ErrorStyle.CODEC);
-		helper.registerS2C(ServerPackets.ModProtocol.PACKET_TYPE, ServerPackets.ModProtocol.CODEC);
+		RegistryHelper.registerS2C(ServerPackets.Handshake.PACKET_TYPE, ServerPackets.Handshake.CODEC);
+		RegistryHelper.registerS2C(ServerPackets.End.PACKET_TYPE, ServerPackets.End.CODEC);
+		RegistryHelper.registerS2C(ServerPackets.ErrorStyle.PACKET_TYPE, ServerPackets.ErrorStyle.CODEC);
+		RegistryHelper.registerS2C(ServerPackets.ModProtocol.PACKET_TYPE, ServerPackets.ModProtocol.CODEC);
 
-		helper.registerClientReceiver(ServerPackets.Handshake.PACKET_TYPE, ClientRegistrySync::handleHelloPacket);
-		helper.registerClientReceiver(ServerPackets.End.PACKET_TYPE, ClientRegistrySync::handleEndPacket);
-		helper.registerClientReceiver(ServerPackets.ErrorStyle.PACKET_TYPE, ClientRegistrySync::handleErrorStylePacket);
-		helper.registerClientReceiver(ServerPackets.ModProtocol.PACKET_TYPE, ClientRegistrySync::handleModProtocol);
+		RegistryHelper.registerClientReceiver(ServerPackets.Handshake.PACKET_TYPE, ClientRegistrySync::handleHelloPacket);
+		RegistryHelper.registerClientReceiver(ServerPackets.End.PACKET_TYPE, ClientRegistrySync::handleEndPacket);
+		RegistryHelper.registerClientReceiver(ServerPackets.ErrorStyle.PACKET_TYPE, ClientRegistrySync::handleErrorStylePacket);
+		RegistryHelper.registerClientReceiver(ServerPackets.ModProtocol.PACKET_TYPE, ClientRegistrySync::handleModProtocol);
 	}
 
 	private static void handleModProtocol(ServerPackets.ModProtocol modProtocol, ClientPayloadContext ctx) {

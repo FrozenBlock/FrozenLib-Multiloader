@@ -29,7 +29,8 @@ import net.frozenblock.lib.config.api.sync.network.ConfigSyncData;
 import net.frozenblock.lib.env.api.EnvType;
 import net.frozenblock.lib.networking.FrozenLibNetworking;
 import net.frozenblock.lib.networking.client.FrozenLibClientNetworking;
-import net.frozenblock.lib.platform.FrozenLibPlatformHelper;
+import net.frozenblock.lib.platform.api.PacketHelper;
+import net.frozenblock.lib.platform.api.PlatformHelper;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
@@ -86,7 +87,7 @@ public record ConfigSyncPacket<T>(
 				ConfigModification.copyInto(packet.configData(), config.instance());
 				if (!FrozenLibNetworking.connectedToIntegratedServer())
 					config.save();
-				for (ServerPlayer player : FrozenLibPlatformHelper.PACKET.all(server)) {
+				for (ServerPlayer player : PacketHelper.all(server)) {
 					sendS2C(player, List.of(config));
 				}
 			} else {
@@ -114,7 +115,7 @@ public record ConfigSyncPacket<T>(
 		for (Config<?> config : configs) {
 			if (!config.supportsSync()) continue;
 			ConfigSyncPacket<?> packet = new ConfigSyncPacket<>(config.modId(), config.configClass().getName(), config.config());
-			FrozenLibPlatformHelper.PACKET.sendToPlayer(player, packet);
+			PacketHelper.sendToPlayer(player, packet);
 		}
 	}
 
@@ -123,7 +124,7 @@ public record ConfigSyncPacket<T>(
 	}
 
 	public static boolean hasPermissionsToSendSync(@Nullable Player player, boolean serverSide) {
-		if (FrozenLibPlatformHelper.HELPER.envType() == EnvType.SERVER)
+		if (PlatformHelper.envType() == EnvType.SERVER)
 			return player.hasPermissions(PERMISSION_LEVEL);
 
 		if (FrozenLibClientNetworking.notConnected()) return false;
