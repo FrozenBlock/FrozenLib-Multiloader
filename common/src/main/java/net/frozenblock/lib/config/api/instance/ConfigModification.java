@@ -75,7 +75,7 @@ public record ConfigModification<T>(Consumer<T> modification) {
                 try {
                     field.set(destination, field.get(source));
                 } catch (IllegalAccessException e) {
-					FrozenLibLogUtils.logError("Failed to copy field " + field.getName(), true, e);
+					FrozenLibLogUtils.logError("Failed to copy config field: " + field.getName(), true, e);
                 }
             }
             clazz = clazz.getSuperclass();
@@ -88,10 +88,26 @@ public record ConfigModification<T>(Consumer<T> modification) {
 
 	@Environment(EnvType.CLIENT)
 	public enum EntryPermissionType {
-		CAN_MODIFY(true, Optional.empty(), Optional.empty()),
-		LOCKED_FOR_UNKNOWN_REASON(false, Optional.of(Component.translatable("tooltip.frozenlib.locked_due_to_unknown_reason")), Optional.of(Component.translatable("tooltip.frozenlib.locked_due_to_unknown_reason"))),
-		LOCKED_DUE_TO_SERVER(false, Optional.of(Component.translatable("tooltip.frozenlib.locked_due_to_server")), Optional.of(Component.translatable("tooltip.frozenlib.locked_due_to_server_lan"))),
-		LOCKED_DUE_TO_SYNC(false, Optional.of(Component.translatable("tooltip.frozenlib.locked_due_to_sync")), Optional.of(Component.translatable("tooltip.frozenlib.locked_due_to_sync_lan")));
+		CAN_MODIFY(
+			true,
+			Optional.empty(),
+			Optional.empty())
+		,
+		LOCKED_FOR_UNKNOWN_REASON(
+			false,
+			Optional.of(Component.translatable("tooltip.frozenlib.locked_due_to_unknown_reason")),
+			Optional.of(Component.translatable("tooltip.frozenlib.locked_due_to_unknown_reason"))
+		),
+		LOCKED_DUE_TO_SERVER(
+			false,
+			Optional.of(Component.translatable("tooltip.frozenlib.locked_due_to_server")),
+			Optional.of(Component.translatable("tooltip.frozenlib.locked_due_to_server_lan"))
+		),
+		LOCKED_DUE_TO_SYNC(
+			false,
+			Optional.of(Component.translatable("tooltip.frozenlib.locked_due_to_sync")),
+			Optional.of(Component.translatable("tooltip.frozenlib.locked_due_to_sync_lan"))
+		);
 
 		public final boolean canModify;
 		public final Optional<Component> tooltip;

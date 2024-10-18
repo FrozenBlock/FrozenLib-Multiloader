@@ -25,8 +25,11 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 
 public class FrozenLibDevItems {
+	private static final Item CAMERA = new Camera(new Item.Properties().stacksTo(1));
+	private static final Item LOOT_TABLE_WHACKER = new LootTableWhacker(new Item.Properties().stacksTo(1));
+
 	public static void register() {
-		FRegistry.register(BuiltInRegistries.ITEM, FrozenLibConstants.id("camera"), new Camera(new Item.Properties().stacksTo(1)));
-		FRegistry.register(BuiltInRegistries.ITEM, FrozenLibConstants.string("loot_table_whacker"), new LootTableWhacker(new Item.Properties().stacksTo(1)));
+		FRegistry.register(BuiltInRegistries.ITEM, FrozenLibConstants.id("camera"), CAMERA);
+		FRegistry.register(BuiltInRegistries.ITEM, FrozenLibConstants.string("loot_table_whacker"), LOOT_TABLE_WHACKER);
 	}
 }

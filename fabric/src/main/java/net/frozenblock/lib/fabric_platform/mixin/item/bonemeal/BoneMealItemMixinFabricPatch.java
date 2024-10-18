@@ -51,10 +51,8 @@ public class BoneMealItemMixinFabricPatch {
 				if (bonemealBehavior.isBonemealSuccess(world, world.random, pos, blockState)) {
 					bonemealBehavior.performBonemeal(serverLevel, world.random, pos, blockState);
 				}
-
 				stack.shrink(1);
 			}
-
 			info.setReturnValue(true);
         }
     }

@@ -46,7 +46,12 @@ public class BoneMealItemMixin {
 	) {
 		BonemealApi.BonemealBehavior bonemealBehavior = BonemealApi.get(blockState.getBlock());
 		if (bonemealBehavior != null) {
-			ParticleUtils.spawnParticleInBlock(world, pos, count, ParticleTypes.HAPPY_VILLAGER);
+			BlockPos particlePos = bonemealBehavior.getParticlePos(blockState, pos);
+			if (bonemealBehavior.isNeighborSpreader()) {
+				ParticleUtils.spawnParticles(world, particlePos, count, 3D, 1D, false, ParticleTypes.HAPPY_VILLAGER);
+			} else {
+				ParticleUtils.spawnParticleInBlock(world, particlePos, count, ParticleTypes.HAPPY_VILLAGER);
+			}
 			info.cancel();
 		}
 	}

@@ -1,6 +1,5 @@
 package net.frozenblock.lib.platform;
 
-
 import java.util.List;
 import net.frozenblock.lib.platform.api.CreativeTabHelper;
 import net.minecraft.world.item.CreativeModeTab;
@@ -9,6 +8,7 @@ import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import org.jetbrains.annotations.NotNull;
 
+// TODO: [Liuk] make this work in a static context
 public class NeoForgeCreativeTabHelper implements CreativeTabHelper {
 
 	private final BuildCreativeModeTabContentsEvent event;

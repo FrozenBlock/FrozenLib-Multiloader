@@ -1,7 +1,7 @@
 package net.frozenblock.lib.registry.api;
 
 import lombok.experimental.UtilityClass;
-import net.frozenblock.lib.sided.neoforge.neoforge.api.NeoForgeFreezer;
+import net.frozenblock.lib.platform.api.NeoForgeFreezer;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;

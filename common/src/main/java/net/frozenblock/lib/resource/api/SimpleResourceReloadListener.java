@@ -10,9 +10,16 @@ import org.jetbrains.annotations.NotNull;
 public interface SimpleResourceReloadListener<T> extends PreparableReloadListener {
 
 	@Override
-	default @NotNull CompletableFuture<Void> reload(PreparationBarrier barrier, @NotNull ResourceManager manager, @NotNull ProfilerFiller getProfiler, @NotNull ProfilerFiller setProfiler, @NotNull Executor executor, @NotNull Executor executor1) {
-		return load(manager, getProfiler, executor).thenCompose(barrier::wait).thenCompose(
-			o -> apply(o, manager, setProfiler, executor)
+	default @NotNull CompletableFuture<Void> reload(
+		@NotNull PreparationBarrier barrier,
+		@NotNull ResourceManager manager,
+		@NotNull ProfilerFiller getProfiler,
+		@NotNull ProfilerFiller setProfiler,
+		@NotNull Executor backgroundExecutor,
+		@NotNull Executor gameExecutor
+	) {
+		return load(manager, getProfiler, backgroundExecutor).thenCompose(barrier::wait).thenCompose(
+			o -> apply(o, manager, setProfiler, backgroundExecutor)
 		);
 	}
 

@@ -23,7 +23,7 @@ import net.frozenblock.lib.entity.api.rendering.EntityTextureOverride;
 import net.frozenblock.lib.env.api.EnvType;
 import net.frozenblock.lib.env.api.Environment;
 import net.frozenblock.lib.platform.api.RegistryHelper;
-import net.frozenblock.lib.sided.neoforge.neoforge.api.NeoForgeFreezer;
+import net.frozenblock.lib.platform.api.NeoForgeFreezer;
 import net.minecraft.core.RegistrationInfo;
 import net.minecraft.core.Registry;
 import net.minecraft.core.WritableRegistry;

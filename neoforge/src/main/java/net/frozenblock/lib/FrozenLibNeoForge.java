@@ -1,9 +1,9 @@
 package net.frozenblock.lib;
 
 import net.frozenblock.lib.event.event.FrozenLibPacketRegistryEvents;
-import net.frozenblock.lib.neoforge.event.api.FrozenLibNeoForgePacketRegisterEvent;
-import net.frozenblock.lib.neoforge.event.impl.FlibCommonNeoEvents;
-import net.frozenblock.lib.neoforge.event.impl.FrozenLibModEvents;
+import net.frozenblock.lib.neoforge_platform.event.api.FrozenLibNeoForgePacketRegisterEvent;
+import net.frozenblock.lib.neoforge_platform.event.impl.FlibCommonNeoEvents;
+import net.frozenblock.lib.neoforge_platform.event.impl.FrozenLibModEvents;
 import net.frozenblock.lib.worldgen.surface.impl.terrablender.FrozenTerraBlenderCompat;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;

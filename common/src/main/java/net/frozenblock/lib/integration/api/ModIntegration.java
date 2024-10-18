@@ -31,6 +31,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
+import org.jetbrains.annotations.NotNull;
 
 public abstract class ModIntegration {
 
@@ -86,7 +87,7 @@ public abstract class ModIntegration {
         return getTag(registry, key);
     }
 
-    public <T> TagKey<T> getTag(Registry<T> registry, ResourceLocation key) {
+    public <T> TagKey<T> getTag(@NotNull Registry<T> registry, ResourceLocation key) {
         return registry.getTagNames()
                 .filter(tag -> tag.location().equals(key))
                 .findAny()
@@ -94,7 +95,7 @@ public abstract class ModIntegration {
     }
 
     @SuppressWarnings("unchecked")
-    public <T> TagKey<T> getTag(HolderLookup.RegistryLookup<T> lookup, ResourceLocation key) {
+    public <T> TagKey<T> getTag(HolderLookup.@NotNull RegistryLookup<T> lookup, ResourceLocation key) {
         return lookup.listTagIds()
                 .filter(tag -> tag.location().equals(key))
                 .findAny()

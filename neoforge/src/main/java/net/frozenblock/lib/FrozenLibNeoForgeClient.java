@@ -1,7 +1,7 @@
 package net.frozenblock.lib;
 
 import net.frozenblock.lib.config.frozenlib_config.gui.FrozenLibConfigGui;
-import net.frozenblock.lib.neoforge.event.impl.FlibClientNeoEvents;
+import net.frozenblock.lib.neoforge_platform.event.impl.FlibClientNeoEvents;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;

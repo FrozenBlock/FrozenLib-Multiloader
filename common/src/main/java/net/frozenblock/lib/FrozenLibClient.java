@@ -38,18 +38,10 @@ public class FrozenLibClient {
 		registerClientEvents();
 		DebugRenderManager.init();
 
-		// PARTICLES
-		//TODO: REPLACE PARTICLE FACTORY
-		//ParticleFactoryRegistry particleRegistry = ParticleFactoryRegistry.getInstance();
-		//particleRegistry.register(FrozenParticleTypes.DEBUG_POS, DebugPosParticle.Provider::new);
-
 		Panoramas.addPanorama(ResourceLocation.withDefaultNamespace("textures/gui/title/background/panorama"));
 		ClientCapeData.init();
 
 		ResourceListenerAPI.getClient().registerReloadListener(BlockSoundGroupManager.INSTANCE);
-
-		//TODO: Pov: Treetrain got high and wrote this
-		//FrozenClientEntrypoint.EVENT.invoker().init(); // also includes dev init
 	}
 
 	private static void registerClientEvents() {

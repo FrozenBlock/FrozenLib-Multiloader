@@ -100,13 +100,16 @@ public abstract class Config<T> {
 
 	/**
 	 * @return The current config instance with config sync modifications.
+	 * <p>
+	 * If the config instance doesn't support modification, config syncing will also not work.
 	 * @since 1.5
 	 */
 	public T configWithSync() {
 		if (!this.supportsSync()) {
-			//TODO: Possibly remove before release? This causes log spam. Up to you, Tree. Might be best with JavaDoc instead.
-			String formatted = String.format("Config %s from %s", this.configClass().getSimpleName(), this.modId());
-			FrozenLibLogUtils.logWarning(formatted + " does not support modification, returning unmodified instance.");
+			FrozenLibLogUtils.logWarning(
+				String.format("Config %s from %s", this.configClass().getSimpleName(), this.modId()) + " does not support modification, returning unmodified instance.",
+				FrozenLibConstants.UNSTABLE_LOGGING
+			);
 			return this.instance();
 		}
 		return ConfigModification.modifyConfig(this, this.instance(), true);
