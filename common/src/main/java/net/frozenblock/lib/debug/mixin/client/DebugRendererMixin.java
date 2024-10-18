@@ -108,7 +108,8 @@ public class DebugRendererMixin {
 	private void frozenLib$init(Minecraft client, CallbackInfo info) {
 		DebugRenderManager.registerRenderer(
 			FrozenLibConstants.id("pathfinding"),
-			this.pathfindingRenderer::render);
+			this.pathfindingRenderer::render
+		);
 
 		DebugRenderManager.registerRenderer(
 			FrozenLibConstants.id("water_level"),
