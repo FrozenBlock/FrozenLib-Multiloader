@@ -1,9 +1,10 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import net.fabricmc.loom.api.LoomGradleExtensionAPI
 
 plugins {
-    id("architectury-plugin") version "3.4-SNAPSHOT"
-    id("dev.architectury.loom") version "1.7-SNAPSHOT" apply false
-    id("com.gradleup.shadow") version "8.3.2" apply false
+    id("architectury-plugin") version("3.4-SNAPSHOT")
+    id("dev.architectury.loom") version("1.7-SNAPSHOT") apply(false)
+    id("com.gradleup.shadow") version("+")
     id("com.github.johnrengelman.shadow") version("+")
     id("maven-publish")
     id("eclipse")
@@ -13,7 +14,7 @@ plugins {
     id("org.ajoberstar.grgit") version("+")
     id("org.quiltmc.gradle.licenser") version("+")
     id("com.modrinth.minotaur") version("+")
-    kotlin("jvm") version("2.0.20")
+    kotlin("jvm") version("2.0.21")
 }
 
 val mod_id: String by project
@@ -55,6 +56,7 @@ allprojects {
 
 subprojects {
     apply(plugin = "dev.architectury.loom")
+    apply(plugin = "com.gradleup.shadow")
     apply(plugin = "architectury-plugin")
     apply(plugin = "maven-publish")
     apply(plugin = "org.quiltmc.gradle.licenser")
@@ -63,6 +65,10 @@ subprojects {
 
     val loom = project.extensions.getByName<LoomGradleExtensionAPI>("loom")
     loom.silentMojangMappingsLicense()
+
+    val relocImplementation: Configuration by configurations.creating {
+        configurations.implementation.get().extendsFrom(this)
+    }
 
     repositories {
         mavenCentral()
@@ -91,7 +97,8 @@ subprojects {
 
         implementation("com.moandjiezana.toml:toml4j:$toml4j_version")
 
-        implementation("org.exjson:xjs-data:$xjs_data_version")
+        relocImplementation("com.github.Treetrain1:Jankson:mod-SNAPSHOT")
+        implementation("com.github.Treetrain1:xjs-data:infinity-compat-SNAPSHOT")
         implementation("org.exjson:xjs-compat:$xjs_compat_version")
         implementation("com.personthecat:fresult:$fresult_version")
 
@@ -156,6 +163,10 @@ subprojects {
                 include("**//*.java")
                 include("**//*.kt")
             }
+        }
+
+        "shadowJar"(ShadowJar::class) {
+            configurations = listOf(relocImplementation)
         }
     }
 }

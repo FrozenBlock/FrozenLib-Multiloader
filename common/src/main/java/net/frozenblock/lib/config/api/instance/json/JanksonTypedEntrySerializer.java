@@ -17,10 +17,10 @@
 
 package net.frozenblock.lib.config.api.instance.json;
 
-import blue.endless.jankson.frozenblock.JsonElement;
-import blue.endless.jankson.frozenblock.api.DeserializationException;
-import blue.endless.jankson.frozenblock.api.DeserializerFunction;
-import blue.endless.jankson.frozenblock.api.Marshaller;
+import blue.endless.jankson.JsonElement;
+import blue.endless.jankson.api.DeserializationException;
+import blue.endless.jankson.api.DeserializerFunction;
+import blue.endless.jankson.api.Marshaller;
 import com.google.gson.JsonParseException;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.DataResult;

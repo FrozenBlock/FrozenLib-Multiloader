@@ -63,15 +63,16 @@ public class FrozenLib {
 		FrozenPlacementModifiers.init();
 		DataPackReloadMarker.init();
 
+		if (PlatformHelper.isDevelopmentEnvironment()) {
+			FrozenLibDevItems.register();
+		}
+
 		RegisterCommandEvents.REGISTER.register((dispatcher, ctx, selection) -> {
 			WindCommand.register(dispatcher);
 			ScreenShakeCommand.register(dispatcher);
 			ConfigCommand.register(dispatcher);
 			TagListCommand.register(dispatcher);
 			ScaleEntityCommand.register(dispatcher);
-			if (PlatformHelper.isDevelopmentEnvironment()) {
-				FrozenLibDevItems.register();
-			}
 		});
 
 		if (FrozenLibConfig.get().wardenSpawnTrackerCommand)

@@ -17,10 +17,10 @@
 
 package net.frozenblock.lib.config.api.sync.network;
 
-import blue.endless.jankson.frozenblock.Jankson;
-import blue.endless.jankson.frozenblock.JsonElement;
-import blue.endless.jankson.frozenblock.JsonObject;
-import blue.endless.jankson.frozenblock.api.SyntaxError;
+import blue.endless.jankson.Jankson;
+import blue.endless.jankson.JsonElement;
+import blue.endless.jankson.JsonObject;
+import blue.endless.jankson.api.SyntaxError;
 import net.frozenblock.lib.config.api.instance.ConfigSerialization;
 import net.minecraft.network.FriendlyByteBuf;
 import org.jetbrains.annotations.NotNull;

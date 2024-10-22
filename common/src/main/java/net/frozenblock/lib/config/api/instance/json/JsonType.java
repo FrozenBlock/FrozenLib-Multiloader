@@ -17,7 +17,7 @@
 
 package net.frozenblock.lib.config.api.instance.json;
 
-import blue.endless.jankson.frozenblock.JsonGrammar;
+import blue.endless.jankson.JsonGrammar;
 import net.frozenblock.lib.config.api.instance.ConfigSerialization;
 import net.minecraft.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;

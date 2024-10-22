@@ -17,9 +17,9 @@
 
 package net.frozenblock.lib.config.api.instance;
 
-import blue.endless.jankson.frozenblock.Jankson;
-import blue.endless.jankson.frozenblock.JsonElement;
-import blue.endless.jankson.frozenblock.JsonGrammar;
+import blue.endless.jankson.Jankson;
+import blue.endless.jankson.JsonElement;
+import blue.endless.jankson.JsonGrammar;
 import com.mojang.datafixers.DataFixer;
 import net.frozenblock.lib.config.api.entry.TypedEntry;
 import net.frozenblock.lib.config.api.instance.json.JanksonTypedEntrySerializer;

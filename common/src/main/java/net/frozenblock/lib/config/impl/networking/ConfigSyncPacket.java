@@ -17,7 +17,7 @@
 
 package net.frozenblock.lib.config.impl.networking;
 
-import blue.endless.jankson.frozenblock.api.SyntaxError;
+import blue.endless.jankson.api.SyntaxError;
 import java.util.List;
 import net.frozenblock.lib.FrozenLibConstants;
 import net.frozenblock.lib.FrozenLibLogUtils;

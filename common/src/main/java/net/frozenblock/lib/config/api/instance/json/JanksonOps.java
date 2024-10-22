@@ -17,11 +17,11 @@
 
 package net.frozenblock.lib.config.api.instance.json;
 
-import blue.endless.jankson.frozenblock.JsonArray;
-import blue.endless.jankson.frozenblock.JsonElement;
-import blue.endless.jankson.frozenblock.JsonNull;
-import blue.endless.jankson.frozenblock.JsonObject;
-import blue.endless.jankson.frozenblock.JsonPrimitive;
+import blue.endless.jankson.JsonArray;
+import blue.endless.jankson.JsonElement;
+import blue.endless.jankson.JsonNull;
+import blue.endless.jankson.JsonObject;
+import blue.endless.jankson.JsonPrimitive;
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.DataResult;

@@ -41,7 +41,8 @@ public class FrozenLibClient {
 		Panoramas.addPanorama(ResourceLocation.withDefaultNamespace("textures/gui/title/background/panorama"));
 		ClientCapeData.init();
 
-		ResourceListenerAPI.getClient().registerReloadListener(BlockSoundGroupManager.INSTANCE);
+		// TODO: Proper Resource Reload API
+		//ResourceListenerAPI.getClient().registerReloadListener(BlockSoundGroupManager.INSTANCE);
 	}
 
 	private static void registerClientEvents() {

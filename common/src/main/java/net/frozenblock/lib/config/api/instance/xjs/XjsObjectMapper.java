@@ -17,8 +17,8 @@
 
 package net.frozenblock.lib.config.api.instance.xjs;
 
-import blue.endless.jankson.frozenblock.Comment;
-import blue.endless.jankson.frozenblock.annotation.SaveToggle;
+import blue.endless.jankson.Comment;
+import blue.endless.jankson.annotation.SaveToggle;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
