@@ -167,6 +167,15 @@ subprojects {
 
         "shadowJar"(ShadowJar::class) {
             configurations = listOf(relocImplementation)
+            isEnableRelocation = true
+            relocationPrefix = "net.frozenblock.lib.shadow"
+            dependencies {
+                exclude {
+                    it.moduleGroup.contains("fabric")
+                }
+            }
+
+            //relocate("blue.endless.jankson", "net.frozenblock.lib.config.api.jankson")
         }
     }
 }
