@@ -26,7 +26,7 @@ configurations {
 loom.accessWidenerPath.set(project(":common").loom.accessWidenerPath)
 
 // Fabric Datagen Gradle config. Remove if not using Fabric datagen
-fabricApi.configureDataGeneration()
+// fabricApi.configureDataGeneration()
 
 val mod_id: String by project
 val mod_version: String by project

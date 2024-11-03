@@ -1,6 +1,5 @@
 plugins {
     id("com.gradleup.shadow")
-    id("java")
 }
 
 architectury {
