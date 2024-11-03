@@ -14,6 +14,7 @@ import net.frozenblock.lib.event.event.RegistryFreezeEvents;
 import net.frozenblock.lib.event.event.ServerLevelEvents;
 import net.frozenblock.lib.event.event.ServerTickEvents;
 import net.frozenblock.lib.ingamedevtools.FrozenLibDevItems;
+import net.frozenblock.lib.integration.api.ModIntegrations;
 import net.frozenblock.lib.platform.api.NeoForgeFreezer;
 import net.frozenblock.lib.networking.FrozenLibNetworking;
 import net.frozenblock.lib.platform.api.PlatformHelper;
@@ -119,7 +120,7 @@ public class FrozenLib {
 		RegistryFreezeEvents.START_REGISTRY_FREEZE.register((registry, allRegistries) -> {
 			if (!allRegistries) return;
 
-			// ModIntegrations.initialize();
+			ModIntegrations.initialize();
 		});
 
 		RegistryFreezeEvents.END_REGISTRY_FREEZE.register((registry, allRegistries) -> {
