@@ -1,24 +1,24 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.frozenblock.lib.sided.neoforge.neoforge.mixin",
+  "package": "net.frozenblock.lib.neoforge_platform.mixin",
   "compatibilityLevel": "JAVA_21",
   "injectors": {
     "defaultRequire": 1
   },
   "mixins": [
-    "net.frozenblock.lib.neoforge.mixin.ChunkMapAccessor",
-    "net.frozenblock.lib.neoforge.mixin.EntityTrackerAccessor",
-    "net.frozenblock.lib.neoforge.mixin.event.MinecraftServerMixinNeoForgePatch",
-    "net.frozenblock.lib.neoforge.mixin.event.PlayerListMixinNeoForgePatch",
-    "net.frozenblock.lib.neoforge.mixin.item.axe.AxeItemMixinNeoForgePatch",
-    "net.frozenblock.lib.neoforge.mixin.item.shovel.ShovelItemMixinNeoForgePatch",
-    "net.frozenblock.lib.neoforge.mixin.quiltmc.core.registry.MappedRegistryMixinNeoForgePatch",
-    "net.frozenblock.lib.neoforge.mixin.recipe.ItemValueMixinNeoForgePatch"
+    "ChunkMapAccessor",
+    "EntityTrackerAccessor",
+    "event.MinecraftServerMixinNeoForgePatch",
+    "event.PlayerListMixinNeoForgePatch",
+    "item.axe.AxeItemMixinNeoForgePatch",
+    "item.shovel.ShovelItemMixinNeoForgePatch",
+    "quiltmc.core.registry.MappedRegistryMixinNeoForgePatch",
+    "recipe.ItemValueMixinNeoForgePatch"
   ],
   "client": [
-    "net.frozenblock.lib.neoforge.mixin.event.client.ClientChunkCacheMixinNeoForgePatch",
-    "net.frozenblock.lib.neoforge.mixin.event.client.MinecraftMixinNeoForgePatch",
-    "net.frozenblock.lib.neoforge.mixin.quiltmc.resource.loader.client.CreateWorldScreenMixinNeoForgePatch"
+    "event.client.ClientChunkCacheMixinNeoForgePatch",
+    "event.client.MinecraftMixinNeoForgePatch",
+    "quiltmc.resource.loader.client.CreateWorldScreenMixinNeoForgePatch"
   ]
 }

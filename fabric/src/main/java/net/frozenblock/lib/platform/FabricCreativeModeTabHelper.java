@@ -8,10 +8,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 
 // TODO: [Liuk] make this work in a static context
-public class FabricCreativeModTabHelper implements CreativeTabHelper {
+public class FabricCreativeModeTabHelper implements CreativeTabHelper {
 
 	private final FabricItemGroupEntries event;
-	public FabricCreativeModTabHelper(FabricItemGroupEntries event) {
+	public FabricCreativeModeTabHelper(FabricItemGroupEntries event) {
 		this.event = event;
 	}
 

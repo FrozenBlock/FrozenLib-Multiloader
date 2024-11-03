@@ -33,11 +33,11 @@ public class FrozenLibModEvents {
 
 	@SubscribeEvent
 	public static void creativeModeTab(@NotNull BuildCreativeModeTabContentsEvent event) {
-		CreativeTabAPI.modifyEntriesEvent(event.getTabKey()).invoke(e->e.modifyEntries(new NeoForgeCreativeTabHelper(event)));
+		CreativeTabAPI.modifyEntriesEvent(event.getTabKey()).invoke(e -> e.modifyEntries(new NeoForgeCreativeTabHelper(event)));
 	}
 
 	@SubscribeEvent
-	public static void addNewRegistries(NewRegistryEvent event) {
+	public static void addNewRegistries(@NotNull NewRegistryEvent event) {
 		FrozenLibRegistries.getRegistries().forEach(event::register);
 	}
 
