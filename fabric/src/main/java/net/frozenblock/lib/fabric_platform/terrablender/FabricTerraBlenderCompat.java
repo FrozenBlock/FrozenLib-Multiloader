@@ -1,4 +1,4 @@
-package net.frozenblock.lib.fabric_platform;
+package net.frozenblock.lib.fabric_platform.terrablender;
 
 import net.frozenblock.lib.worldgen.surface.impl.terrablender.FrozenTerraBlenderCompat;
 import terrablender.api.TerraBlenderApi;

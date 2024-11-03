@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.modmenu.impl;
+package net.frozenblock.lib.fabric_platform.modmenu.impl;
 
 import org.jetbrains.annotations.ApiStatus;
 

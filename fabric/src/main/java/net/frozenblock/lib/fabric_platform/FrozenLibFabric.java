@@ -1,4 +1,4 @@
-package net.frozenblock.lib;
+package net.frozenblock.lib.fabric_platform;
 
 import net.fabricmc.api.DedicatedServerModInitializer;
 import net.fabricmc.api.ModInitializer;
@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerWorldEvents;
+import net.frozenblock.lib.FrozenLib;
 import net.frozenblock.lib.event.event.RegisterCommandEvents;
 import net.frozenblock.lib.event.event.ServerLevelEvents;
 

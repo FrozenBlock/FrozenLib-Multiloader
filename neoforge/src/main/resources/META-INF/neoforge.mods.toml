@@ -13,9 +13,9 @@ authors = "${mod_author}"
 description = "${mod_description}"
 
 [mods.frozenlib.entrypoints]
-main = ["net.frozenblock.lib.FrozenLibNeoForge"]
-client = ["net.frozenblock.lib.FrozenLibNeoForgeClient"]
-server = ["net.frozenblock.lib.FrozenLibNeoForge"]
+main = ["net.frozenblock.lib.neoforge_platform.FrozenLibNeoForge"]
+client = ["net.frozenblock.lib.neoforge_platform.FrozenLibNeoForgeClient"]
+server = ["net.frozenblock.lib.neoforge_platform.FrozenLibNeoForge"]
 
 [mods.frozenlib.registry]
 protocol_version = 4

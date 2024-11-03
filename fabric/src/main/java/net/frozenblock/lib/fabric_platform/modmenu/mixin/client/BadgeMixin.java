@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.modmenu.mixin.client;
+package net.frozenblock.lib.fabric_platform.modmenu.mixin.client;
 
 import com.terraformersmc.modmenu.util.mod.Mod;
 import java.util.ArrayList;
@@ -23,8 +23,8 @@ import java.util.Arrays;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.loader.api.FabricLoader;
-import net.frozenblock.lib.modmenu.api.ModMenuBadgeCreationEntrypoint;
-import net.frozenblock.lib.modmenu.impl.FrozenLibModMenuBadge;
+import net.frozenblock.lib.fabric_platform.modmenu.api.ModMenuBadgeCreationEntrypoint;
+import net.frozenblock.lib.fabric_platform.modmenu.impl.FrozenLibModMenuBadge;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;

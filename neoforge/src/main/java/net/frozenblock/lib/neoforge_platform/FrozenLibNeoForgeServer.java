@@ -1,5 +1,7 @@
-package net.frozenblock.lib;
+package net.frozenblock.lib.neoforge_platform;
 
+import net.frozenblock.lib.FrozenLib;
+import net.frozenblock.lib.FrozenLibConstants;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;

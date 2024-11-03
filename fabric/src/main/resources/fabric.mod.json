@@ -16,19 +16,19 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.frozenblock.lib.FrozenLibFabric"
+      "net.frozenblock.lib.fabric_platform.FrozenLibFabric"
     ],
     "client": [
-      "net.frozenblock.lib.FrozenLibFabricClient"
+      "net.frozenblock.lib.fabric_platform.FrozenLibFabricClient"
     ],
     "server": [
-      "net.frozenblock.lib.FrozenLibFabric"
+      "net.frozenblock.lib.fabric_platform.FrozenLibFabric"
     ],
     "modmenu": [
-      "net.frozenblock.lib.modmenu.api.ModMenuIntegration"
+      "net.frozenblock.lib.fabric_platform.modmenu.api.ModMenuIntegration"
     ],
     "terrablender": [
-      "net.frozenblock.lib.fabric_platform.FabricTerraBlenderCompat"
+      "net.frozenblock.lib.fabric_platform.terrablender.FabricTerraBlenderCompat"
     ]
   },
   "mixins": [

@@ -1,4 +1,4 @@
-package net.frozenblock.lib.modmenu.api;
+package net.frozenblock.lib.fabric_platform.modmenu.api;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;

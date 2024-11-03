@@ -15,10 +15,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.modmenu.api;
+package net.frozenblock.lib.fabric_platform.modmenu.api;
 
 import java.util.ArrayList;
-import net.frozenblock.lib.modmenu.impl.FrozenLibModMenuBadge;
+import net.frozenblock.lib.fabric_platform.modmenu.impl.FrozenLibModMenuBadge;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 

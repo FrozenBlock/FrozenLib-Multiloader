@@ -1,5 +1,7 @@
-package net.frozenblock.lib;
+package net.frozenblock.lib.neoforge_platform;
 
+import net.frozenblock.lib.FrozenLib;
+import net.frozenblock.lib.FrozenLibConstants;
 import net.frozenblock.lib.event.event.FrozenLibPacketRegistryEvents;
 import net.frozenblock.lib.neoforge_platform.event.api.FrozenLibNeoForgePacketRegisterEvent;
 import net.frozenblock.lib.neoforge_platform.event.impl.FlibCommonNeoEvents;
@@ -10,7 +12,6 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModLoader;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import org.jetbrains.annotations.NotNull;
 
 @Mod(FrozenLibConstants.MOD_ID)

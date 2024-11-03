@@ -1,5 +1,7 @@
-package net.frozenblock.lib;
+package net.frozenblock.lib.neoforge_platform;
 
+import net.frozenblock.lib.FrozenLibClient;
+import net.frozenblock.lib.FrozenLibConstants;
 import net.frozenblock.lib.config.frozenlib_config.gui.FrozenLibConfigGui;
 import net.frozenblock.lib.neoforge_platform.event.impl.FlibClientNeoEvents;
 import net.neoforged.api.distmarker.Dist;

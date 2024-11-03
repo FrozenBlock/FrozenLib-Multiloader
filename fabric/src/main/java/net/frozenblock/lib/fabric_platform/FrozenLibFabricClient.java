@@ -1,4 +1,4 @@
-package net.frozenblock.lib;
+package net.frozenblock.lib.fabric_platform;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientChunkEvents;
@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientEntityEvents;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
+import net.frozenblock.lib.FrozenLibClient;
 import net.frozenblock.lib.networking.client.FrozenLibClientNetworking;
 import net.frozenblock.lib.networking.impl.PacketSender;
 
