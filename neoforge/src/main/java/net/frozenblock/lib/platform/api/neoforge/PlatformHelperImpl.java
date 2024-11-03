@@ -1,6 +1,5 @@
 package net.frozenblock.lib.platform.api.neoforge;
 
-import net.frozenblock.lib.environment.api.EnvType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.loading.FMLLoader;
 import net.neoforged.fml.loading.LoadingModList;
@@ -50,7 +49,7 @@ public class PlatformHelperImpl {
 		return FMLLoader.getGamePath().resolve("config");
 	}
 
-	public static EnvType envType() {
-		return FMLLoader.getDist() == Dist.CLIENT ? EnvType.CLIENT : EnvType.SERVER;
+	public static Dist envType() {
+		return FMLLoader.getDist();
 	}
 }
