@@ -1,7 +1,7 @@
 package net.frozenblock.lib.platform.api;
 
 import dev.architectury.injectables.annotations.ExpectPlatform;
-import net.frozenblock.lib.env.api.EnvType;
+import net.frozenblock.lib.environment.api.EnvType;
 import org.jetbrains.annotations.NotNull;
 import java.nio.file.Path;
 

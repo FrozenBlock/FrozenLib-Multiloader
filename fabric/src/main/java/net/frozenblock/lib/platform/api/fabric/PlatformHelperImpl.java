@@ -1,7 +1,7 @@
 package net.frozenblock.lib.platform.api.fabric;
 
 import net.fabricmc.loader.api.FabricLoader;
-import net.frozenblock.lib.env.api.EnvType;
+import net.frozenblock.lib.environment.api.EnvType;
 import java.nio.file.Path;
 import java.util.Arrays;
 

@@ -39,7 +39,7 @@ import lombok.experimental.UtilityClass;
 import net.frozenblock.lib.FrozenLibLogUtils;
 import net.frozenblock.lib.cape.client.api.ClientCapeUtil;
 import net.frozenblock.lib.cape.impl.Cape;
-import net.frozenblock.lib.env.api.EnvType;
+import net.frozenblock.lib.environment.api.EnvType;
 import net.frozenblock.lib.platform.api.PlatformHelper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;

@@ -1,6 +1,6 @@
 package net.frozenblock.lib.platform.api.neoforge;
 
-import net.frozenblock.lib.env.api.EnvType;
+import net.frozenblock.lib.environment.api.EnvType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.loading.FMLLoader;
 import net.neoforged.fml.loading.LoadingModList;

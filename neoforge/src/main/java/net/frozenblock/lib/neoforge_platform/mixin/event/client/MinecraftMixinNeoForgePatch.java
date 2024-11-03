@@ -1,7 +1,7 @@
 package net.frozenblock.lib.neoforge_platform.mixin.event.client;
 
-import net.frozenblock.lib.env.api.EnvType;
-import net.frozenblock.lib.env.api.Environment;
+import net.frozenblock.lib.environment.api.EnvType;
+import net.frozenblock.lib.environment.api.Environment;
 import net.frozenblock.lib.event.event.client.ClientLifecycleEvents;
 import net.minecraft.client.Minecraft;
 import org.spongepowered.asm.mixin.Mixin;

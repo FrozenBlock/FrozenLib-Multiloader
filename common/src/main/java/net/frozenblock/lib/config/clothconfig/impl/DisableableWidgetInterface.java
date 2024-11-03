@@ -19,8 +19,8 @@ package net.frozenblock.lib.config.clothconfig.impl;
 
 import net.frozenblock.lib.config.api.instance.Config;
 import net.frozenblock.lib.config.api.instance.ConfigModification;
-import net.frozenblock.lib.env.api.EnvType;
-import net.frozenblock.lib.env.api.Environment;
+import net.frozenblock.lib.environment.api.EnvType;
+import net.frozenblock.lib.environment.api.Environment;
 
 /**
  * Used to integrate config syncing with Cloth Config.

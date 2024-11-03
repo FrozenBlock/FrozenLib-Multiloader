@@ -15,12 +15,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.sound.api.block_sound_group;
+package net.frozenblock.lib.block.sound.api;
 
 import java.util.List;
 import java.util.function.BooleanSupplier;
 import lombok.experimental.UtilityClass;
-import net.frozenblock.lib.sound.impl.block_sound_group.BlockSoundGroupManager;
+import net.frozenblock.lib.block.sound.impl.BlockSoundTypeManager;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
@@ -34,9 +34,9 @@ import org.jetbrains.annotations.Nullable;
  * You can also add a LIST of blocks (IDs not allowed) by using new Block[]{block1, block2}.
  */
 @UtilityClass
-public class BlockSoundGroupOverwrites {
+public class BlockSoundTypeOverwrites {
 
-	private static final BlockSoundGroupManager MANAGER = BlockSoundGroupManager.INSTANCE;
+	private static final BlockSoundTypeManager MANAGER = BlockSoundTypeManager.INSTANCE;
 
 	@Nullable
 	public static List<BlockSoundTypeOverwrite> getOverwrites() {

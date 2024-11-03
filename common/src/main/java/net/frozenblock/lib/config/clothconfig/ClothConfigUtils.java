@@ -24,8 +24,8 @@ import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
 import me.shedaniel.clothconfig2.gui.widget.DynamicEntryListWidget;
 import net.frozenblock.lib.config.api.instance.Config;
 import net.frozenblock.lib.config.clothconfig.impl.DisableableWidgetInterface;
-import net.frozenblock.lib.env.api.EnvType;
-import net.frozenblock.lib.env.api.Environment;
+import net.frozenblock.lib.environment.api.EnvType;
+import net.frozenblock.lib.environment.api.Environment;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
 

@@ -2,8 +2,8 @@ package net.frozenblock.lib.block.api.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import net.frozenblock.lib.env.api.EnvType;
-import net.frozenblock.lib.env.api.Environment;
+import net.frozenblock.lib.environment.api.EnvType;
+import net.frozenblock.lib.environment.api.Environment;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;

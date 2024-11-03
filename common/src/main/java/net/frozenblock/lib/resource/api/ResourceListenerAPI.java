@@ -1,7 +1,7 @@
 package net.frozenblock.lib.resource.api;
 
-import net.frozenblock.lib.env.api.EnvType;
-import net.frozenblock.lib.env.api.Environment;
+import net.frozenblock.lib.environment.api.EnvType;
+import net.frozenblock.lib.environment.api.Environment;
 import net.frozenblock.lib.resource.impl.ServerReloadListener;
 import net.minecraft.client.Minecraft;
 import net.minecraft.server.packs.resources.ReloadableResourceManager;

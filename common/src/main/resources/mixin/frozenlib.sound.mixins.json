@@ -9,8 +9,5 @@
   "mixins": [
     "EntityMixin",
     "damage.PlayerMixin"
-  ],
-  "client": [
-    "client.BlockBehaviourMixin"
   ]
 }

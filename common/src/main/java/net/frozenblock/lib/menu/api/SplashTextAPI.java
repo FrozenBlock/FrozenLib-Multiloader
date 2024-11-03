@@ -19,8 +19,8 @@ package net.frozenblock.lib.menu.api;
 
 import java.util.ArrayList;
 import java.util.List;
-import net.frozenblock.lib.env.api.EnvType;
-import net.frozenblock.lib.env.api.Environment;
+import net.frozenblock.lib.environment.api.EnvType;
+import net.frozenblock.lib.environment.api.Environment;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.Unmodifiable;

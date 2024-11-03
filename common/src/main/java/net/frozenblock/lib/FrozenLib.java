@@ -1,5 +1,6 @@
 package net.frozenblock.lib;
 
+import net.frozenblock.lib.block.sound.impl.BlockSoundTypeManager;
 import net.frozenblock.lib.config.api.instance.Config;
 import net.frozenblock.lib.config.api.registry.ConfigRegistry;
 import net.frozenblock.lib.config.frozenlib_config.FrozenLibConfig;
@@ -17,6 +18,7 @@ import net.frozenblock.lib.platform.api.NeoForgeFreezer;
 import net.frozenblock.lib.networking.FrozenLibNetworking;
 import net.frozenblock.lib.platform.api.PlatformHelper;
 import net.frozenblock.lib.registry.api.FrozenLibRegistries;
+import net.frozenblock.lib.resource.api.ResourceListenerAPI;
 import net.frozenblock.lib.screenshake.api.ScreenShakeManager;
 import net.frozenblock.lib.screenshake.api.command.ScreenShakeCommand;
 import net.frozenblock.lib.screenshake.impl.ScreenShakeStorage;
@@ -127,6 +129,10 @@ public class FrozenLib {
 				config.save();
 			}
 		});
+
+		// TODO: Proper Resource Reload API
+		// Fabric has an API and Forge has events for this, keep that in mind.
+		//ResourceListenerAPI.getServer().registerReloadListener(BlockSoundTypeManager.INSTANCE);
 	}
 
 	public static void onInitializeServer() {

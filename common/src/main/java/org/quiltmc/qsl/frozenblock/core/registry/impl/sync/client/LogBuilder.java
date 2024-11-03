@@ -20,8 +20,8 @@ package org.quiltmc.qsl.frozenblock.core.registry.impl.sync.client;
 
 import java.util.ArrayList;
 import java.util.List;
-import net.frozenblock.lib.env.api.EnvType;
-import net.frozenblock.lib.env.api.Environment;
+import net.frozenblock.lib.environment.api.EnvType;
+import net.frozenblock.lib.environment.api.Environment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.ApiStatus;

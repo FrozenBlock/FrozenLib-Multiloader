@@ -27,7 +27,7 @@ import net.frozenblock.lib.config.api.registry.ConfigLoadEvent;
 import net.frozenblock.lib.config.api.registry.ConfigSaveEvent;
 import net.frozenblock.lib.config.api.sync.annotation.UnsyncableConfig;
 import net.frozenblock.lib.config.impl.networking.client.ClientConfigSyncNetworking;
-import net.frozenblock.lib.env.api.EnvType;
+import net.frozenblock.lib.environment.api.EnvType;
 import net.frozenblock.lib.platform.api.PlatformHelper;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;

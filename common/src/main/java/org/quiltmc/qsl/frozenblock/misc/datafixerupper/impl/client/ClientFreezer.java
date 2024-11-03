@@ -19,8 +19,8 @@
 package org.quiltmc.qsl.frozenblock.misc.datafixerupper.impl.client;
 
 import net.frozenblock.lib.FrozenLibLogUtils;
-import net.frozenblock.lib.env.api.EnvType;
-import net.frozenblock.lib.env.api.Environment;
+import net.frozenblock.lib.environment.api.EnvType;
+import net.frozenblock.lib.environment.api.Environment;
 import net.frozenblock.lib.event.event.client.ClientLifecycleEvents;
 import org.jetbrains.annotations.ApiStatus;
 import org.quiltmc.qsl.frozenblock.misc.datafixerupper.impl.QuiltDataFixesInternals;

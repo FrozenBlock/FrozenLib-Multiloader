@@ -17,8 +17,8 @@
 
 package net.frozenblock.lib.debug.client.api;
 
-import net.frozenblock.lib.env.api.EnvType;
-import net.frozenblock.lib.env.api.Environment;
+import net.frozenblock.lib.environment.api.EnvType;
+import net.frozenblock.lib.environment.api.Environment;
 import net.frozenblock.lib.event.api.FrozenEvent;
 import net.frozenblock.lib.event.entrypoint.ClientEventEntrypoint;
 import net.minecraft.client.Minecraft;

@@ -15,10 +15,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.sound.mixin.client;
+package net.frozenblock.lib.block.mixin.sound;
 
-import net.frozenblock.lib.sound.api.block_sound_group.BlockSoundGroupOverwrites;
-import net.frozenblock.lib.sound.api.block_sound_group.BlockSoundTypeOverwrite;
+import net.frozenblock.lib.block.sound.api.BlockSoundTypeOverwrites;
+import net.frozenblock.lib.block.sound.api.BlockSoundTypeOverwrite;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -37,7 +37,7 @@ public final class BlockBehaviourMixin {
     private void getSoundGroupOverride(BlockState state, CallbackInfoReturnable<SoundType> info) {
         Block block = state.getBlock();
         ResourceLocation id = BuiltInRegistries.BLOCK.getKey(block);
-		var overwrites = BlockSoundGroupOverwrites.getOverwrites();
+		var overwrites = BlockSoundTypeOverwrites.getOverwrites();
 		if (overwrites != null) {
 			for (BlockSoundTypeOverwrite overwrite : overwrites) {
 				if (overwrite.blockId().equals(id) && overwrite.condition().getAsBoolean()) {

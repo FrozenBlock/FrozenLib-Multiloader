@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.sound.impl.block_sound_group;
+package net.frozenblock.lib.block.sound.impl;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -33,8 +33,8 @@ import java.util.function.BooleanSupplier;
 import net.frozenblock.lib.FrozenLibConstants;
 import net.frozenblock.lib.FrozenLibLogUtils;
 import net.frozenblock.lib.resource.api.SimpleResourceReloadListener;
-import net.frozenblock.lib.sound.api.block_sound_group.BlockSoundTypeOverwrite;
-import net.frozenblock.lib.sound.api.block_sound_group.SoundTypeCodecs;
+import net.frozenblock.lib.block.sound.api.BlockSoundTypeOverwrite;
+import net.frozenblock.lib.block.sound.api.SoundTypeCodecs;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -52,12 +52,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @ApiStatus.Internal
-public class BlockSoundGroupManager implements SimpleResourceReloadListener<BlockSoundGroupManager.SoundGroupLoader> {
+public class BlockSoundTypeManager implements SimpleResourceReloadListener<BlockSoundTypeManager.SoundGroupLoader> {
 	// TODO: [Liuk] help
 	private static final Logger LOGGER = LoggerFactory.getLogger("FrozenLib Block Sound Group Manager");
 	private static final String DIRECTORY = "blocksoundoverwrites";
 
-	public static final BlockSoundGroupManager INSTANCE = new BlockSoundGroupManager();
+	public static final BlockSoundTypeManager INSTANCE = new BlockSoundTypeManager();
 
 	private Map<ResourceLocation, BlockSoundTypeOverwrite> overwrites;
 	private final Map<ResourceLocation, BlockSoundTypeOverwrite> queuedOverwrites = new Object2ObjectOpenHashMap<>();

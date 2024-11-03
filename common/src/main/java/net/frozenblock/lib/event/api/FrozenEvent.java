@@ -39,7 +39,10 @@ public class FrozenEvent<T> {
 	 * @param type The type of the event to be registered
 	 */
 	public static <T> @NotNull FrozenEvent<T> createEvent(Class<? super T> type) {
-		if (REGISTERED_EVENTS.contains(type)) FrozenLibLogUtils.logError("Event type " + type.getName() + " already registered! Please create a new interface for new events!");
+		/*
+		if (REGISTERED_EVENTS.contains(type))
+			FrozenLibLogUtils.logError("Event type " + type.getName() + " already registered! Please create a new interface for new events!");
+		 */
 		REGISTERED_EVENTS.add(type);
 		FrozenEvent<T> event = new FrozenEvent<>();
 		// Loop through all event types

@@ -11,6 +11,7 @@
     "beacon.BeaconValidEffectsAccessor",
     "cauldron.AbstractCauldronInvoker",
     "dripstone.PointedDripstoneBlockMixin",
+    "sound.BlockBehaviourMixin",
     "tick.BlockBehaviourMixin"
   ],
   "client": [

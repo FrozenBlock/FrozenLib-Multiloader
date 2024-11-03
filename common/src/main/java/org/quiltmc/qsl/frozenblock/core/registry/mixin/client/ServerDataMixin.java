@@ -20,8 +20,8 @@ package org.quiltmc.qsl.frozenblock.core.registry.mixin.client;
 
 import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.Map;
-import net.frozenblock.lib.env.api.EnvType;
-import net.frozenblock.lib.env.api.Environment;
+import net.frozenblock.lib.environment.api.EnvType;
+import net.frozenblock.lib.environment.api.Environment;
 import net.minecraft.client.multiplayer.ServerData;
 import org.quiltmc.qsl.frozenblock.core.registry.impl.sync.mod_protocol.ModProtocolContainer;
 import org.spongepowered.asm.mixin.Mixin;

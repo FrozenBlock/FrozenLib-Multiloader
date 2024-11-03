@@ -26,7 +26,7 @@ import net.frozenblock.lib.config.api.instance.ConfigModification;
 import net.frozenblock.lib.config.api.registry.ConfigRegistry;
 import net.frozenblock.lib.config.api.sync.network.ConfigByteBufUtil;
 import net.frozenblock.lib.config.api.sync.network.ConfigSyncData;
-import net.frozenblock.lib.env.api.EnvType;
+import net.frozenblock.lib.environment.api.EnvType;
 import net.frozenblock.lib.networking.FrozenLibNetworking;
 import net.frozenblock.lib.networking.client.FrozenLibClientNetworking;
 import net.frozenblock.lib.platform.api.PacketHelper;

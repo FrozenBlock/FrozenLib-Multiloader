@@ -1,11 +1,12 @@
 package net.frozenblock.lib;
 
+import net.frozenblock.lib.block.sound.impl.BlockSoundTypeManager;
 import net.frozenblock.lib.cape.client.impl.ClientCapeData;
 import net.frozenblock.lib.config.frozenlib_config.FrozenLibConfig;
 import net.frozenblock.lib.debug.client.impl.DebugRenderManager;
 import net.frozenblock.lib.debug.networking.StructureDebugRequestPayload;
-import net.frozenblock.lib.env.api.EnvType;
-import net.frozenblock.lib.env.api.Environment;
+import net.frozenblock.lib.environment.api.EnvType;
+import net.frozenblock.lib.environment.api.Environment;
 import net.frozenblock.lib.event.event.client.ClientChunkEvents;
 import net.frozenblock.lib.event.event.client.ClientPlayConnectionEvents;
 import net.frozenblock.lib.event.event.client.ClientTickEvents;
@@ -15,7 +16,6 @@ import net.frozenblock.lib.registry.api.client.FrozenLibClientRegistries;
 import net.frozenblock.lib.resource.api.ResourceListenerAPI;
 import net.frozenblock.lib.screenshake.api.client.ScreenShaker;
 import net.frozenblock.lib.sound.api.FlyBySoundHub;
-import net.frozenblock.lib.sound.impl.block_sound_group.BlockSoundGroupManager;
 import net.frozenblock.lib.wind.api.ClientWindManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.protocol.common.ServerboundCustomPayloadPacket;
@@ -42,7 +42,7 @@ public class FrozenLibClient {
 		ClientCapeData.init();
 
 		// TODO: Proper Resource Reload API
-		//ResourceListenerAPI.getClient().registerReloadListener(BlockSoundGroupManager.INSTANCE);
+		//ResourceListenerAPI.getClient().registerReloadListener(BlockSoundTypeManager.INSTANCE);
 	}
 
 	private static void registerClientEvents() {

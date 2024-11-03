@@ -18,8 +18,8 @@
 package net.frozenblock.lib.cape.mixin.client;
 
 import net.frozenblock.lib.cape.client.impl.AbstractClientPlayerCapeInterface;
-import net.frozenblock.lib.env.api.EnvType;
-import net.frozenblock.lib.env.api.Environment;
+import net.frozenblock.lib.environment.api.EnvType;
+import net.frozenblock.lib.environment.api.Environment;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.resources.ResourceLocation;
 import org.spongepowered.asm.mixin.Mixin;

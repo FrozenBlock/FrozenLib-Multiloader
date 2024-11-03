@@ -32,7 +32,7 @@ import net.frozenblock.lib.debug.networking.ImprovedGameEventDebugPayload;
 import net.frozenblock.lib.debug.networking.ImprovedGameEventListenerDebugPayload;
 import net.frozenblock.lib.debug.networking.ImprovedGoalDebugPayload;
 import net.frozenblock.lib.debug.networking.StructureDebugRequestPayload;
-import net.frozenblock.lib.env.api.EnvType;
+import net.frozenblock.lib.environment.api.EnvType;
 import net.frozenblock.lib.event.event.FrozenLibPacketRegistryEvents;
 import net.frozenblock.lib.event.event.PlayerJoinEvents;
 import net.frozenblock.lib.file.transfer.FileTransferPacket;
@@ -127,7 +127,7 @@ public final class FrozenLibNetworking {
 			} else {
 				if (!FrozenLibConfig.FILE_TRANSFER_SERVER) return;
 				try {
-					Path path = ctx.server().getServerDirectory().resolve(packet.transferPath()).resolve(packet.fileName());
+					Path path = ctx.server().getServerDirectory().resolve(packet.transferPath().replace(".local/", "")).resolve(packet.fileName());
 					FileUtils.copyInputStreamToFile(new ByteArrayInputStream(packet.bytes()), path.toFile());
 				} catch (IOException ignored) {
 				}
