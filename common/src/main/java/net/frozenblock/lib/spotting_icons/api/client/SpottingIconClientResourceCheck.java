@@ -17,8 +17,8 @@
 
 package net.frozenblock.lib.spotting_icons.api.client;
 
-import net.frozenblock.lib.environment.api.EnvType;
-import net.frozenblock.lib.environment.api.Environment;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.ApiStatus;

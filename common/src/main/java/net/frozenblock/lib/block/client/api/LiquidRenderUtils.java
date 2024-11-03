@@ -1,8 +1,8 @@
 package net.frozenblock.lib.block.client.api;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.frozenblock.lib.environment.api.EnvType;
-import net.frozenblock.lib.environment.api.Environment;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.BlockPos;

@@ -19,8 +19,8 @@ package net.frozenblock.lib.debug.client.impl;
 
 import com.google.common.collect.ImmutableList;
 import java.util.List;
-import net.frozenblock.lib.environment.api.EnvType;
-import net.frozenblock.lib.environment.api.Environment;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;

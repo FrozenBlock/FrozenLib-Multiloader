@@ -29,7 +29,7 @@ loom {
     // NeoForge Datagen Gradle config.  Remove if not using NeoForge datagen
     runs.create("datagen") {
         data()
-        programArgs("--all", "--mod", "examplemod")
+        programArgs("--all", "--mod", "frozenlib")
         programArgs("--output", project(":common").file("src/main/generated/resources").absolutePath)
         programArgs("--existing", project(":common").file("src/main/resources").absolutePath)
     }

@@ -18,9 +18,9 @@
 package net.frozenblock.lib.config.clothconfig.mixin.client;
 
 import me.shedaniel.clothconfig2.api.AbstractConfigEntry;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.frozenblock.lib.config.clothconfig.impl.DisableableWidgetInterface;
-import net.frozenblock.lib.environment.api.EnvType;
-import net.frozenblock.lib.environment.api.Environment;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

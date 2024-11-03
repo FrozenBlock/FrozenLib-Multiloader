@@ -1,7 +1,7 @@
 package net.frozenblock.lib.platform.api.fabric;
 
+import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.FabricLoader;
-import net.frozenblock.lib.environment.api.EnvType;
 import java.nio.file.Path;
 import java.util.Arrays;
 
@@ -42,6 +42,6 @@ public class PlatformHelperImpl {
 	}
 
 	public static EnvType envType() {
-		return FabricLoader.getInstance().getEnvironmentType() == net.fabricmc.api.EnvType.CLIENT ? EnvType.CLIENT : EnvType.SERVER;
+		return FabricLoader.getInstance().getEnvironmentType();
 	}
 }

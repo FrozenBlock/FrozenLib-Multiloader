@@ -18,10 +18,10 @@
 package net.frozenblock.lib.registry.api.client;
 
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.frozenblock.lib.FrozenLibConstants;
 import net.frozenblock.lib.entity.api.rendering.EntityTextureOverride;
-import net.frozenblock.lib.environment.api.EnvType;
-import net.frozenblock.lib.environment.api.Environment;
 import net.frozenblock.lib.platform.api.RegistryHelper;
 import net.frozenblock.lib.platform.api.NeoForgeFreezer;
 import net.minecraft.core.RegistrationInfo;

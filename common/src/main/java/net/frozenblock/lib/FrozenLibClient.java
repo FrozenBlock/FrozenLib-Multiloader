@@ -1,12 +1,12 @@
 package net.frozenblock.lib;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.frozenblock.lib.block.sound.impl.BlockSoundTypeManager;
 import net.frozenblock.lib.cape.client.impl.ClientCapeData;
 import net.frozenblock.lib.config.frozenlib_config.FrozenLibConfig;
 import net.frozenblock.lib.debug.client.impl.DebugRenderManager;
 import net.frozenblock.lib.debug.networking.StructureDebugRequestPayload;
-import net.frozenblock.lib.environment.api.EnvType;
-import net.frozenblock.lib.environment.api.Environment;
 import net.frozenblock.lib.event.event.client.ClientChunkEvents;
 import net.frozenblock.lib.event.event.client.ClientPlayConnectionEvents;
 import net.frozenblock.lib.event.event.client.ClientTickEvents;

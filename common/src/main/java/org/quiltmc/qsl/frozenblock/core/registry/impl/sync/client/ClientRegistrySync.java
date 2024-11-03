@@ -22,8 +22,8 @@ import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.ints.IntList;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.ArrayList;
-import net.frozenblock.lib.environment.api.EnvType;
-import net.frozenblock.lib.environment.api.Environment;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.frozenblock.lib.networking.impl.PacketSender;
 import net.frozenblock.lib.platform.api.RegistryHelper;
 import net.frozenblock.lib.platform.impl.ClientPayloadContext;
@@ -40,7 +40,6 @@ import org.quiltmc.qsl.frozenblock.core.registry.impl.sync.RegistrySyncText;
 import org.quiltmc.qsl.frozenblock.core.registry.impl.sync.ServerPackets;
 import org.quiltmc.qsl.frozenblock.core.registry.impl.sync.server.ServerRegistrySync;
 import org.slf4j.Logger;
-
 
 @ApiStatus.Internal
 @Environment(EnvType.CLIENT)

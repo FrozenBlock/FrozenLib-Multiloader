@@ -1,8 +1,8 @@
 package net.frozenblock.lib.event.event.client;
 
 import lombok.experimental.UtilityClass;
-import net.frozenblock.lib.environment.api.EnvType;
-import net.frozenblock.lib.environment.api.Environment;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.frozenblock.lib.event.api.FrozenEvent;
 import net.frozenblock.lib.event.entrypoint.ClientEventEntrypoint;
 import net.minecraft.client.multiplayer.ClientLevel;

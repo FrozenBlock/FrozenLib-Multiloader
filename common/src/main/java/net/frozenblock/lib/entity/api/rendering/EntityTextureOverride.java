@@ -19,8 +19,8 @@ package net.frozenblock.lib.entity.api.rendering;
 
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicBoolean;
-import net.frozenblock.lib.environment.api.EnvType;
-import net.frozenblock.lib.environment.api.Environment;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.frozenblock.lib.registry.api.client.FrozenLibClientRegistries;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Registry;

@@ -1,11 +1,11 @@
 package net.frozenblock.lib.config.impl.networking.client;
 
 import java.util.List;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.frozenblock.lib.config.api.instance.Config;
 import net.frozenblock.lib.config.api.registry.ConfigRegistry;
 import net.frozenblock.lib.config.impl.networking.ConfigSyncPacket;
-import net.frozenblock.lib.environment.api.EnvType;
-import net.frozenblock.lib.environment.api.Environment;
 import net.frozenblock.lib.platform.api.PacketHelper;
 import net.minecraft.client.Minecraft;
 import org.jetbrains.annotations.NotNull;

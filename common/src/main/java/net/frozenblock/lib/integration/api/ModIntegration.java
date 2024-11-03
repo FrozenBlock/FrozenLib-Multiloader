@@ -17,8 +17,8 @@
 
 package net.frozenblock.lib.integration.api;
 
-import net.frozenblock.lib.environment.api.EnvType;
-import net.frozenblock.lib.environment.api.Environment;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.frozenblock.lib.platform.api.PlatformHelper;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;

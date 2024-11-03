@@ -1,8 +1,8 @@
 package net.frozenblock.lib.platform.api;
 
 import dev.architectury.injectables.annotations.ExpectPlatform;
-import net.frozenblock.lib.environment.api.EnvType;
-import net.frozenblock.lib.environment.api.Environment;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 

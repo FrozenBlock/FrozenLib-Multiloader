@@ -17,9 +17,9 @@
 
 package net.frozenblock.lib.config.api.registry;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.frozenblock.lib.config.api.instance.Config;
-import net.frozenblock.lib.environment.api.EnvType;
-import net.frozenblock.lib.environment.api.Environment;
 import net.frozenblock.lib.event.api.FrozenEvent;
 import net.frozenblock.lib.event.entrypoint.ClientEventEntrypoint;
 import net.frozenblock.lib.event.entrypoint.CommonEventEntrypoint;
@@ -30,7 +30,6 @@ public interface ConfigLoadEvent extends CommonEventEntrypoint {
 	FrozenEvent<ConfigLoadEvent> EVENT = FrozenEvent.createEvent(ConfigLoadEvent.class);
 
 	void onLoad(Config<?> config) throws Exception;
-
 	@Environment(EnvType.CLIENT)
 	interface Client extends ClientEventEntrypoint {
 

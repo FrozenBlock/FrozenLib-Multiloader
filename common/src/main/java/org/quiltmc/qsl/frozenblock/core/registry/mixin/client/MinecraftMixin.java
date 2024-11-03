@@ -18,8 +18,8 @@
 
 package org.quiltmc.qsl.frozenblock.core.registry.mixin.client;
 
-import net.frozenblock.lib.environment.api.EnvType;
-import net.frozenblock.lib.environment.api.Environment;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
 import org.quiltmc.qsl.frozenblock.core.registry.impl.sync.client.ClientRegistrySync;
 import org.spongepowered.asm.mixin.Mixin;
@@ -30,8 +30,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Environment(EnvType.CLIENT)
 @Mixin(Minecraft.class)
 public class MinecraftMixin {
+
 	@Inject(method = "disconnect(Lnet/minecraft/client/gui/screens/Screen;)V", at = @At("TAIL"))
-	private void quilt$restoreRegistries(CallbackInfo ci) {
+	private void quilt$restoreRegistries(CallbackInfo info) {
 		ClientRegistrySync.disconnectCleanup((Minecraft) (Object) this);
 	}
 }

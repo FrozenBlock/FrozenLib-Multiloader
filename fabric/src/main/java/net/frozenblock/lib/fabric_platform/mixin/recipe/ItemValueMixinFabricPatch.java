@@ -37,6 +37,7 @@ public class ItemValueMixinFabricPatch {
 		at = @At(
 			value = "INVOKE",
 			target = "Lcom/mojang/serialization/codecs/RecordCodecBuilder;create(Ljava/util/function/Function;)Lcom/mojang/serialization/Codec;",
+			remap = false,
 			ordinal = 0
 		),
 		require = 0

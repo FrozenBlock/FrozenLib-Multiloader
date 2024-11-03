@@ -18,7 +18,7 @@ public class FabricRegistryBuilderMixin<T, R extends WritableRegistry<T>> implem
 	@Final
 	private R registry;
 
-	@Shadow
+	@Shadow(remap = false)
 	@Final
 	private EnumSet<RegistryAttribute> attributes;
 

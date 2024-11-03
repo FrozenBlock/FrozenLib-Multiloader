@@ -18,8 +18,8 @@
 
 package net.frozenblock.lib.fabric_platform.mixin.quiltmc.resource.loader.client;
 
-import net.frozenblock.lib.environment.api.EnvType;
-import net.frozenblock.lib.environment.api.Environment;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screens.worldselection.CreateWorldScreen;
 import net.minecraft.client.gui.screens.worldselection.WorldCreationContext;
 import net.minecraft.core.LayeredRegistryAccess;
@@ -39,9 +39,8 @@ public abstract class CreateWorldScreenMixinFabricPatch {
 
 	@Dynamic
 	@Inject(
-		method = {"m_qcsfhvrb", "method_41851", "lambda$openFresh$2"},
-		at = @At("HEAD"),
-		require = 1
+		method = "method_41851",
+		at = @At("HEAD")
 	)
 	private static void onEndDataPackLoadOnOpen(
 		CloseableResourceManager resourceManager,
@@ -55,9 +54,8 @@ public abstract class CreateWorldScreenMixinFabricPatch {
 
 	@Dynamic
 	@Inject(
-		method = {"m_spzhhpkv", "method_45681", "lambda$applyNewPackConfig$13"},
-		at = @At("HEAD"),
-		require = 1
+		method = "method_45681",
+		at = @At("HEAD")
 	)
 	private static void onCreateDataPackLoadEnd(
 		CloseableResourceManager resourceManager,
