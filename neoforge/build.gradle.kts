@@ -73,10 +73,10 @@ dependencies {
 
     implementation("com.moandjiezana.toml:toml4j:$toml4j_version")
 
-    relocModApi("com.github.Treetrain1:Jankson:mod-SNAPSHOT")
-    relocModApi("org.exjson:xjs-data:$xjs_data_version")
-    relocModApi("org.exjson:xjs-compat:$xjs_compat_version")
-    relocModApi("com.personthecat:fresult:$fresult_version")
+    implementation("com.github.Treetrain1:Jankson:mod-SNAPSHOT")
+    implementation("org.exjson:xjs-data:$xjs_data_version")
+    implementation("org.exjson:xjs-compat:$xjs_compat_version")
+    implementation("com.personthecat:fresult:$fresult_version")
 }
 
 tasks {
