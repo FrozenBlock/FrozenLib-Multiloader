@@ -7,6 +7,7 @@ import net.frozenblock.lib.platform.NeoForgeCreativeTabHelper;
 import net.frozenblock.lib.platform.api.PlatformHelper;
 import net.frozenblock.lib.platform.api.neoforge.TintRegistryHelperImpl;
 import net.frozenblock.lib.registry.api.FrozenLibRegistries;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
@@ -43,7 +44,7 @@ public class FrozenLibModEvents {
 
 	@SubscribeEvent
 	public static void registerClientPacketReceivers(FrozenLibNeoForgePacketRegisterEvent event) {
-		if (!PlatformHelper.envType().isClient()) return;
+		if (PlatformHelper.envType() != Dist.CLIENT) return;
 		FrozenLibClientNetworking.registerClientReceivers();
 	}
 

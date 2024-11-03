@@ -79,7 +79,7 @@ public class PlatformHelper {
 	}
 
 	@ExpectPlatform
-	public static EnvType envType() {
+	public static Object envType() {
 		throw new AssertionError();
 	}
 

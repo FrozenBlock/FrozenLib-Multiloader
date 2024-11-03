@@ -5,7 +5,6 @@ import com.mojang.serialization.Lifecycle;
 import io.netty.util.internal.UnstableApi;
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import net.frozenblock.lib.FrozenLibConstants;
-import net.frozenblock.lib.environment.api.EnvType;
 import net.frozenblock.lib.platform.api.PlatformHelper;
 import net.frozenblock.lib.platform.impl.ClientPayloadContext;
 import net.frozenblock.lib.platform.impl.ICPlayPayloadHandler;
@@ -22,6 +21,7 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.neoforge.network.handling.DirectionalPayloadHandler;
 import net.neoforged.neoforge.network.handling.IPayloadHandler;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
@@ -143,7 +143,7 @@ public class RegistryHelperImpl {
 	}
 
 	public static void finalizeAndBuildPackets() {
-		boolean isServer = PlatformHelper.envType() == EnvType.SERVER;
+		boolean isServer = PlatformHelper.envType() == Dist.DEDICATED_SERVER;
 		PLAY_PACKETS.forEach(
 			(pair, packetDist) -> {
 				CustomPacketPayload.Type type = pair.getFirst();

@@ -1,6 +1,5 @@
 package net.frozenblock.lib.platform.api.neoforge;
 
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.loading.FMLLoader;
 import net.neoforged.fml.loading.LoadingModList;
 import java.lang.management.ManagementFactory;
@@ -49,7 +48,7 @@ public class PlatformHelperImpl {
 		return FMLLoader.getGamePath().resolve("config");
 	}
 
-	public static Dist envType() {
+	public static Object envType() {
 		return FMLLoader.getDist();
 	}
 }

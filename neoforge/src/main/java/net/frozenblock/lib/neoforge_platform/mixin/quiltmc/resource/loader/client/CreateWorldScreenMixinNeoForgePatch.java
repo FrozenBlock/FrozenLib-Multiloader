@@ -18,14 +18,14 @@
 
 package net.frozenblock.lib.neoforge_platform.mixin.quiltmc.resource.loader.client;
 
-import net.frozenblock.lib.environment.api.EnvType;
-import net.frozenblock.lib.environment.api.Environment;
 import net.minecraft.client.gui.screens.worldselection.CreateWorldScreen;
 import net.minecraft.client.gui.screens.worldselection.WorldCreationContext;
 import net.minecraft.core.LayeredRegistryAccess;
 import net.minecraft.server.ReloadableServerResources;
 import net.minecraft.server.WorldLoader;
 import net.minecraft.server.packs.resources.CloseableResourceManager;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.quiltmc.qsl.frozenblock.resource.loader.api.ResourceLoaderEvents;
 import org.spongepowered.asm.mixin.Dynamic;
 import org.spongepowered.asm.mixin.Mixin;
@@ -34,15 +34,14 @@ import org.spongepowered.asm.mixin.injection.Coerce;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Environment(EnvType.CLIENT)
+@OnlyIn(Dist.CLIENT)
 @Mixin(CreateWorldScreen.class)
 public abstract class CreateWorldScreenMixinNeoForgePatch {
 
 	@Dynamic
 	@Inject(
-		method = {"m_qcsfhvrb", "method_41851", "lambda$openFresh$2"},
-		at = @At("HEAD"),
-		require = 1
+		method = "method_41851",
+		at = @At("HEAD")
 	)
 	private static void onEndDataPackLoadOnOpen(
 		CloseableResourceManager resourceManager,
@@ -56,9 +55,8 @@ public abstract class CreateWorldScreenMixinNeoForgePatch {
 
 	@Dynamic
 	@Inject(
-		method = {"m_spzhhpkv", "method_45681", "lambda$applyNewPackConfig$13"},
-		at = @At("HEAD"),
-		require = 1
+		method = "method_45681",
+		at = @At("HEAD")
 	)
 	private static void onCreateDataPackLoadEnd(
 		WorldLoader.DataLoadContext loadContext,

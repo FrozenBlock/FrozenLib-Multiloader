@@ -51,7 +51,7 @@ public class MappedRegistryMixinNeoForgePatch<V> {
 		at = @At("RETURN"),
 		require = 0
 	)
-	private void quilt$neoforge$invokeEntryAddEvent(ResourceKey<V> key, V entry, RegistrationInfo registrationInfo, CallbackInfoReturnable<Holder<V>> cir, @Local int i) {
+	private void quilt$neoforge$invokeEntryAddEvent(ResourceKey<V> key, V entry, RegistrationInfo registrationInfo, CallbackInfoReturnable<Holder<V>> info, @Local() int i) {
 		this.frozenLib_quilt$entryContext.set(key.location(), entry, i);
 		RegistryEventStorage.as((MappedRegistry<V>) (Object) this).frozenLib_quilt$getEntryAddedEvent().invoke(e->e.onAdded(this.frozenLib_quilt$entryContext));
 	}
