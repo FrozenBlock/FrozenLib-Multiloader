@@ -76,30 +76,9 @@ dependencies {
 
     "common"(project(":common", "namedElements")) { isTransitive = false }
     "shadowBundle"(project(":common", "transformProductionFabric"))
-
-    implementation("com.github.Treetrain1:Jankson:mod-SNAPSHOT")
-    implementation("org.exjson:xjs-data:$xjs_data_version")
-    implementation("org.exjson:xjs-compat:$xjs_compat_version")
-    implementation("com.personthecat:fresult:$fresult_version")
 }
 
 tasks {
-    shadowJar {
-        exclude("architectury.common.json")
-        configurations = listOf(project.configurations.getByName("shadowBundle"))
-        archiveClassifier.set("dev-shadow")
-    }
-
-    shadowJar {
-        configurations = listOf(relocModApi)
-        isEnableRelocation = true
-        relocationPrefix = "net.frozenblock.lib.shadow"
-        dependencies {
-            exclude {
-                it.moduleGroup.contains("fabric")
-            }
-        }
-    }
 
     remapJar {
         injectAccessWidener.set(true)

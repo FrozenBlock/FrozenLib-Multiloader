@@ -166,8 +166,8 @@ subprojects {
 
         "shadowJar"(ShadowJar::class) {
             configurations = listOf(relocImplementation)
-            isEnableRelocation = true
-            relocationPrefix = "net.frozenblock.lib.shadow"
+            //isEnableRelocation = true
+            //relocationPrefix = "net.frozenblock.lib.shadow"
             dependencies {
                 exclude {
                     it.moduleGroup.contains("fabric")

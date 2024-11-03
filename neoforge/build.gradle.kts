@@ -38,6 +38,7 @@ loom {
 val relocModApi: Configuration by configurations.creating {
     configurations.modApi.get().extendsFrom(this)
 }
+val relocImplementation: Configuration by configurations
 
 val mod_id: String by project
 val mod_version: String by project
@@ -72,31 +73,9 @@ dependencies {
     "shadowBundle"(project(":common", "transformProductionNeoForge"))
 
     implementation("com.moandjiezana.toml:toml4j:$toml4j_version")
-
-    implementation("com.github.Treetrain1:Jankson:mod-SNAPSHOT")
-    implementation("org.exjson:xjs-data:$xjs_data_version")
-    implementation("org.exjson:xjs-compat:$xjs_compat_version")
-    implementation("com.personthecat:fresult:$fresult_version")
 }
 
 tasks {
-    shadowJar {
-        exclude("architectury.common.json")
-        configurations = listOf(project.configurations.getByName("shadowBundle"))
-        archiveClassifier.set("dev-shadow")
-    }
-
-    shadowJar {
-        configurations = listOf(relocModApi)
-        isEnableRelocation = true
-        relocationPrefix = "net.frozenblock.lib.shadow"
-        dependencies {
-            exclude {
-                it.moduleGroup.contains("fabric")
-            }
-        }
-    }
-
     remapJar {
         inputFile.set(shadowJar.get().archiveFile)
         dependsOn(shadowJar)
