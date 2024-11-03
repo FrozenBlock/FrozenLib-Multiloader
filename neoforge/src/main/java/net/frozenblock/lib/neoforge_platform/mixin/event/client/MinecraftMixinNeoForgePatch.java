@@ -1,15 +1,15 @@
 package net.frozenblock.lib.neoforge_platform.mixin.event.client;
 
-import net.frozenblock.lib.environment.api.EnvType;
-import net.frozenblock.lib.environment.api.Environment;
 import net.frozenblock.lib.event.event.client.ClientLifecycleEvents;
 import net.minecraft.client.Minecraft;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Environment(EnvType.CLIENT)
+@OnlyIn(Dist.CLIENT)
 @Mixin(Minecraft.class)
 public class MinecraftMixinNeoForgePatch {
 
