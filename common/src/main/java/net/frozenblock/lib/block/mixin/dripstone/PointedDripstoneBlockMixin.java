@@ -30,16 +30,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(PointedDripstoneBlock.class)
 public class PointedDripstoneBlockMixin {
 
-	@SuppressWarnings("UnresolvedMixinReference")
 	@Inject(
-		method = {"m_ulptarvl", "method_33279", "lambda$getFluidAboveStalactite$11"},
+		method = "method_33279",
 		at = @At(
 			value = "INVOKE_ASSIGN",
 			target = "Lnet/minecraft/world/level/block/state/BlockState;is(Lnet/minecraft/world/level/block/Block;)Z",
 			shift = At.Shift.BEFORE
 		),
-		cancellable = true,
-		require = 1
+		cancellable = true
 	)
 	private static void frozenLib$getFluidAboveStalactite(
 		Level level, BlockPos pos, CallbackInfoReturnable<PointedDripstoneBlock.FluidInfo> info,

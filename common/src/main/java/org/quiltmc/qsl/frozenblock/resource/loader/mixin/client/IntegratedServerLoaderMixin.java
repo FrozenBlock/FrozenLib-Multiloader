@@ -36,21 +36,28 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class IntegratedServerLoaderMixin {
 
     @Inject(
-            method = "loadWorldDataBlocking",
-            at = @At("HEAD")
+		method = "loadWorldDataBlocking",
+		at = @At("HEAD")
     )
-    private <D, R> void onStartDataPackLoad(WorldLoader.PackConfig dataPackConfig, WorldLoader.WorldDataSupplier<D> savePropertiesSupplier,
-									 WorldLoader.ResultFactory<D, R> resultFactory,
-                                     CallbackInfoReturnable<R> cir) {
+    private <D, R> void onStartDataPackLoad(
+		WorldLoader.PackConfig dataPackConfig,
+		WorldLoader.WorldDataSupplier<D> savePropertiesSupplier,
+		WorldLoader.ResultFactory<D, R> resultFactory,
+		CallbackInfoReturnable<R> info
+	) {
         ResourceLoaderEvents.START_DATA_PACK_RELOAD.invoke(e->e.onStartDataPackReload(null, null));
     }
 
     @ModifyReturnValue(
-            method = "loadWorldDataBlocking",
-            at = @At("RETURN")
+		method = "loadWorldDataBlocking",
+		at = @At("RETURN")
     )
-    private <D, R> R onEndDataPackLoad(R original, WorldLoader.PackConfig dataPackConfig, WorldLoader.WorldDataSupplier<D> savePropertiesSupplier,
-								   WorldLoader.ResultFactory<D, R> resultFactory) {
+    private <D, R> R onEndDataPackLoad(
+		R original,
+		WorldLoader.PackConfig dataPackConfig,
+		WorldLoader.WorldDataSupplier<D> savePropertiesSupplier,
+		WorldLoader.ResultFactory<D, R> resultFactory
+	) {
 		if (original instanceof WorldStem worldStem) {
 			ResourceLoaderEvents.END_DATA_PACK_RELOAD.invoke(e->e.onEndDataPackReload(null, worldStem.resourceManager(), null));
 		}
@@ -58,9 +65,13 @@ public abstract class IntegratedServerLoaderMixin {
     }
 
     @ModifyArg(
-            method = {"createFreshLevel", "loadLevel"},
-            at = @At(value = "INVOKE", target = "Lorg/slf4j/Logger;warn(Ljava/lang/String;Ljava/lang/Throwable;)V", remap = false),
-            index = 1
+		method = {"createFreshLevel", "openWorldLoadLevelStem"},
+		at = @At(
+			value = "INVOKE",
+			target = "Lorg/slf4j/Logger;warn(Ljava/lang/String;Ljava/lang/Throwable;)V",
+			remap = false
+		),
+		index = 1
     )
     private Throwable onFailedDataPackLoad(Throwable throwable) {
         ResourceLoaderEvents.END_DATA_PACK_RELOAD.invoke(e->e.onEndDataPackReload(null, null, throwable));

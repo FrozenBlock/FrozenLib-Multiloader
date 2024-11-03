@@ -72,14 +72,13 @@ public abstract class CreateWorldScreenMixin {
     }
 
 	@Inject(
-		method = {"method_49629", "lambda$applyNewPackConfig$17(Ljava/util/function/Consumer;Ljava/lang/Void;Ljava/lang/Throwable;)Ljava/lang/Object;",},
+		method = "method_49629",
 		at = @At(
 			value = "INVOKE",
 			target = "Lorg/slf4j/Logger;warn(Ljava/lang/String;Ljava/lang/Throwable;)V",
 			shift = At.Shift.AFTER,
 			remap = false
-		),
-		require = 1
+		)
 	)
 	private void onFailDataPackLoading(Consumer<WorldDataConfiguration> consumer, Void unused, Throwable throwable, CallbackInfoReturnable<Object> info) {
 		ResourceLoaderEvents.END_DATA_PACK_RELOAD.invoke(event -> event.onEndDataPackReload(null, null, throwable));
