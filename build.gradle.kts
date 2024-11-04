@@ -3,7 +3,7 @@ import net.fabricmc.loom.api.LoomGradleExtensionAPI
 plugins {
     id("architectury-plugin") version("3.4-SNAPSHOT")
     id("dev.architectury.loom") version("+") apply(false)
-    id("com.gradleup.shadow") version("+")
+    id("com.github.johnrengelman.shadow") version("8.1.1")
     id("maven-publish")
     id("eclipse")
     id("idea")
@@ -54,7 +54,7 @@ allprojects {
 
 subprojects {
     apply(plugin = "dev.architectury.loom")
-    apply(plugin = "com.gradleup.shadow")
+    apply(plugin = "com.github.johnrengelman.shadow")
     apply(plugin = "architectury-plugin")
     apply(plugin = "maven-publish")
     apply(plugin = "org.quiltmc.gradle.licenser")
@@ -64,8 +64,12 @@ subprojects {
     val loom = project.extensions.getByName<LoomGradleExtensionAPI>("loom")
     loom.silentMojangMappingsLicense()
 
-    val relocImplementation: Configuration by configurations.creating {
-        configurations.implementation.get().extendsFrom(this)
+    configurations {
+        create("shadowBundle")
+        "shadowBundle" {
+            isCanBeResolved = true
+            isCanBeConsumed = false
+        }
     }
 
     repositories {
@@ -92,13 +96,6 @@ subprojects {
         annotationProcessor("org.projectlombok:lombok:1.18.34")?.let { compileOnly(it) }
 
         implementation("org.ow2.asm:asm-tree:9.7")
-
-        implementation("com.moandjiezana.toml:toml4j:$toml4j_version")
-
-        relocImplementation("com.github.Treetrain1:Jankson:mod-SNAPSHOT")
-        relocImplementation("com.github.Treetrain1:xjs-data:infinity-compat-SNAPSHOT")
-        relocImplementation("org.exjson:xjs-compat:$xjs_compat_version")
-        relocImplementation("com.personthecat:fresult:$fresult_version")
 
         implementation("me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}") {
             exclude(group = "net.fabricmc")
@@ -161,12 +158,6 @@ subprojects {
                 include("**//*.java")
                 include("**//*.kt")
             }
-        }
-
-        shadowJar {
-            configurations = listOf(relocImplementation)
-            isEnableRelocation = true
-            relocationPrefix = "net.frozenblock.lib.shadow"
         }
     }
 }

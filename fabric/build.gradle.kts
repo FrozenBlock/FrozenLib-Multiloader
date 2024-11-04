@@ -1,5 +1,5 @@
 plugins {
-    id("com.gradleup.shadow")
+    id("com.github.johnrengelman.shadow") version("8.1.1")
 }
 
 architectury {
@@ -13,14 +13,9 @@ configurations {
         isCanBeResolved = true
         isCanBeConsumed = false
     }
-    create("shadowBundle")
     compileClasspath.get().extendsFrom(configurations["common"])
     runtimeClasspath.get().extendsFrom(configurations["common"])
     getByName("developmentFabric").extendsFrom(configurations["common"])
-    "shadowBundle" {
-        isCanBeResolved = true
-        isCanBeConsumed = false
-    }
 }
 
 loom.accessWidenerPath.set(project(":common").loom.accessWidenerPath)
@@ -76,13 +71,25 @@ dependencies {
 
     "common"(project(":common", "namedElements")) { isTransitive = false }
     "shadowBundle"(project(":common", "transformProductionFabric"))
+
+    "shadowBundle"("com.moandjiezana.toml:toml4j:$toml4j_version")
+    "shadowBundle"("com.github.Treetrain1:Jankson:mod-SNAPSHOT")
+    "shadowBundle"("com.github.Treetrain1:xjs-data:infinity-compat-SNAPSHOT")
+    "shadowBundle"("org.exjson:xjs-compat:$xjs_compat_version")
+    "shadowBundle"("com.personthecat:fresult:$fresult_version")
 }
 
 tasks {
     shadowJar {
         exclude("architectury.common.json")
+
+        relocate("com.moandjiezana.toml", "net.frozenblock.lib.shadow.com.moandjiezana.toml")
+        relocate("blue.endless.jankson", "net.frozenblock.lib.shadow.blue.endless.jankson")
+        relocate("xjs.data", "net.frozenblock.lib.shadow.xjs.data")
+        relocate("xjs.compat.serialization", "net.frozenblock.lib.shadow.xjs.compat.serialization")
+        relocate("personthecat.fresult", "net.frozenblock.lib.shadow.personthecat.fresult")
+
         configurations = listOf(project.configurations.getByName("shadowBundle"))
-        isEnableRelocation = false
         archiveClassifier.set("dev-shadow")
     }
 

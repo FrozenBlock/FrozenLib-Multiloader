@@ -1,5 +1,5 @@
 plugins {
-    id("com.gradleup.shadow")
+    id("com.github.johnrengelman.shadow") version("8.1.1")
 }
 
 architectury {
@@ -13,14 +13,9 @@ configurations {
         isCanBeResolved = true
         isCanBeConsumed = false
     }
-    create("shadowBundle")
     compileClasspath.get().extendsFrom(configurations["common"])
     runtimeClasspath.get().extendsFrom(configurations["common"])
     getByName("developmentNeoForge").extendsFrom(configurations["common"])
-    "shadowBundle" {
-        isCanBeResolved = true
-        isCanBeConsumed = false
-    }
 }
 
 loom {
@@ -34,11 +29,6 @@ loom {
         programArgs("--existing", project(":common").file("src/main/resources").absolutePath)
     }
 }
-
-val relocModApi: Configuration by configurations.creating {
-    configurations.modApi.get().extendsFrom(this)
-}
-val relocImplementation: Configuration by configurations
 
 val mod_id: String by project
 val mod_version: String by project
@@ -76,8 +66,14 @@ dependencies {
 tasks {
     shadowJar {
         exclude("architectury.common.json")
+
+        relocate("com.moandjiezana.toml", "net.frozenblock.lib.shadow.com.moandjiezana.toml")
+        relocate("blue.endless.jankson", "net.frozenblock.lib.shadow.blue.endless.jankson")
+        relocate("xjs.data", "net.frozenblock.lib.shadow.xjs.data")
+        relocate("xjs.compat.serialization", "net.frozenblock.lib.shadow.xjs.compat.serialization")
+        relocate("personthecat.fresult", "net.frozenblock.lib.shadow.personthecat.fresult")
+
         configurations = listOf(project.configurations.getByName("shadowBundle"))
-        isEnableRelocation = false
         archiveClassifier.set("dev-shadow")
     }
 
