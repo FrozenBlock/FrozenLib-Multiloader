@@ -67,15 +67,19 @@ val modmenu_version: String by project
 val terrablender_version: String by project
 
 dependencies {
-    neoForge("net.neoforged:neoforge:${project.properties["neoforge_version"]}")
+    neoForge("net.neoforged:neoforge:${neoforge_version}")
 
     "common"(project(":common", "namedElements")) { isTransitive = false }
     "shadowBundle"(project(":common", "transformProductionNeoForge"))
-
-    implementation("com.moandjiezana.toml:toml4j:$toml4j_version")
 }
 
 tasks {
+    shadowJar {
+        exclude("architectury.common.json")
+        configurations = listOf(project.configurations.getByName("shadowBundle"))
+        archiveClassifier.set("dev-shadow")
+    }
+
     remapJar {
         inputFile.set(shadowJar.get().archiveFile)
         dependsOn(shadowJar)
