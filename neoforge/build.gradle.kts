@@ -59,6 +59,12 @@ val terrablender_version: String by project
 dependencies {
     neoForge("net.neoforged:neoforge:${neoforge_version}")
 
+    "shadowBundle"("com.moandjiezana.toml:toml4j:$toml4j_version")
+    "shadowBundle"("com.github.Treetrain1:Jankson:mod-SNAPSHOT")
+    "shadowBundle"("com.github.Treetrain1:xjs-data:infinity-compat-SNAPSHOT")
+    "shadowBundle"("org.exjson:xjs-compat:$xjs_compat_version")
+    "shadowBundle"("com.personthecat:fresult:$fresult_version")
+
     "common"(project(":common", "namedElements")) { isTransitive = false }
     "shadowBundle"(project(":common", "transformProductionNeoForge"))
 }
