@@ -49,10 +49,6 @@ val cloth_config_version: String by project
 val modmenu_version: String by project
 val terrablender_version: String by project
 
-val relocModApi: Configuration by configurations.creating {
-    configurations.modApi.get().extendsFrom(this)
-}
-
 repositories {
     maven("https://maven.terraformersmc.com")
     maven("https://maven.shedaniel.me/")
