@@ -1,4 +1,3 @@
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import net.fabricmc.loom.api.LoomGradleExtensionAPI
 
 plugins {
@@ -164,17 +163,10 @@ subprojects {
             }
         }
 
-        "shadowJar"(ShadowJar::class) {
+        shadowJar {
             configurations = listOf(relocImplementation)
-            //isEnableRelocation = true
-            //relocationPrefix = "net.frozenblock.lib.shadow"
-            dependencies {
-                exclude {
-                    it.moduleGroup.contains("fabric")
-                }
-            }
-
-            //relocate("blue.endless.jankson", "net.frozenblock.lib.config.api.jankson")
+            isEnableRelocation = true
+            relocationPrefix = "net.frozenblock.lib.shadow"
         }
     }
 }

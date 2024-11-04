@@ -77,6 +77,7 @@ tasks {
     shadowJar {
         exclude("architectury.common.json")
         configurations = listOf(project.configurations.getByName("shadowBundle"))
+        isEnableRelocation = false
         archiveClassifier.set("dev-shadow")
     }
 
