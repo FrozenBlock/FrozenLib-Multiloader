@@ -22,10 +22,10 @@ public class MappedRegistryMixinNeoForgePatch<V> {
 
 	// because of how unique works this should work fine
 	@Unique
-	public MutableRegistryEntryContextImpl<V> quilt$neoForge$entryContext;
+	public MutableRegistryEntryContextImpl<V> frozenLib_quilt$entryContext;
 
 	@Unique
-	public FrozenEvent<RegistryEvents.EntryAdded<V>> quilt$neoForge$entryAddedEvent;
+	public FrozenEvent<RegistryEvents.EntryAdded<V>> frozenLib_quilt$entryAddedEvent;
 
 	@ModifyExpressionValue(
 		method = "register(ILnet/minecraft/resources/ResourceKey;Ljava/lang/Object;Lnet/minecraft/core/RegistrationInfo;)Lnet/minecraft/core/Holder$Reference;",
@@ -52,7 +52,7 @@ public class MappedRegistryMixinNeoForgePatch<V> {
 		require = 0
 	)
 	private void quilt$neoforge$invokeEntryAddEvent(int id, ResourceKey<V> key, V entry, RegistrationInfo arg2, CallbackInfoReturnable<Holder.Reference<V>> info) {
-		this.quilt$neoForge$entryContext.set(key.location(), entry, id);
-		RegistryEventStorage.as((MappedRegistry<V>) (Object) this).frozenLib_quilt$getEntryAddedEvent().invoke(e->e.onAdded(this.quilt$neoForge$entryContext));
+		this.frozenLib_quilt$entryContext.set(key.location(), entry, id);
+		RegistryEventStorage.as((MappedRegistry<V>) (Object) this).frozenLib_quilt$getEntryAddedEvent().invoke(e->e.onAdded(this.frozenLib_quilt$entryContext));
 	}
 }
