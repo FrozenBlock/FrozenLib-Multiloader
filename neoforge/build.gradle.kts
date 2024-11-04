@@ -59,13 +59,17 @@ val terrablender_version: String by project
 dependencies {
     neoForge("net.neoforged:neoforge:${neoforge_version}")
 
-    implementation("com.moandjiezana.toml:toml4j:$toml4j_version")
+    implementation("com.moandjiezana.toml:toml4j:$toml4j_version") {
+        exclude("gson")
+    }
     implementation("com.github.Treetrain1:Jankson:mod-SNAPSHOT")
     implementation("com.github.Treetrain1:xjs-data:infinity-compat-SNAPSHOT")
     implementation("org.exjson:xjs-compat:$xjs_compat_version")
     implementation("com.personthecat:fresult:$fresult_version")
 
-    "shadowBundle"("com.moandjiezana.toml:toml4j:$toml4j_version")
+    "shadowBundle"("com.moandjiezana.toml:toml4j:$toml4j_version") {
+        exclude("gson")
+    }
     "shadowBundle"("com.github.Treetrain1:Jankson:mod-SNAPSHOT")
     "shadowBundle"("com.github.Treetrain1:xjs-data:infinity-compat-SNAPSHOT")
     "shadowBundle"("org.exjson:xjs-compat:$xjs_compat_version")
