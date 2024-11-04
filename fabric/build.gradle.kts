@@ -79,6 +79,11 @@ dependencies {
 }
 
 tasks {
+    shadowJar {
+        exclude("architectury.common.json")
+        configurations = listOf(project.configurations.getByName("shadowBundle"))
+        archiveClassifier.set("dev-shadow")
+    }
 
     remapJar {
         injectAccessWidener.set(true)
