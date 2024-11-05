@@ -12,23 +12,23 @@
     "sources": "https://github.com/FrozenBlock/FrozenLib-ML"
   },
   "license": "${mod_license}",
-  "icon": "${mod_id}/fabric_icon.png",
+  "icon": "assets/${mod_id}/fabric_icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.frozenblock.lib.fabric_platform.FrozenLibFabric"
+      "net.frozenblock.lib.fabric.FrozenLibFabric"
     ],
     "client": [
-      "net.frozenblock.lib.fabric_platform.FrozenLibFabricClient"
+      "net.frozenblock.lib.fabric.FrozenLibFabricClient"
     ],
     "server": [
-      "net.frozenblock.lib.fabric_platform.FrozenLibFabric"
+      "net.frozenblock.lib.fabric.FrozenLibFabric"
     ],
     "modmenu": [
-      "net.frozenblock.lib.fabric_platform.modmenu.api.ModMenuIntegration"
+      "net.frozenblock.lib.fabric.modmenu.api.ModMenuIntegration"
     ],
     "terrablender": [
-      "net.frozenblock.lib.fabric_platform.terrablender.FabricTerraBlenderCompat"
+      "net.frozenblock.lib.fabric.terrablender.FabricTerraBlenderCompat"
     ]
   },
   "mixins": [

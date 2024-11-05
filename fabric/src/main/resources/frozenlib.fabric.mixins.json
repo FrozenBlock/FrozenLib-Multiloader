@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.frozenblock.lib.fabric_platform.mixin",
+  "package": "net.frozenblock.lib.fabric.mixin",
   "compatibilityLevel": "JAVA_21",
   "injectors": {
     "defaultRequire": 1

@@ -1,6 +1,5 @@
 package net.frozenblock.lib;
 
-import net.frozenblock.lib.block.sound.impl.BlockSoundTypeManager;
 import net.frozenblock.lib.config.api.instance.Config;
 import net.frozenblock.lib.config.api.registry.ConfigRegistry;
 import net.frozenblock.lib.config.frozenlib_config.FrozenLibConfig;
@@ -13,13 +12,10 @@ import net.frozenblock.lib.event.event.RegisterCommandEvents;
 import net.frozenblock.lib.event.event.RegistryFreezeEvents;
 import net.frozenblock.lib.event.event.ServerLevelEvents;
 import net.frozenblock.lib.event.event.ServerTickEvents;
-import net.frozenblock.lib.ingamedevtools.FrozenLibDevItems;
 import net.frozenblock.lib.integration.api.ModIntegrations;
 import net.frozenblock.lib.platform.api.NeoForgeFreezer;
 import net.frozenblock.lib.networking.FrozenLibNetworking;
-import net.frozenblock.lib.platform.api.PlatformHelper;
 import net.frozenblock.lib.registry.api.FrozenLibRegistries;
-import net.frozenblock.lib.resource.api.ResourceListenerAPI;
 import net.frozenblock.lib.screenshake.api.ScreenShakeManager;
 import net.frozenblock.lib.screenshake.api.command.ScreenShakeCommand;
 import net.frozenblock.lib.screenshake.impl.ScreenShakeStorage;
@@ -65,10 +61,6 @@ public class FrozenLib {
 		FrozenFeatures.init();
 		FrozenPlacementModifiers.init();
 		DataPackReloadMarker.init();
-
-		if (PlatformHelper.isDevelopmentEnvironment()) {
-			FrozenLibDevItems.register();
-		}
 
 		RegisterCommandEvents.REGISTER.register((dispatcher, ctx, selection) -> {
 			WindCommand.register(dispatcher);

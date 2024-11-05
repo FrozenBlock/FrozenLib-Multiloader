@@ -7,15 +7,15 @@ modId = "${mod_id}"
 version = "${mod_version}"
 displayName = "${mod_name}"
 displayURL = "https://frozenblock.net"
-logoFile = "${mod_id}/forge_icon.png"
+logoFile = "assets/${mod_id}/forge_icon.png"
 credits = "${credits}"
 authors = "${mod_author}"
 description = "${mod_description}"
 
 [mods.frozenlib.entrypoints]
-main = ["net.frozenblock.lib.neoforge_platform.FrozenLibNeoForge"]
-client = ["net.frozenblock.lib.neoforge_platform.FrozenLibNeoForgeClient"]
-server = ["net.frozenblock.lib.neoforge_platform.FrozenLibNeoForge"]
+main = ["net.frozenblock.lib.neoforge.FrozenLibNeoForge"]
+client = ["net.frozenblock.lib.neoforge.FrozenLibNeoForgeClient"]
+server = ["net.frozenblock.lib.neoforge.FrozenLibNeoForge"]
 
 [mods.frozenlib.registry]
 protocol_version = 4

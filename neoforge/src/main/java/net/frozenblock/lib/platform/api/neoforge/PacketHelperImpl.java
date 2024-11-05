@@ -1,7 +1,7 @@
 package net.frozenblock.lib.platform.api.neoforge;
 
-import net.frozenblock.lib.neoforge_platform.mixin.ChunkMapAccessor;
-import net.frozenblock.lib.neoforge_platform.mixin.EntityTrackerAccessor;
+import net.frozenblock.lib.neoforge.mixin.ChunkMapAccessor;
+import net.frozenblock.lib.neoforge.mixin.EntityTrackerAccessor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
