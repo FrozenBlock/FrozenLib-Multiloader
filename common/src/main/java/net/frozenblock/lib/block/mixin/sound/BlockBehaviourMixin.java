@@ -18,10 +18,6 @@
 package net.frozenblock.lib.block.mixin.sound;
 
 import net.frozenblock.lib.block.sound.api.BlockSoundTypeOverwrites;
-import net.frozenblock.lib.block.sound.api.BlockSoundTypeOverwrite;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -35,16 +31,7 @@ public final class BlockBehaviourMixin {
 
     @Inject(method = "getSoundType", at = @At("RETURN"), cancellable = true)
     private void getSoundGroupOverride(BlockState state, CallbackInfoReturnable<SoundType> info) {
-        Block block = state.getBlock();
-        ResourceLocation id = BuiltInRegistries.BLOCK.getKey(block);
-		var overwrites = BlockSoundTypeOverwrites.getOverwrites();
-		if (overwrites != null) {
-			for (BlockSoundTypeOverwrite overwrite : overwrites) {
-				if (overwrite.blockId().equals(id) && overwrite.condition().getAsBoolean()) {
-					info.setReturnValue(overwrite.soundOverwrite());
-				}
-			}
-		}
+        BlockSoundTypeOverwrites.getSoundType(state).ifPresent(info::setReturnValue);
     }
 
 }

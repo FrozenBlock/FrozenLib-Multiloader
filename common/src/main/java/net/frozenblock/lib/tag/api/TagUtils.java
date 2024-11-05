@@ -18,6 +18,7 @@
 package net.frozenblock.lib.tag.api;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import lombok.experimental.UtilityClass;
@@ -38,12 +39,34 @@ import org.jetbrains.annotations.Nullable;
 @UtilityClass
 public class TagUtils {
 
+	public static <T> @NotNull List<T> getAllEntries(@NotNull TagKey<T> tag) {
+		Optional<? extends Registry<?>> maybeRegistry = BuiltInRegistries.REGISTRY.getOptional(tag.registry().location());
+		Objects.requireNonNull(tag);
+
+		if (maybeRegistry.isPresent()) {
+			Registry<T> registry = (Registry<T>) maybeRegistry.get();
+			if (tag.isFor(registry.key())) {
+				ArrayList<T> entries = new ArrayList<>();
+				for (Holder<T> entry : registry.getTagOrEmpty(tag)) {
+					var optionalKey = entry.unwrapKey();
+					if (optionalKey.isPresent()) {
+						var key = optionalKey.get();
+						registry.getOptional(key).ifPresent(entries::add);
+					}
+				}
+				if (!entries.isEmpty()) {
+					return entries;
+				}
+			}
+		}
+		return List.of();
+	}
+
     @Nullable
     public static <T> T getRandomEntry(TagKey<T> tag) {
         return getRandomEntry(AdvancedMath.random(), tag);
     }
 
-    @SuppressWarnings("unchecked")
     @Nullable
     public static <T> T getRandomEntry(RandomSource random, @NotNull TagKey<T> tag) {
         Optional<? extends Registry<?>> maybeRegistry = BuiltInRegistries.REGISTRY.getOptional(tag.registry().location());
@@ -73,7 +96,6 @@ public class TagUtils {
 		return isIn(null, tagKey, entry);
 	}
 
-	@SuppressWarnings("unchecked")
 	public static <T> boolean isIn(@Nullable RegistryAccess registryManager, TagKey<T> tagKey, T entry) {
 		Optional<? extends Registry<?>> maybeRegistry;
 		Objects.requireNonNull(tagKey);

@@ -20,6 +20,7 @@ package net.frozenblock.lib.block.sound.api;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import lombok.experimental.UtilityClass;
+import net.frozenblock.lib.block.sound.impl.BlockSoundTypeOverwrite;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.SoundType;

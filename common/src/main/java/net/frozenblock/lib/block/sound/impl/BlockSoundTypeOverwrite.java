@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.block.sound.api;
+package net.frozenblock.lib.block.sound.impl;
 
 import java.util.function.BooleanSupplier;
 import net.minecraft.resources.ResourceLocation;
