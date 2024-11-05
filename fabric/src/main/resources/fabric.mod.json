@@ -12,7 +12,7 @@
     "sources": "https://github.com/FrozenBlock/FrozenLib-ML"
   },
   "license": "${mod_license}",
-  "icon": "assets/${mod_id}/fabric_icon.png",
+  "icon": "assets/${mod_id}/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
