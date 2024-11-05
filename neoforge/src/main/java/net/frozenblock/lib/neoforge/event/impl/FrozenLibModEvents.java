@@ -8,6 +8,7 @@ import net.frozenblock.lib.platform.NeoForgeCreativeTabHelper;
 import net.frozenblock.lib.platform.api.PlatformHelper;
 import net.frozenblock.lib.platform.api.neoforge.TintRegistryHelperImpl;
 import net.frozenblock.lib.registry.api.FrozenLibRegistries;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
@@ -51,8 +52,10 @@ public class FrozenLibModEvents {
 
 	@SubscribeEvent
 	public static void registerEvent(RegisterEvent event) {
-		if (PlatformHelper.isDevelopmentEnvironment()) {
-			FrozenLibDevItems.register();
+		if (event.getRegistry() == BuiltInRegistries.ITEM) {
+			if (PlatformHelper.isDevelopmentEnvironment()) {
+				FrozenLibDevItems.register();
+			}
 		}
 	}
 }
