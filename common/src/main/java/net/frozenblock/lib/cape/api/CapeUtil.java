@@ -162,18 +162,20 @@ public class CapeUtil {
 	 * @param urlString The repo's URL.
 	 */
 	public static void registerCapesFromURL(String urlString) {
-		try {
-			URL url = URI.create(urlString).toURL();
-			URLConnection request = url.openConnection();
-			request.connect();
+		if (!CAPE_REPOS.contains(urlString)) {
+			try {
+				URL url = URI.create(urlString).toURL();
+				URLConnection request = url.openConnection();
+				request.connect();
 
-			JsonElement parsedJson = JsonParser.parseReader(new InputStreamReader((InputStream) request.getContent()));
-			JsonObject capeDir = parsedJson.getAsJsonObject();
-			JsonArray capeArray = capeDir.get("capes").getAsJsonArray();
+				JsonElement parsedJson = JsonParser.parseReader(new InputStreamReader((InputStream) request.getContent()));
+				JsonObject capeDir = parsedJson.getAsJsonObject();
+				JsonArray capeArray = capeDir.get("capes").getAsJsonArray();
 
-			capeArray.forEach(jsonElement -> registerCapeFromURL(jsonElement.getAsString()));
-			CAPE_REPOS.add(urlString);
-		} catch (IOException ignored) {
+				capeArray.forEach(jsonElement -> registerCapeFromURL(jsonElement.getAsString()));
+				CAPE_REPOS.add(urlString);
+			} catch (IOException ignored) {
+			}
 		}
 	}
 

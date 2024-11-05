@@ -39,6 +39,9 @@ public class ServerCapeData {
 
 	public static void sendAllCapesToPlayer(ServerPlayer recipent) {
 		CAPES_IN_SERVER.forEach((uuid, cape) -> PacketHelper.sendToPlayer(recipent, CapeCustomizePacket.createPacket(uuid, cape)));
+	}
+
+	public static void sendCapeReposToPlayer(ServerPlayer recipent) {
 		CapeUtil.getCapeRepos().forEach(repoURL -> PacketHelper.sendToPlayer(recipent, new LoadCapeRepoPacket(repoURL)));
 	}
 
