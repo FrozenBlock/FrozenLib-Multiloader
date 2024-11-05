@@ -15,6 +15,7 @@ import net.frozenblock.lib.event.event.ServerTickEvents;
 import net.frozenblock.lib.integration.api.ModIntegrations;
 import net.frozenblock.lib.platform.api.NeoForgeFreezer;
 import net.frozenblock.lib.networking.FrozenLibNetworking;
+import net.frozenblock.lib.platform.api.PlatformHelper;
 import net.frozenblock.lib.registry.api.FrozenLibRegistries;
 import net.frozenblock.lib.screenshake.api.ScreenShakeManager;
 import net.frozenblock.lib.screenshake.api.command.ScreenShakeCommand;
@@ -31,6 +32,7 @@ import net.frozenblock.lib.worldgen.feature.api.FrozenFeatures;
 import net.frozenblock.lib.worldgen.feature.api.placementmodifier.FrozenPlacementModifiers;
 import net.frozenblock.lib.worldgen.structure.impl.FrozenRuleBlockEntityModifiers;
 import net.frozenblock.lib.worldgen.structure.impl.FrozenStructureProcessorTypes;
+import net.frozenblock.lib.worldgen.structure.impl.StructureUpgradeCommand;
 import net.minecraft.commands.synchronization.ArgumentTypeInfos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.commands.WardenSpawnTrackerCommand;
@@ -68,6 +70,9 @@ public class FrozenLib {
 			ConfigCommand.register(dispatcher);
 			TagListCommand.register(dispatcher);
 			ScaleEntityCommand.register(dispatcher);
+			if (PlatformHelper.isDevelopmentEnvironment()) {
+				StructureUpgradeCommand.register(dispatcher);
+			}
 		});
 
 		if (FrozenLibConfig.get().wardenSpawnTrackerCommand)

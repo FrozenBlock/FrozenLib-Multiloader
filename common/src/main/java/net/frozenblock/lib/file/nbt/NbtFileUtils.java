@@ -64,7 +64,7 @@ public class NbtFileUtils {
 	 * @param file The file to save to.
 	 */
 	public static void saveToFile(CompoundTag compoundTag, @NotNull File file) {
-		file.mkdirs();
+		file.getParentFile().mkdirs();
 		try {
 			NbtIo.writeCompressed(compoundTag, file.toPath());
 		} catch (IOException iOException) {
