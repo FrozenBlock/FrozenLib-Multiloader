@@ -59,9 +59,12 @@ public abstract class CreateWorldScreenMixinNeoForgePatch {
 		at = @At("HEAD")
 	)
 	private static void onCreateDataPackLoadEnd(
-		WorldLoader.DataLoadContext loadContext,
+		CloseableResourceManager closeableResourceManager,
+		ReloadableServerResources resources,
+		LayeredRegistryAccess<?> layeredRegistryAccess,
+		CreateWorldScreen.DataPackReloadCookie cookie,
 		CallbackInfoReturnable<WorldCreationContext> info
 	) {
-		ResourceLoaderEvents.END_DATA_PACK_RELOAD.invoke(event -> event.onEndDataPackReload(null, loadContext.resources(), null));
+		ResourceLoaderEvents.END_DATA_PACK_RELOAD.invoke(event -> event.onEndDataPackReload(null, closeableResourceManager, null));
 	}
 }

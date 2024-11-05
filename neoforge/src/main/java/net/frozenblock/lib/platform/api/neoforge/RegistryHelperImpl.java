@@ -55,7 +55,7 @@ public class RegistryHelperImpl {
 		return (MappedRegistry<T>) registry;
 	}
 
-	public <T> Registry<T> createBuilder(ResourceKey<Registry<T>> key, boolean sync) {
+	public static <T> Registry<T> createBuilder(ResourceKey<Registry<T>> key, boolean sync) {
 		return new RegistryBuilder<>(key).sync(sync).create();
 	}
 
