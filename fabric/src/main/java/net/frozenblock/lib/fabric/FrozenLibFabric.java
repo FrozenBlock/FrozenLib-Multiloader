@@ -11,6 +11,9 @@ import net.frozenblock.lib.debug.item.FrozenLibDevItems;
 import net.frozenblock.lib.event.event.RegisterCommandEvents;
 import net.frozenblock.lib.event.event.ServerLevelEvents;
 import net.frozenblock.lib.platform.api.PlatformHelper;
+import org.quiltmc.qsl.frozenblock.fabric.core.registry.api.sync.ModProtocol;
+import org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync.server.ServerRegistrySync;
+import org.quiltmc.qsl.frozenblock.misc.datafixerupper.impl.ServerFreezer;
 
 public class FrozenLibFabric implements ModInitializer, DedicatedServerModInitializer {
 
@@ -22,6 +25,12 @@ public class FrozenLibFabric implements ModInitializer, DedicatedServerModInitia
 	@Override
 	public void onInitialize() {
 		FrozenLib.onInitialize();
+
+		// QUILT INIT
+
+		ServerFreezer.onInitialize();
+		ModProtocol.loadVersions();
+		ServerRegistrySync.registerHandlers();
 
 		if (PlatformHelper.isDevelopmentEnvironment()) {
 			FrozenLibDevItems.register();

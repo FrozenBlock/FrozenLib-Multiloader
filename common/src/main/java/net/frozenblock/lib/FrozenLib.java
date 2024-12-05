@@ -38,7 +38,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.commands.WardenSpawnTrackerCommand;
 import net.minecraft.world.level.storage.DimensionDataStorage;
 import org.jetbrains.annotations.ApiStatus;
-import org.quiltmc.qsl.frozenblock.core.registry.api.sync.ModProtocol;
 import org.quiltmc.qsl.frozenblock.misc.datafixerupper.impl.ServerFreezer;
 
 @ApiStatus.Internal
@@ -48,12 +47,6 @@ public class FrozenLib {
 		FrozenLibRegistries.initRegistry();
 
 		ServerFreezer.onInitialize();
-		ModProtocol.loadVersions();
-		//TODO: ServerRegistrySync.registerHandlers();
-
-		// CONTINUE FROZENLIB INIT
-
-		//TODO: ClientRegistrySync.registerHandlers();
 
 		FrozenRuleBlockEntityModifiers.init();
 		FrozenStructureProcessorTypes.init();

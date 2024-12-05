@@ -9,12 +9,16 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.frozenblock.lib.FrozenLibClient;
 import net.frozenblock.lib.networking.client.FrozenLibClientNetworking;
 import net.frozenblock.lib.networking.impl.PacketSender;
+import org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync.client.ClientRegistrySync;
 
 public class FrozenLibFabricClient implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
 		FrozenLibClient.onInitialize();
+
+		ClientRegistrySync.registerHandlers();
+
 		FrozenLibClientNetworking.registerClientReceivers();
 
 		// Redirect Fabric -> FrozenLib events
