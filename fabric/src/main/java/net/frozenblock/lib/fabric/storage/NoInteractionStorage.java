@@ -15,12 +15,15 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.storage.api;
+package net.frozenblock.lib.fabric.storage;
 
-// TODO: [Liuk] ok now add it
-// all it does it just restrict access from blocks like hoppers and copper pipes, its used for the stone chest
-public class NoInteractionStorage<T> {
-	/*
+import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
+import net.fabricmc.fabric.api.transfer.v1.storage.StorageView;
+import net.fabricmc.fabric.api.transfer.v1.transaction.TransactionContext;
+import org.jetbrains.annotations.NotNull;
+import java.util.Iterator;
+
+public class NoInteractionStorage<T> implements Storage<T> {
 
     @Override
     public long insert(T resource, long maxAmount, TransactionContext transaction) {
@@ -43,7 +46,7 @@ public class NoInteractionStorage<T> {
     }
 
     @Override
-    public Iterator<StorageView<T>> iterator() {
+    public @NotNull Iterator<StorageView<T>> iterator() {
         return new Iterator<>() {
             @Override
             public boolean hasNext() {
@@ -55,5 +58,5 @@ public class NoInteractionStorage<T> {
                 return null;
             }
         };
-    }*/
+    }
 }

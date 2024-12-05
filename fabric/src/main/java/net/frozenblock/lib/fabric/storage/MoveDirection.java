@@ -15,29 +15,30 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.storage.api;
+package net.frozenblock.lib.fabric.storage;
+
+
+import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
+import net.fabricmc.fabric.api.transfer.v1.transaction.TransactionContext;
 
 /**
  * @since 1.3.8
  */
-//TODO: [Liuk] ok now make it on neoforge lol
-
-// public enum MoveDirection {
+public enum MoveDirection {
 	/**
 	 * Inserts an item into a container.
 	 */
-	// IN(Storage::insert),
+	IN(Storage::insert),
 	/**
 	 * Extracts an item from a container.
 	 */
-	// OUT(Storage::extract);
+	OUT(Storage::extract);
 
 	/**
 	 * The behavior dictating where an item will be moved to/from.
  	 */
-	// private final StorageInteraction<Object> interaction;
+	private final StorageInteraction<Object> interaction;
 
-	/*
 	MoveDirection(StorageInteraction<Object> interaction) {
 		this.interaction = interaction;
 	}
@@ -52,4 +53,3 @@ package net.frozenblock.lib.storage.api;
 		return this.interaction.moveResources((Storage<Object>) inventory, resource, maxAmount, transaction, true);
 	}
 }
-	 */

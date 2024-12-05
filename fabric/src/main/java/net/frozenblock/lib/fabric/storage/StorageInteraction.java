@@ -15,20 +15,20 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.storage.api;
+package net.frozenblock.lib.fabric.storage;
+
+import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 
 /**
  * @param <T> The type of resource being moved.
  * @since 1.3.8
  */
 
-// TODO: [Liuk] and this too.
 //@FunctionalInterface
 public interface StorageInteraction<T> {
 	/**
 	 * Behavior that dictates where to move an item to.
 	 */
-	/*
 	long moveResources(Storage<T> storage, T resource, long maxAmount, TransactionContext transaction);
 
 	default long moveResources(Storage<T> storage, T resource, long maxAmount, TransactionContext transaction, boolean simulate) {
@@ -41,5 +41,5 @@ public interface StorageInteraction<T> {
 		}
 
 		return moveResources(storage, resource, maxAmount, transaction);
-    }*/
+    }
 }
