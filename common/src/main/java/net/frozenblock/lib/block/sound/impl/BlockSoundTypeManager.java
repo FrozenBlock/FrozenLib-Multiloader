@@ -63,7 +63,7 @@ public class BlockSoundTypeManager implements SimpleResourceReloadListener<Block
 	public static final BlockSoundTypeManager INSTANCE = new BlockSoundTypeManager();
 
 	private final List<AbstractQueuedBlockSoundTypeOverwrite<?>> queuedOverwrites = new ArrayList<>();
-	private Map<ResourceLocation, List<BlockSoundTypeOverwrite>> overwrites;
+	private final Map<ResourceLocation, List<BlockSoundTypeOverwrite>> overwrites = new Object2ObjectOpenHashMap<>();
 
 	public void queueOverwrite(Block block, SoundType soundType, BooleanSupplier condition) {
 		this.queuedOverwrites.add(new QueuedBlockSoundTypeOverwrite(block, soundType, condition));
