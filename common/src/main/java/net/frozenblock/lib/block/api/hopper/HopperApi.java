@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.storage.api;
+package net.frozenblock.lib.block.api.hopper;
 
 import java.util.ArrayList;
 import lombok.experimental.UtilityClass;

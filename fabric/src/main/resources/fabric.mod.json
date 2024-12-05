@@ -48,7 +48,6 @@
     "mixin/frozenlib.screenshake.mixins.json",
     "mixin/frozenlib.sound.mixins.json",
     "mixin/frozenlib.spotting_icons.mixins.json",
-    "mixin/frozenlib.storage.mixins.json",
     "mixin/frozenlib.wind.mixins.json",
     "mixin/frozenlib.worldgen.biome.mixins.json",
     "mixin/frozenlib.worldgen.heightmap.mixins.json",
