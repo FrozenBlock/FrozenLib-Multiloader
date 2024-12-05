@@ -15,11 +15,11 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.integration.api;
+package net.frozenblock.lib.mod_integration.api;
 
 import java.util.Optional;
 import java.util.function.Supplier;
-import net.frozenblock.lib.integration.impl.EmptyModIntegration;
+import net.frozenblock.lib.mod_integration.impl.EmptyModIntegration;
 import net.frozenblock.lib.platform.api.PlatformHelper;
 
 public class ModIntegrationSupplier<T extends ModIntegration> {

@@ -15,13 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.mobcategory.mixin;
+package net.frozenblock.lib.entity.mixin.category;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import net.frozenblock.lib.mobcategory.api.FrozenMobCategories;
-import net.frozenblock.lib.mobcategory.api.entrypoint.FrozenMobCategoryEntrypoint;
-import net.frozenblock.lib.mobcategory.impl.FrozenMobCategory;
+import net.frozenblock.lib.entity.api.category.FrozenMobCategories;
+import net.frozenblock.lib.entity.api.category.entrypoint.FrozenMobCategoryEntrypoint;
+import net.frozenblock.lib.entity.impl.category.FrozenMobCategory;
 import net.frozenblock.lib.platform.api.EntryPointHelper;
 import net.minecraft.world.entity.MobCategory;
 import org.objectweb.asm.Opcodes;

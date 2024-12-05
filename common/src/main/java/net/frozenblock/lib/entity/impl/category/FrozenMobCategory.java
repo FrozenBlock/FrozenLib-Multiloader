@@ -15,22 +15,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.integration.impl;
+package net.frozenblock.lib.entity.impl.category;
 
-import net.frozenblock.lib.integration.api.ModIntegration;
-import org.jetbrains.annotations.ApiStatus;
+import net.minecraft.resources.ResourceLocation;
 
-/**
- * An empty mod integration used if a mod is not loaded
- */
-@ApiStatus.Internal
-public class EmptyModIntegration extends ModIntegration {
-	public EmptyModIntegration(String modID) {
-		super(modID);
-	}
-
-	@Override
-	public void init() {
-
-	}
+public record FrozenMobCategory(ResourceLocation key, int max, boolean isFriendly, boolean isPersistent,
+								int despawnDistance) {
 }

@@ -15,23 +15,22 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.mobcategory.api;
+package net.frozenblock.lib.entity.api.category.entrypoint;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import lombok.experimental.UtilityClass;
-import net.minecraft.world.entity.MobCategory;
+import java.util.ArrayList;
+import net.frozenblock.lib.entity.impl.category.FrozenMobCategory;
+import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
-@UtilityClass
-public class FrozenMobCategories {
+public interface FrozenMobCategoryEntrypoint {
 
-	private static final Map<String, MobCategory> NEW_MOB_CATEROGIES = new LinkedHashMap<>();
+	void newCategories(ArrayList<FrozenMobCategory> context);
 
-	public static void addMobCategory(String id, MobCategory category) {
-		NEW_MOB_CATEROGIES.put(id, category);
+	@Contract("_, _, _, _, _ -> new")
+	static @NotNull FrozenMobCategory createCategory(ResourceLocation key, int max, boolean isFriendly, boolean isPersistent, int despawnDistance) {
+		return new FrozenMobCategory(key, max, isFriendly, isPersistent, despawnDistance);
 	}
 
-	public static MobCategory getCategory(String modId, String name) {
-		return NEW_MOB_CATEROGIES.get(modId.toUpperCase() + name.toUpperCase());
-	}
 }
+

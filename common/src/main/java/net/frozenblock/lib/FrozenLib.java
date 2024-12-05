@@ -12,7 +12,7 @@ import net.frozenblock.lib.event.event.RegisterCommandEvents;
 import net.frozenblock.lib.event.event.RegistryFreezeEvents;
 import net.frozenblock.lib.event.event.ServerLevelEvents;
 import net.frozenblock.lib.event.event.ServerTickEvents;
-import net.frozenblock.lib.integration.api.ModIntegrations;
+import net.frozenblock.lib.mod_integration.api.ModIntegrations;
 import net.frozenblock.lib.platform.api.NeoForgeFreezer;
 import net.frozenblock.lib.networking.FrozenLibNetworking;
 import net.frozenblock.lib.platform.api.PlatformHelper;

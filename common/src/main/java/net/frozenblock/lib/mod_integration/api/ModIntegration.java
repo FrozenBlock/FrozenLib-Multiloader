@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.integration.api;
+package net.frozenblock.lib.mod_integration.api;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

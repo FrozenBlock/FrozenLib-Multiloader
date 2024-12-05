@@ -60,9 +60,6 @@ config = "mixin/${mod_id}.item.mixins.json"
 config = "mixin/${mod_id}.menu.mixins.json"
 
 [[mixins]]
-config = "mixin/${mod_id}.mobcategory.mixins.json"
-
-[[mixins]]
 config = "mixin/${mod_id}.recipe.mixins.json"
 
 [[mixins]]
