@@ -19,13 +19,13 @@ package net.frozenblock.lib.worldgen.biome.api.parameters;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
-import java.util.ArrayList;
+
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 import lombok.experimental.UtilityClass;
-import net.frozenblock.lib.worldgen.biome.impl.impl.BiomeParameters;
+import net.frozenblock.lib.worldgen.biome.impl.BiomeParameters;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;

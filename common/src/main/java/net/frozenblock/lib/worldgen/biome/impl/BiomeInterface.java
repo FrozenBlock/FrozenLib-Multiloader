@@ -15,16 +15,14 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.worldgen.biome.impl.impl;
+package net.frozenblock.lib.worldgen.biome.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.world.level.biome.Climate;
+import net.minecraft.resources.ResourceLocation;
 
-public class BiomeParameters {
-	public final List<Climate.ParameterPoint> points = new ArrayList<>();
+public interface BiomeInterface {
 
-	public void add(Climate.ParameterPoint... points) {
-		this.points.addAll(List.of(points));
-	}
+	void frozenLib$setBiomeID(ResourceLocation biomeID);
+
+	ResourceLocation frozenLib$getBiomeID();
+
 }
