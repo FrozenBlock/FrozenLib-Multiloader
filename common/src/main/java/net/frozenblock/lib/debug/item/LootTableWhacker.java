@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.ingamedevtools.item;
+package net.frozenblock.lib.debug.item;
 
 import net.frozenblock.lib.FrozenLibLogUtils;
 import net.minecraft.core.BlockPos;

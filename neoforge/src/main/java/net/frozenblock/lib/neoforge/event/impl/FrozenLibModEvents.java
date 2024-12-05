@@ -1,6 +1,6 @@
 package net.frozenblock.lib.neoforge.event.impl;
 
-import net.frozenblock.lib.ingamedevtools.FrozenLibDevItems;
+import net.frozenblock.lib.debug.item.FrozenLibDevItems;
 import net.frozenblock.lib.item.api.CreativeTabAPI;
 import net.frozenblock.lib.neoforge.event.api.FrozenLibNeoForgePacketRegisterEvent;
 import net.frozenblock.lib.networking.client.FrozenLibClientNetworking;

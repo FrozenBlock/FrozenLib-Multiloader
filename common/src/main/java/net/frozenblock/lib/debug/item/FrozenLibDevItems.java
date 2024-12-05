@@ -15,11 +15,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.ingamedevtools;
+package net.frozenblock.lib.debug.item;
 
 import net.frozenblock.lib.FrozenLibConstants;
-import net.frozenblock.lib.ingamedevtools.item.PanoramaCamera;
-import net.frozenblock.lib.ingamedevtools.item.LootTableWhacker;
 import net.frozenblock.lib.registry.api.FrozenLibRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
