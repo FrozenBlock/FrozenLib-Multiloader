@@ -14,6 +14,7 @@ public abstract class AbstractQueuedBlockSoundTypeOverwrite<T> {
 
 	public AbstractQueuedBlockSoundTypeOverwrite(T value, SoundType soundType, BooleanSupplier soundCondition) {
 		this.value = value;
+		this.soundType = soundType;
 		this.soundCondition = soundCondition;
 	}
 
