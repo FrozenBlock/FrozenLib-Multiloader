@@ -321,7 +321,6 @@ public final class FrozenLibClientNetworking {
 		if (entity != null) {
 			ScreenShaker.addShake(entity, intensity, duration, fallOffStart, maxDistance, ticks);
 		}
-		// TODO: [Liuk] look! Networking isn't working... this never runs.
 	}
 
 	@ApiStatus.Internal
