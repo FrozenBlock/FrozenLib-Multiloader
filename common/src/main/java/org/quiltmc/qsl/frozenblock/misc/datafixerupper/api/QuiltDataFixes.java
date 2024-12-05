@@ -88,7 +88,6 @@ public class QuiltDataFixes {
      * @param modId            the mod identifier
      * @param dataFixerBuilder the data fixer builder
      */
-	// todo: add this
     public static void buildAndRegisterFixer(
 		@NotNull String modId,
 		@NotNull QuiltDataFixerBuilder dataFixerBuilder
@@ -129,8 +128,6 @@ public class QuiltDataFixes {
 	 * @param modId            the mod identifier
 	 * @param dataFixerBuilder the data fixer builder
 	 */
-	// todo: add this
-	// bruh hi tree
 	public static void buildAndRegisterMinecraftFixer(
 		@NotNull String modId,
 		@NotNull QuiltDataFixerBuilder dataFixerBuilder
