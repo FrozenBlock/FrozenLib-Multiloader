@@ -34,7 +34,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
- * Modified to work on Fabric & NeoForge.
+ * Modified to work on Multiloader
  */
 @Environment(EnvType.CLIENT)
 @Mixin(CreateWorldScreen.class)

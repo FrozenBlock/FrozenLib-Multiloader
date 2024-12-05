@@ -32,7 +32,7 @@ import org.jetbrains.annotations.Range;
 /**
  * An extended variant of the {@link DataFixerBuilder} class, which provides an extra method.
  * <p>
- * Modified to work on Fabric
+ * Modified to work on Multiloader
  */
 public class QuiltDataFixerBuilder extends DataFixerBuilder {
     protected final int dataVersion;

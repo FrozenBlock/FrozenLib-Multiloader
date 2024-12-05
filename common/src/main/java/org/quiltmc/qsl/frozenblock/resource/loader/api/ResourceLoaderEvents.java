@@ -28,7 +28,7 @@ import org.jetbrains.annotations.Nullable;
 /**
  * Events related to the resource loader.
  * <p>
- * Modified to work on Fabric
+ * Modified to work on Multiloader
  */
 @UtilityClass
 public class ResourceLoaderEvents {

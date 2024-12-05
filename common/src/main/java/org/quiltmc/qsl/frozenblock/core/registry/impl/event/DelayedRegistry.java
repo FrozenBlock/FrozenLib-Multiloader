@@ -46,7 +46,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Modified to work on Fabric
+ * Modified to work on Multiloader
  */
 @ApiStatus.Internal
 public abstract class DelayedRegistry<T> implements WritableRegistry<T> {

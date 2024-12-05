@@ -26,7 +26,7 @@ import net.minecraft.resources.ResourceLocation;
  * <p>
  * Underlying implementations may be mutable; do not store this object in your own fields directly.
  * <p>
- * Modified to work on Fabric
+ * Modified to work on Multiloader
  *
  * @param <V> the entry type used by the relevant {@link Registry}
  */

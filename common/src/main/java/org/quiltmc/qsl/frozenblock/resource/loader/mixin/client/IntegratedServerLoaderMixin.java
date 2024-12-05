@@ -30,7 +30,7 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
- * Modified to work on Fabric
+ * Modified to work on Multiloader
  */
 @Mixin(WorldOpenFlows.class)
 public abstract class IntegratedServerLoaderMixin {

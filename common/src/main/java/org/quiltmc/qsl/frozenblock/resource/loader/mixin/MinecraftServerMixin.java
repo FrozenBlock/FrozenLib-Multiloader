@@ -31,7 +31,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
- * Modified to work on Fabric
+ * Modified to work on Multiloader
  */
 @Mixin(MinecraftServer.class)
 public abstract class MinecraftServerMixin {

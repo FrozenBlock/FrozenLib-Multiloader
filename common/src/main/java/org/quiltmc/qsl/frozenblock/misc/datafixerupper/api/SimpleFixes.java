@@ -39,7 +39,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Provides methods to add common {@link DataFix}es to {@link DataFixerBuilder}s.
  * <p>
- * Modified to work on Fabric
+ * Modified to work on Multiloader
  */
 public final class SimpleFixes {
     private SimpleFixes() {

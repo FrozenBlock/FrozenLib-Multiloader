@@ -33,7 +33,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 /**
- * Modified to work on Fabric
+ * Modified to work on Multiloader
  */
 @Mixin(RegistryDataLoader.class)
 public class RegistryDataLoaderMixin {

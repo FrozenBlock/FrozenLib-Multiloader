@@ -30,7 +30,7 @@ import org.quiltmc.qsl.frozenblock.core.registry.api.event.RegistryEntryContext;
  * mutable. The api interface only allows accessing fields of the class, whereas modification methods are reserved for the
  * impl.
  * <p>
- * Modified to work on Fabric
+ * Modified to work on Multiloader
  *
  * @param <V> the type of the relevant {@link Registry}'s entries
  */

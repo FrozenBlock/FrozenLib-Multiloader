@@ -32,13 +32,10 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
- * Modified to work on Fabric
+ * Modified to work on Multiloader
  */
 @Mixin(Main.class)
 public class MainMixin {
-    @Shadow
-    @Final
-    private static Logger LOGGER;
 
     @Inject(
             method = "main",

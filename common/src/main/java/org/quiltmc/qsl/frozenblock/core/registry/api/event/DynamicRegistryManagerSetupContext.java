@@ -36,7 +36,7 @@ import org.jetbrains.annotations.Nullable;
 /**
  * Represents the {@link RegistryAccess} setup context provided in the {@link RegistryEvents#DYNAMIC_REGISTRY_SETUP} event.
  * <p>
- * Modified to work on Fabric
+ * Modified to work on Multiloader
  */
 @ApiStatus.NonExtendable
 public interface DynamicRegistryManagerSetupContext {

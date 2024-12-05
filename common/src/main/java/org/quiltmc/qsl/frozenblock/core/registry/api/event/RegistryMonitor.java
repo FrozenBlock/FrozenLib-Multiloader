@@ -27,7 +27,7 @@ import org.quiltmc.qsl.frozenblock.core.registry.impl.event.RegistryMonitorImpl;
 /**
  * A higher level tool for monitoring the manipulation of Minecraft's content registries.
  * <p>
- * Modified to work on Fabric
+ * Modified to work on Multiloader
  *
  * @param <V> the entry type of the monitored {@link Registry}
  * @see RegistryEvents RegistryEvents for a low-level API

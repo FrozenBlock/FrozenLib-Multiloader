@@ -26,7 +26,7 @@ import org.jetbrains.annotations.ApiStatus;
 import org.quiltmc.qsl.frozenblock.misc.datafixerupper.impl.QuiltDataFixesInternals;
 
 /**
- * Modified to work on Fabric
+ * Modified to work on Multiloader
  */
 @ApiStatus.Internal
 @Environment(EnvType.CLIENT)

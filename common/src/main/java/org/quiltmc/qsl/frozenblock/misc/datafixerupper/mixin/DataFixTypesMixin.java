@@ -32,7 +32,8 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 
 /**
- * Modified to work on Fabric
+ * Modified to work on Multiloader
+ * <p>
  * Original name was <STRONG>NbtHelperMixin</STRONG>
  */
 @Mixin(value = DataFixTypes.class, priority = 1001)

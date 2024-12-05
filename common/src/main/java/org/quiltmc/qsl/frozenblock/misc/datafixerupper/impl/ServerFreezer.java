@@ -23,7 +23,7 @@ import net.frozenblock.lib.event.event.ServerLifecycleEvents;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
- * Modified to work on Fabric
+ * Modified to work on Multiloader
  */
 @ApiStatus.Internal
 public final class ServerFreezer {

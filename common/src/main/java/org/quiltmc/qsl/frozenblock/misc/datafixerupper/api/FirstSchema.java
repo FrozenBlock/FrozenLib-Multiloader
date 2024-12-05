@@ -27,7 +27,7 @@ import org.jetbrains.annotations.Range;
 /**
  * Represents a {@link Schema} that has no parent.
  * <p>
- * Modified to work on Fabric
+ * Modified to work on Multiloader
  */
 public class FirstSchema extends Schema {
     /**

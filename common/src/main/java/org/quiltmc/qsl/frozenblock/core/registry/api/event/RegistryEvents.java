@@ -35,7 +35,7 @@ import org.jetbrains.annotations.NotNull;
  * For more high-level monitoring of registries, including methods to ease the inconvenience of mod load order,
  * use RegistryMonitor.
  * <p>
- * Modified to work on Fabric
+ * Modified to work on Multiloader
  */
 @UtilityClass
 public class RegistryEvents {

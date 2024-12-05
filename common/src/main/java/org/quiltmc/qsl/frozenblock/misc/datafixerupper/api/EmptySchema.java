@@ -30,7 +30,7 @@ import org.jetbrains.annotations.Range;
 /**
  * Represents an empty {@link Schema}, having no parent and containing no type definitions.
  * <p>
- * Modified to work on Fabric
+ * Modified to work on Multiloader
  */
 public final class EmptySchema extends FirstSchema {
     /**

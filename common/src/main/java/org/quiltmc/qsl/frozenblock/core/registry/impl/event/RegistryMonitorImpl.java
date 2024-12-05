@@ -33,7 +33,7 @@ import org.quiltmc.qsl.frozenblock.core.registry.api.event.RegistryMonitor;
 /**
  * The default implementation of {@link RegistryMonitor}.
  * <p>
- * Modified to work on Fabric
+ * Modified to work on Multiloader
  *
  * @param <V> the entry type of the monitored {@link Registry}
  */
