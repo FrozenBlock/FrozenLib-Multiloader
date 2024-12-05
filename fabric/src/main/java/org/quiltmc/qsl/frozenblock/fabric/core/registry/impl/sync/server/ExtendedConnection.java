@@ -16,8 +16,16 @@
  * limitations under the License.
  */
 
-package org.quiltmc.qsl.frozenblock.core.registry.impl.sync.server;
+package org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync.server;
 
-public interface SyncTaskHolder {
-	QuiltSyncTask frozenLib$getQuiltSyncTask();
+import net.minecraft.server.network.ServerConfigurationPacketListenerImpl;
+
+public interface ExtendedConnection {
+	void frozenLib_quilt$setModProtocol(String id, int version);
+
+	int frozenLib_quilt$getModProtocol(String id);
+
+	static ExtendedConnection from(ServerConfigurationPacketListenerImpl handler) {
+		return (ExtendedConnection) handler.connection;
+	}
 }

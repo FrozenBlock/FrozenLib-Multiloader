@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package org.quiltmc.qsl.frozenblock.core.registry.impl.sync.client;
+package org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync.client;
 
 import java.util.ArrayList;
 import java.util.List;

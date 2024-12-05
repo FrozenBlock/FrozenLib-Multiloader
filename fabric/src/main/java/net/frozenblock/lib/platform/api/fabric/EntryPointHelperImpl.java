@@ -1,10 +1,10 @@
 package net.frozenblock.lib.platform.api.fabric;
 
+import java.util.ArrayList;
+import java.util.List;
 import net.fabricmc.loader.api.FabricLoader;
 import net.frozenblock.lib.FrozenLibLogUtils;
 import org.jetbrains.annotations.NotNull;
-import java.util.ArrayList;
-import java.util.List;
 
 public class EntryPointHelperImpl {
 	public static <T> @NotNull List<T> getEntrypoints(String namespace, Class<T> type) {

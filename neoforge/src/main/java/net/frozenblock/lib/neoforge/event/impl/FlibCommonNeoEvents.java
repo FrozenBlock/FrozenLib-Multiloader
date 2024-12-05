@@ -89,4 +89,9 @@ public class FlibCommonNeoEvents {
 			ServerTickEvents.END_LEVEL_TICK.invoke(e -> e.onEndTick(serverLevel));
 		}
 	}
+
+	@SubscribeEvent
+	public static void beforeConfigure() {
+
+	}
 }

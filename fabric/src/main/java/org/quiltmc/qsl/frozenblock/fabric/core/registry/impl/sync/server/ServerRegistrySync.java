@@ -16,21 +16,23 @@
  * limitations under the License.
  */
 
-package org.quiltmc.qsl.frozenblock.core.registry.impl.sync.server;
+package org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync.server;
 
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
-import net.frozenblock.lib.networking.impl.PacketSender;
-import net.frozenblock.lib.platform.api.RegistryHelper;
-import net.frozenblock.lib.platform.impl.ServerPayloadContext;
+import net.fabricmc.fabric.api.networking.v1.PacketSender;
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
+import net.fabricmc.fabric.api.networking.v1.ServerConfigurationConnectionEvents;
+import net.fabricmc.fabric.api.networking.v1.ServerConfigurationNetworking;
+import net.fabricmc.fabric.api.networking.v1.ServerConfigurationNetworking.Context;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.ApiStatus;
-import org.quiltmc.qsl.frozenblock.core.registry.api.sync.ModProtocol;
-import org.quiltmc.qsl.frozenblock.core.registry.impl.sync.ClientPackets;
-import org.quiltmc.qsl.frozenblock.core.registry.impl.sync.ProtocolVersions;
-import org.quiltmc.qsl.frozenblock.core.registry.impl.sync.ServerPackets;
+import org.quiltmc.qsl.frozenblock.fabric.core.registry.api.sync.ModProtocol;
+import org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync.ClientPackets;
+import org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync.ProtocolVersions;
+import org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync.ServerPackets;
 
 @ApiStatus.Internal
 public final class ServerRegistrySync {
@@ -45,8 +47,7 @@ public final class ServerRegistrySync {
 	public static IntList SERVER_SUPPORTED_PROTOCOL = new IntArrayList(ProtocolVersions.IMPL_SUPPORTED_VERSIONS);
 
 	public static void registerHandlers() {
-		//TODO: Check this event
-		/*ServerConfigurationConnectionEvents.CONFIGURE.register(((handler, server) -> {
+		ServerConfigurationConnectionEvents.CONFIGURE.register(((handler, server) -> {
 			// You must check to see if the client can handle your config task
 			if (
 				ServerConfigurationNetworking.canSend(handler, ServerPackets.Handshake.PACKET_TYPE)
@@ -56,31 +57,33 @@ public final class ServerRegistrySync {
 			) {
 				handler.addTask(new QuiltSyncTask(handler, handler.connection));
 			}
-		}));*/
+		}));
+		var registryClient = PayloadTypeRegistry.configurationC2S();
+		registryClient.register(ClientPackets.Handshake.PACKET_TYPE, ClientPackets.Handshake.CODEC);
+		registryClient.register(ClientPackets.ModProtocol.PACKET_TYPE, ClientPackets.ModProtocol.CODEC);
+		registryClient.register(ClientPackets.End.PACKET_TYPE, ClientPackets.End.CODEC);
 
-		// TODO: [Liuk] also these. CONFIG PACKETS.
-		RegistryHelper.registerC2S(ClientPackets.Handshake.PACKET_TYPE, ClientPackets.Handshake.CODEC);
-		RegistryHelper.registerC2S(ClientPackets.ModProtocol.PACKET_TYPE, ClientPackets.ModProtocol.CODEC);
-		RegistryHelper.registerC2S(ClientPackets.End.PACKET_TYPE, ClientPackets.End.CODEC);
+		ServerConfigurationNetworking.registerGlobalReceiver(ClientPackets.Handshake.PACKET_TYPE, ServerRegistrySync::handleHandshake);
+		ServerConfigurationNetworking.registerGlobalReceiver(ClientPackets.ModProtocol.PACKET_TYPE, ServerRegistrySync::handleModProtocol);
+		ServerConfigurationNetworking.registerGlobalReceiver(ClientPackets.End.PACKET_TYPE, ServerRegistrySync::handleEnd);
 
-		RegistryHelper.registerServerReceiver(ClientPackets.Handshake.PACKET_TYPE, ServerRegistrySync::handleHandshake);
-		RegistryHelper.registerServerReceiver(ClientPackets.ModProtocol.PACKET_TYPE, ServerRegistrySync::handleModProtocol);
-		RegistryHelper.registerServerReceiver(ClientPackets.End.PACKET_TYPE, ServerRegistrySync::handleEnd);
+		var registry = PayloadTypeRegistry.configurationS2C();
+		registry.register(ServerPackets.Handshake.PACKET_TYPE, ServerPackets.Handshake.CODEC);
+		registry.register(ServerPackets.ModProtocol.PACKET_TYPE, ServerPackets.ModProtocol.CODEC);
+		registry.register(ServerPackets.End.PACKET_TYPE, ServerPackets.End.CODEC);
+		registry.register(ServerPackets.ErrorStyle.PACKET_TYPE, ServerPackets.ErrorStyle.CODEC);
 	}
 
-	public static void handleHandshake(ClientPackets.Handshake handshake, ServerPayloadContext ctx) {
-		// TODO: implement
-		//((QuiltSyncTask) ctx.networkHandler().currentTask).handleHandshake(handshake);
+	public static void handleHandshake(ClientPackets.Handshake handshake, Context ctx) {
+		((QuiltSyncTask) ctx.networkHandler().currentTask).handleHandshake(handshake);
 	}
 
-	public static void handleModProtocol(ClientPackets.ModProtocol modProtocol, ServerPayloadContext ctx) {
-		// TODO: implement
-		//((QuiltSyncTask) ctx.networkHandler().currentTask).handleModProtocol(modProtocol, ctx.responseSender());
+	public static void handleModProtocol(ClientPackets.ModProtocol modProtocol, Context ctx) {
+		((QuiltSyncTask) ctx.networkHandler().currentTask).handleModProtocol(modProtocol, ctx.responseSender());
 	}
 
-	public static void handleEnd(ClientPackets.End end, ServerPayloadContext ctx) {
-		// TODO: implement
-		//((QuiltSyncTask) ctx.networkHandler().currentTask).handleEnd(end);
+	public static void handleEnd(ClientPackets.End end, Context ctx) {
+		((QuiltSyncTask) ctx.networkHandler().currentTask).handleEnd(end);
 	}
 
 	public static Component text(String string) {
@@ -101,23 +104,15 @@ public final class ServerRegistrySync {
 	}
 
 	public static boolean shouldSync() {
-		if (forceDisable) {
-			return false;
-		}
+		if (forceDisable) return false;
 
         return ModProtocol.enabled;
     }
 
 	public static boolean requiresSync() {
-		if (forceDisable) {
-			return false;
-		}
+		if (forceDisable) return false;
 
-		if (!ModProtocol.REQUIRED.isEmpty()) {
-			return true;
-		}
-
-		return false;
+		return !ModProtocol.REQUIRED.isEmpty();
 	}
 
 	public static void sendSyncPackets(PacketSender sender, int syncVersion) {

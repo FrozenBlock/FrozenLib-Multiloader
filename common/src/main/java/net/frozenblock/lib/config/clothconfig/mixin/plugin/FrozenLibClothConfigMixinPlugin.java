@@ -19,7 +19,6 @@ package net.frozenblock.lib.config.clothconfig.mixin.plugin;
 
 import java.util.List;
 import java.util.Set;
-
 import net.frozenblock.lib.platform.api.PlatformHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

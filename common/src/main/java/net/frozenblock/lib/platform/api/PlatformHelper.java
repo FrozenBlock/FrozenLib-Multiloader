@@ -1,9 +1,8 @@
 package net.frozenblock.lib.platform.api;
 
 import dev.architectury.injectables.annotations.ExpectPlatform;
-import net.fabricmc.api.EnvType;
-import org.jetbrains.annotations.NotNull;
 import java.nio.file.Path;
+import org.jetbrains.annotations.NotNull;
 
 public class PlatformHelper {
 	/**

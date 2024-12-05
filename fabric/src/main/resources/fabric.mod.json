@@ -58,6 +58,7 @@
     "mixin/frozenlib_quiltmc_registry.mixins.json",
     "mixin/frozenlib_quiltmc_resource_loader.mixins.json",
 
+    "frozenlib_quiltmc_registry.fabric.mixins.json",
     "frozenlib.fabric.mixins.json",
     "frozenlib.modmenu.mixins.json"
   ],

@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package org.quiltmc.qsl.frozenblock.core.registry.impl.sync;
+package org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -26,8 +26,8 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.network.chat.MutableComponent;
-import org.quiltmc.qsl.frozenblock.core.registry.api.sync.ModProtocol;
-import org.quiltmc.qsl.frozenblock.core.registry.api.sync.ModProtocolDef;
+import org.quiltmc.qsl.frozenblock.fabric.core.registry.api.sync.ModProtocol;
+import org.quiltmc.qsl.frozenblock.fabric.core.registry.api.sync.ModProtocolDef;
 
 public class RegistrySyncText {
 

@@ -16,12 +16,12 @@
  * limitations under the License.
  */
 
-package org.quiltmc.qsl.frozenblock.core.registry.api.sync;
+package org.quiltmc.qsl.frozenblock.fabric.core.registry.api.sync;
 
 import it.unimi.dsi.fastutil.ints.IntCollection;
 import it.unimi.dsi.fastutil.ints.IntList;
 import net.minecraft.network.FriendlyByteBuf;
-import org.quiltmc.qsl.frozenblock.core.registry.impl.sync.ProtocolVersions;
+import org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync.ProtocolVersions;
 
 public record ModProtocolDef(String id, String displayName, IntList versions, boolean optional) {
 	public static void write(FriendlyByteBuf buf, ModProtocolDef def) {

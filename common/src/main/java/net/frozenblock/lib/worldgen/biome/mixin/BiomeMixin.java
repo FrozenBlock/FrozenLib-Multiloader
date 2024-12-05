@@ -18,6 +18,7 @@
 package net.frozenblock.lib.worldgen.biome.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import java.util.Optional;
 import net.frozenblock.lib.worldgen.biome.api.FrozenGrassColorModifiers;
 import net.frozenblock.lib.worldgen.biome.impl.BiomeInterface;
 import net.frozenblock.lib.worldgen.biome.impl.FrozenGrassColorModifier;
@@ -26,8 +27,6 @@ import net.minecraft.world.level.biome.Biome;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
-
-import java.util.Optional;
 
 @Mixin(Biome.class)
 public class BiomeMixin implements BiomeInterface {

@@ -16,12 +16,12 @@
  * limitations under the License.
  */
 
-package org.quiltmc.qsl.frozenblock.core.registry.mixin.client;
+package org.quiltmc.qsl.frozenblock.fabric.core.registry.mixin.client;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
-import org.quiltmc.qsl.frozenblock.core.registry.impl.sync.client.ClientRegistrySync;
+import org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync.client.ClientRegistrySync;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -32,7 +32,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MinecraftMixin {
 
 	@Inject(method = "disconnect(Lnet/minecraft/client/gui/screens/Screen;)V", at = @At("TAIL"))
-	private void quilt$restoreRegistries(CallbackInfo info) {
-		ClientRegistrySync.disconnectCleanup((Minecraft) (Object) this);
+	private void frozenLib_quilt$restoreRegistries(CallbackInfo info) {
+		ClientRegistrySync.disconnectCleanup(Minecraft.class.cast(this));
 	}
 }

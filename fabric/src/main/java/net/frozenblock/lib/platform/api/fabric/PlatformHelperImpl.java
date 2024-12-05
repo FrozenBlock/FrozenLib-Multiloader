@@ -1,8 +1,8 @@
 package net.frozenblock.lib.platform.api.fabric;
 
-import net.fabricmc.loader.api.FabricLoader;
 import java.nio.file.Path;
 import java.util.Arrays;
+import net.fabricmc.loader.api.FabricLoader;
 
 public class PlatformHelperImpl {
 

@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package org.quiltmc.qsl.frozenblock.core.registry.impl.sync.mod_protocol;
+package org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync.mod_protocol;
 
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
@@ -44,7 +44,7 @@ public interface ModProtocolContainer {
 				ops.get(input, modProtocol).ifSuccess((x) -> {
 					var versionData = MAP_CODEC.decode(ops, x);
 					versionData.ifSuccess(y ->
-						((ModProtocolContainer) value.result().orElseThrow().getFirst()).frozenLib$setModProtocol(y.getFirst())
+						((ModProtocolContainer) value.result().orElseThrow().getFirst()).frozenLib_quilt$setModProtocol(y.getFirst())
 					);
 				});
 
@@ -54,7 +54,7 @@ public interface ModProtocolContainer {
 			@Override
 			public <T> DataResult<T> encode(E input, DynamicOps<T> ops, T prefix) {
 				var value = codec.encode(input, ops, prefix);
-				var modProto = ModProtocolContainer.of(input).frozenLib$getModProtocol();
+				var modProto = ModProtocolContainer.of(input).frozenLib_quilt$getModProtocol();
 
 				if (value.isSuccess() && modProto != null) {
 					var x = MAP_CODEC.encodeStart(ops, modProto);
@@ -69,8 +69,9 @@ public interface ModProtocolContainer {
 		};
 	}
 
-	void frozenLib$setModProtocol(Map<String, IntList> map);
-	Map<String, IntList> frozenLib$getModProtocol();
+	void frozenLib_quilt$setModProtocol(Map<String, IntList> map);
+
+	Map<String, IntList> frozenLib_quilt$getModProtocol();
 
 	static ModProtocolContainer of(Object object) {
 		return (ModProtocolContainer) object;

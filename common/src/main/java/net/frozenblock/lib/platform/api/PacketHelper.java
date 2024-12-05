@@ -1,6 +1,7 @@
 package net.frozenblock.lib.platform.api;
 
 import dev.architectury.injectables.annotations.ExpectPlatform;
+import java.util.Collection;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
@@ -12,7 +13,6 @@ import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
-import java.util.Collection;
 
 public class PacketHelper {
 

@@ -3,7 +3,6 @@ package net.frozenblock.lib.event.api;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
-import net.frozenblock.lib.FrozenLibLogUtils;
 import net.frozenblock.lib.event.impl.EventType;
 import net.frozenblock.lib.platform.api.EntryPointHelper;
 import org.jetbrains.annotations.ApiStatus;

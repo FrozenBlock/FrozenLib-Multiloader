@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package org.quiltmc.qsl.frozenblock.core.registry.impl.sync.client;
+package org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync.client;
 
 import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.ints.IntList;
@@ -24,21 +24,21 @@ import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.ArrayList;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.frozenblock.lib.networking.impl.PacketSender;
-import net.frozenblock.lib.platform.api.RegistryHelper;
-import net.frozenblock.lib.platform.impl.ClientPayloadContext;
+import net.fabricmc.fabric.api.client.networking.v1.ClientConfigurationNetworking;
+import net.fabricmc.fabric.api.client.networking.v1.ClientConfigurationNetworking.Context;
+import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.contents.PlainTextContents;
 import org.jetbrains.annotations.ApiStatus;
-import org.quiltmc.qsl.frozenblock.core.registry.api.sync.ModProtocol;
-import org.quiltmc.qsl.frozenblock.core.registry.api.sync.ModProtocolDef;
-import org.quiltmc.qsl.frozenblock.core.registry.impl.sync.ClientPackets;
-import org.quiltmc.qsl.frozenblock.core.registry.impl.sync.ProtocolVersions;
-import org.quiltmc.qsl.frozenblock.core.registry.impl.sync.RegistrySyncText;
-import org.quiltmc.qsl.frozenblock.core.registry.impl.sync.ServerPackets;
-import org.quiltmc.qsl.frozenblock.core.registry.impl.sync.server.ServerRegistrySync;
+import org.quiltmc.qsl.frozenblock.fabric.core.registry.api.sync.ModProtocol;
+import org.quiltmc.qsl.frozenblock.fabric.core.registry.api.sync.ModProtocolDef;
+import org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync.ClientPackets;
+import org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync.ProtocolVersions;
+import org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync.RegistrySyncText;
+import org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync.ServerPackets;
+import org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync.server.ServerRegistrySync;
 import org.slf4j.Logger;
 
 @ApiStatus.Internal
@@ -63,19 +63,13 @@ public final class ClientRegistrySync {
 	private static boolean mustDisconnect;
 
 	public static void registerHandlers() {
-		// TODO: [Liuk] this stuff. make them config packets. NOW. OR ELSE DIARRHEA.
-		RegistryHelper.registerS2C(ServerPackets.Handshake.PACKET_TYPE, ServerPackets.Handshake.CODEC);
-		RegistryHelper.registerS2C(ServerPackets.End.PACKET_TYPE, ServerPackets.End.CODEC);
-		RegistryHelper.registerS2C(ServerPackets.ErrorStyle.PACKET_TYPE, ServerPackets.ErrorStyle.CODEC);
-		RegistryHelper.registerS2C(ServerPackets.ModProtocol.PACKET_TYPE, ServerPackets.ModProtocol.CODEC);
-
-		RegistryHelper.registerClientReceiver(ServerPackets.Handshake.PACKET_TYPE, ClientRegistrySync::handleHelloPacket);
-		RegistryHelper.registerClientReceiver(ServerPackets.End.PACKET_TYPE, ClientRegistrySync::handleEndPacket);
-		RegistryHelper.registerClientReceiver(ServerPackets.ErrorStyle.PACKET_TYPE, ClientRegistrySync::handleErrorStylePacket);
-		RegistryHelper.registerClientReceiver(ServerPackets.ModProtocol.PACKET_TYPE, ClientRegistrySync::handleModProtocol);
+		ClientConfigurationNetworking.registerGlobalReceiver(ServerPackets.Handshake.PACKET_TYPE, ClientRegistrySync::handleHelloPacket);
+		ClientConfigurationNetworking.registerGlobalReceiver(ServerPackets.End.PACKET_TYPE, ClientRegistrySync::handleEndPacket);
+		ClientConfigurationNetworking.registerGlobalReceiver(ServerPackets.ErrorStyle.PACKET_TYPE, ClientRegistrySync::handleErrorStylePacket);
+		ClientConfigurationNetworking.registerGlobalReceiver(ServerPackets.ModProtocol.PACKET_TYPE, ClientRegistrySync::handleModProtocol);
 	}
 
-	private static void handleModProtocol(ServerPackets.ModProtocol modProtocol, ClientPayloadContext ctx) {
+	private static void handleModProtocol(ServerPackets.ModProtocol modProtocol, Context ctx) {
 		var prioritizedId = modProtocol.prioritizedId();
 		var protocols = modProtocol.protocols();
 
@@ -113,7 +107,7 @@ public final class ClientRegistrySync {
 		}
 	}
 
-	private static void handleEndPacket(ServerPackets.End end, ClientPayloadContext ctx) {
+	private static void handleEndPacket(ServerPackets.End end, Context ctx) {
 		syncVersion = -1;
 
 		if (mustDisconnect) {
@@ -162,13 +156,13 @@ public final class ClientRegistrySync {
 		sender.sendPacket(new ClientPackets.ModProtocol(values));
 	}
 
-	private static void handleErrorStylePacket(ServerPackets.ErrorStyle errorStyle, ClientPayloadContext ctx) {
+	private static void handleErrorStylePacket(ServerPackets.ErrorStyle errorStyle, Context ctx) {
 		errorStyleHeader = errorStyle.errorHeader();
 		errorStyleFooter = errorStyle.errorFooter();
 		showErrorDetails = errorStyle.showError();
 	}
 
-	private static void handleHelloPacket(ServerPackets.Handshake handshake, ClientPayloadContext ctx) {
+	private static void handleHelloPacket(ServerPackets.Handshake handshake, Context ctx) {
 		syncVersion = ProtocolVersions.getHighestSupportedLocal(handshake.supportedVersions());
 
 		ctx.responseSender().sendPacket(new ClientPackets.Handshake(syncVersion));

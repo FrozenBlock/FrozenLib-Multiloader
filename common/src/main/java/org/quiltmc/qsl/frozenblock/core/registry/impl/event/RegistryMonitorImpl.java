@@ -19,7 +19,6 @@
 package org.quiltmc.qsl.frozenblock.core.registry.impl.event;
 
 import java.util.function.Predicate;
-
 import net.frozenblock.lib.platform.api.RegistryHelper;
 import net.minecraft.core.MappedRegistry;
 import net.minecraft.core.Registry;

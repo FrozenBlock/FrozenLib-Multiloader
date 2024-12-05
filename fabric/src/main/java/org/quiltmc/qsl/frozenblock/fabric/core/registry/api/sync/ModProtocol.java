@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package org.quiltmc.qsl.frozenblock.core.registry.api.sync;
+package org.quiltmc.qsl.frozenblock.fabric.core.registry.api.sync;
 
 import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.ints.IntList;

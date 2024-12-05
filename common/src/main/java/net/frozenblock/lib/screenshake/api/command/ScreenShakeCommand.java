@@ -24,7 +24,6 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
 import net.frozenblock.lib.platform.api.PacketHelper;
 import net.frozenblock.lib.screenshake.api.ScreenShakeManager;
 import net.frozenblock.lib.screenshake.impl.EntityScreenShakeInterface;

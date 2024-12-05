@@ -16,18 +16,19 @@
  * limitations under the License.
  */
 
-package org.quiltmc.qsl.frozenblock.core.registry.impl.sync.server;
+package org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync.server;
 
 import java.util.function.Consumer;
+import net.fabricmc.fabric.api.networking.v1.PacketSender;
+import net.fabricmc.fabric.api.networking.v1.ServerConfigurationNetworking;
 import net.frozenblock.lib.FrozenLibConstants;
-import net.frozenblock.lib.networking.impl.PacketSender;
 import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.server.network.ConfigurationTask;
 import net.minecraft.server.network.ServerConfigurationPacketListenerImpl;
 import org.jetbrains.annotations.NotNull;
-import org.quiltmc.qsl.frozenblock.core.registry.impl.sync.ClientPackets;
-import org.quiltmc.qsl.frozenblock.core.registry.impl.sync.ProtocolVersions;
+import org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync.ClientPackets;
+import org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync.ProtocolVersions;
 
 public class QuiltSyncTask implements ConfigurationTask {
 	public static final Type TYPE = new Type(FrozenLibConstants.string("registry_sync"));
@@ -42,13 +43,12 @@ public class QuiltSyncTask implements ConfigurationTask {
 	}
 
 	@Override
-	public void start(@NotNull Consumer<Packet<?>> sender) {
-		// TODO: make PacketSender
-		ServerRegistrySync.sendHelloPacket(new PacketSender(this.packetHandler.connection));
+	public void start(Consumer<Packet<?>> sender) {
+		ServerRegistrySync.sendHelloPacket(ServerConfigurationNetworking.getSender(this.packetHandler));
 	}
 
 	@Override
-	public @NotNull Type type() {
+	public Type type() {
 		return TYPE;
 	}
 
@@ -58,19 +58,18 @@ public class QuiltSyncTask implements ConfigurationTask {
 
 	public void handleHandshake(ClientPackets.@NotNull Handshake handshake) {
 		this.syncVersion = handshake.version();
-		// TODO: make PacketSender work
-		this.sendSyncPackets(new PacketSender(this.packetHandler.connection));
+		this.sendSyncPackets(ServerConfigurationNetworking.getSender(this.packetHandler));
 	}
 
 	public void handleModProtocol(ClientPackets.@NotNull ModProtocol modProtocol, PacketSender sender) {
-		modProtocol.protocols().forEach(this.extendedConnection::frozenLib$setModProtocol);
+		modProtocol.protocols().forEach(this.extendedConnection::frozenLib_quilt$setModProtocol);
 	}
 
 	public void handleEnd(ClientPackets.End end) {
 		if (this.syncVersion == ProtocolVersions.NO_PROTOCOL && ServerRegistrySync.requiresSync()) {
 			this.packetHandler.disconnect(ServerRegistrySync.noRegistrySyncMessage);
 		} else {
-			this.packetHandler.finishCurrentTask(TYPE);
+			this.packetHandler.completeTask(TYPE);
 		}
 	}
 }

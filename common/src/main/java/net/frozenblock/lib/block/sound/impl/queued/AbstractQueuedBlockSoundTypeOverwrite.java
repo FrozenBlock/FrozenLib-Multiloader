@@ -1,10 +1,10 @@
 package net.frozenblock.lib.block.sound.impl.queued;
 
+import java.util.function.BiConsumer;
+import java.util.function.BooleanSupplier;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.SoundType;
 import org.jetbrains.annotations.ApiStatus;
-import java.util.function.BiConsumer;
-import java.util.function.BooleanSupplier;
 
 @ApiStatus.Internal
 public abstract class AbstractQueuedBlockSoundTypeOverwrite<T> {

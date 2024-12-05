@@ -7,9 +7,9 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerWorldEvents;
 import net.frozenblock.lib.FrozenLib;
+import net.frozenblock.lib.debug.item.FrozenLibDevItems;
 import net.frozenblock.lib.event.event.RegisterCommandEvents;
 import net.frozenblock.lib.event.event.ServerLevelEvents;
-import net.frozenblock.lib.debug.item.FrozenLibDevItems;
 import net.frozenblock.lib.platform.api.PlatformHelper;
 
 public class FrozenLibFabric implements ModInitializer, DedicatedServerModInitializer {

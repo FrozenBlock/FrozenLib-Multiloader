@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package org.quiltmc.qsl.frozenblock.core.registry.mixin;
+package org.quiltmc.qsl.frozenblock.fabric.core.registry.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.mojang.serialization.Codec;
@@ -24,8 +24,8 @@ import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.HashMap;
 import java.util.Map;
 import net.minecraft.network.protocol.status.ServerStatus;
-import org.quiltmc.qsl.frozenblock.core.registry.api.sync.ModProtocol;
-import org.quiltmc.qsl.frozenblock.core.registry.impl.sync.mod_protocol.ModProtocolContainer;
+import org.quiltmc.qsl.frozenblock.fabric.core.registry.api.sync.ModProtocol;
+import org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync.mod_protocol.ModProtocolContainer;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Mutable;
@@ -43,35 +43,31 @@ public class ServerStatusVersionMixin implements ModProtocolContainer {
 	public static Codec<ServerStatus.Version> CODEC;
 
 	@Unique
-	private Map<String, IntList> frozenLib$modProtocol;
+	private Map<String, IntList> frozenLib_quilt$modProtocol;
 
 	@ModifyReturnValue(method = "current", at = @At("RETURN"))
 	private static ServerStatus.Version quilt$addProtocolVersions(ServerStatus.Version original) {
-		if (ModProtocol.disableQuery) {
-			return null;
-		}
+		if (ModProtocol.disableQuery) return null;
 
 		var map = new HashMap<String, IntList>();
 		for (var protocol : ModProtocol.REQUIRED) {
 			map.put(protocol.id(), protocol.versions());
 		}
 
-		((ModProtocolContainer) (Object) original).frozenLib$setModProtocol(map);
+		((ModProtocolContainer) (Object) original).frozenLib_quilt$setModProtocol(map);
 		return original;
 	}
 
 	@Inject(method = "<clinit>", at = @At("TAIL"))
-	private static void quilt$extendCodec(CallbackInfo ci) {
+	private static void frozenLib_quilt$extendCodec(CallbackInfo ci) {
 		CODEC = ModProtocolContainer.createCodec(CODEC);
 	}
 
-	@Override
-	public void frozenLib$setModProtocol(Map<String, IntList> map) {
-		this.frozenLib$modProtocol = map;
+	public void frozenLib_quilt$setModProtocol(Map<String, IntList> map) {
+		this.frozenLib_quilt$modProtocol = map;
 	}
 
-	@Override
-	public Map<String, IntList> frozenLib$getModProtocol() {
-		return this.frozenLib$modProtocol;
+	public Map<String, IntList> frozenLib_quilt$getModProtocol() {
+		return this.frozenLib_quilt$modProtocol;
 	}
 }

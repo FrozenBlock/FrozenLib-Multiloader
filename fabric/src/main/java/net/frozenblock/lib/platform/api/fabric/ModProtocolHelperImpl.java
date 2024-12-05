@@ -7,9 +7,9 @@ import net.fabricmc.loader.api.ModContainer;
 import net.fabricmc.loader.api.metadata.CustomValue;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.quiltmc.qsl.frozenblock.core.registry.api.sync.ModProtocolDef;
-import static org.quiltmc.qsl.frozenblock.core.registry.api.sync.ModProtocol.LOGGER;
-import static org.quiltmc.qsl.frozenblock.core.registry.api.sync.ModProtocol.add;
+import static org.quiltmc.qsl.frozenblock.fabric.core.registry.api.sync.ModProtocol.LOGGER;
+import static org.quiltmc.qsl.frozenblock.fabric.core.registry.api.sync.ModProtocol.add;
+import org.quiltmc.qsl.frozenblock.fabric.core.registry.api.sync.ModProtocolDef;
 
 public class ModProtocolHelperImpl {
 

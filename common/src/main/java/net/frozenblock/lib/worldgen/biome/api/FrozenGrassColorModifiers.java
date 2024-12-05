@@ -17,14 +17,13 @@
 
 package net.frozenblock.lib.worldgen.biome.api;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
 import lombok.experimental.UtilityClass;
 import net.frozenblock.lib.worldgen.biome.impl.FrozenGrassColorModifier;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Optional;
 
 @UtilityClass
 public class FrozenGrassColorModifiers {

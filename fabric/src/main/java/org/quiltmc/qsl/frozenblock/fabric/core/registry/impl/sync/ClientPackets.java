@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package org.quiltmc.qsl.frozenblock.core.registry.impl.sync;
+package org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync;
 
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.frozenblock.lib.FrozenLibConstants;

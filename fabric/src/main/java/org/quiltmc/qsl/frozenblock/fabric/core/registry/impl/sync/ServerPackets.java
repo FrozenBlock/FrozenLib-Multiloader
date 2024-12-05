@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package org.quiltmc.qsl.frozenblock.core.registry.impl.sync;
+package org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync;
 
 import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.Collection;
@@ -30,7 +30,7 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import org.quiltmc.qsl.frozenblock.core.registry.api.sync.ModProtocolDef;
+import org.quiltmc.qsl.frozenblock.fabric.core.registry.api.sync.ModProtocolDef;
 
 /**
  * Identifiers of packets sent by server.

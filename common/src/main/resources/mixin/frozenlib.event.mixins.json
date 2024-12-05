@@ -10,7 +10,6 @@
     "BuiltInRegistriesMixin",
     "MappedRegistryMixin",
     "PlayerListMixin",
-    "ServerConfigurationPacketListenerImplMixin",
     "ServerLevelMixin"
   ]
 }

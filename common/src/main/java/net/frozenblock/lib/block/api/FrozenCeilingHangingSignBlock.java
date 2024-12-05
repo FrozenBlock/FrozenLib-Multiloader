@@ -3,7 +3,6 @@ package net.frozenblock.lib.block.api;
 import java.util.Objects;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.CeilingHangingSignBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.storage.loot.LootTable;
 import org.jetbrains.annotations.NotNull;

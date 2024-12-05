@@ -19,7 +19,6 @@ package net.frozenblock.lib.worldgen.biome.api.parameters;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
-
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
