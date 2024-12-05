@@ -5,7 +5,6 @@ import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import java.util.Objects;
 
 public class TintRegistryHelperImpl {
 	public static void registerDefaultFoliageColorForItem(ItemLike itemLike) {
@@ -17,7 +16,12 @@ public class TintRegistryHelperImpl {
 
 	public static void registerAverageFoliageColorForBlock(Block block) {
 		ColorProviderRegistry.BLOCK.register(
-			(state, level, pos, tintIndex) -> BiomeColors.getAverageFoliageColor(Objects.requireNonNull(level), Objects.requireNonNull(pos)),
+			(state, level, pos, tintIndex) -> {
+				if (level != null && pos != null) {
+					return BiomeColors.getAverageFoliageColor(level, pos);
+				}
+				return FoliageColor.getDefaultColor();
+			},
 			block
 		);
 	}
