@@ -35,7 +35,7 @@ import org.jetbrains.annotations.Range;
 import org.quiltmc.qsl.frozenblock.misc.datafixerupper.mixin.DataFixTypesAccessor;
 
 /**
- * Modified to work on Fabric
+ * Modified to work on Multiloader
  */
 @ApiStatus.Internal
 public final class QuiltDataFixesInternalsImpl extends QuiltDataFixesInternals {

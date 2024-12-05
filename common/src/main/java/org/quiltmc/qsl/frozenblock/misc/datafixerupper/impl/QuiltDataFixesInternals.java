@@ -37,7 +37,7 @@ import org.jetbrains.annotations.Range;
 import org.slf4j.Logger;
 
 /**
- * Modified to work on Fabric
+ * Modified to work on Multiloader
  */
 @ApiStatus.Internal
 public abstract class QuiltDataFixesInternals {

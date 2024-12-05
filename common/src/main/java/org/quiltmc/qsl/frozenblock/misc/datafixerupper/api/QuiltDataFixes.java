@@ -40,7 +40,7 @@ import org.quiltmc.qsl.frozenblock.misc.datafixerupper.impl.QuiltDataFixesIntern
 /**
  * Provides methods to register custom {@link DataFixer}s.
  * <p>
- * Modified to work on Fabric
+ * Modified to work on Multiloader
  */
 @UtilityClass
 public class QuiltDataFixes {
@@ -83,40 +83,21 @@ public class QuiltDataFixes {
     }
 
     /**
-     * Registers a new data fixer.
-     *
-     * @param mod            the mod container
-     * @param currentVersion the current version of the mod's data
-     * @param dataFixer      the data fixer
-     */
-	// TODO: add this
-    /*public static void registerFixer(
-		@NotNull ModContainer mod,
-		@Range(from = 0, to = Integer.MAX_VALUE) int currentVersion,
-		@NotNull DataFixer dataFixer
-	) {
-        requireNonNull(mod, "mod cannot be null");
-
-        registerFixer(mod.getMetadata().getId(), currentVersion, dataFixer);
-    }*/
-
-    /**
      * Builds and registers a new data fixer.
      *
-     * @param mod              the mod container
+     * @param modId            the mod identifier
      * @param dataFixerBuilder the data fixer builder
      */
 	// todo: add this
-	/*
     public static void buildAndRegisterFixer(
-		@NotNull ModContainer mod,
+		@NotNull String modId,
 		@NotNull QuiltDataFixerBuilder dataFixerBuilder
 	) {
-        requireNonNull(mod, "mod cannot be null");
+        requireNonNull(modId, "modId cannot be null");
         requireNonNull(dataFixerBuilder, "data fixer builder cannot be null");
 
-        registerFixer(mod.getMetadata().getId(), dataFixerBuilder.getDataVersion(), buildFixer(dataFixerBuilder));
-    }*/
+        registerFixer(modId, dataFixerBuilder.getDataVersion(), buildFixer(dataFixerBuilder));
+    }
 
 	/**
 	 * Registers a new data fixer for use with Minecraft version-specific datafixing.
@@ -143,41 +124,22 @@ public class QuiltDataFixes {
 	}
 
 	/**
-	 * Registers a new data fixer for use with Minecraft version-specific datafixing.
-	 *
-	 * @param mod            the mod container
-	 * @param currentVersion the current version of the mod's data
-	 * @param dataFixer      the data fixer
-	 */
-	// todo: add this
-	/*
-	public static void registerMinecraftFixer(
-		@NotNull ModContainer mod,
-		@Range(from = 0, to = Integer.MAX_VALUE) int currentVersion,
-		@NotNull DataFixer dataFixer
-	) {
-		requireNonNull(mod, "mod cannot be null");
-
-		registerMinecraftFixer(mod.getMetadata().getId(), currentVersion, dataFixer);
-	}*/
-
-	/**
 	 * Builds and registers a new data fixer for use with Minecraft version-specific datafixing.
 	 *
-	 * @param mod              the mod container
+	 * @param modId            the mod identifier
 	 * @param dataFixerBuilder the data fixer builder
 	 */
 	// todo: add this
 	// bruh hi tree
-	/*public static void buildAndRegisterMinecraftFixer(
-		@NotNull ModContainer mod,
+	public static void buildAndRegisterMinecraftFixer(
+		@NotNull String modId,
 		@NotNull QuiltDataFixerBuilder dataFixerBuilder
 	) {
-		requireNonNull(mod, "mod cannot be null");
+		requireNonNull(modId, "mod cannot be null");
 		requireNonNull(dataFixerBuilder, "data fixer builder cannot be null");
 
-		registerMinecraftFixer(mod.getMetadata().getId(), dataFixerBuilder.getDataVersion(), buildFixer(dataFixerBuilder));
-	}*/
+		registerMinecraftFixer(modId, dataFixerBuilder.getDataVersion(), buildFixer(dataFixerBuilder));
+	}
 
 	/**
 	 * Builds a new data fixer.

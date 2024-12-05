@@ -49,15 +49,11 @@ public abstract class MappedRegistryMixin<V> implements Registry<V>, RegistryEve
 	@Unique
 	public FrozenEvent<RegistryEvents.EntryAdded<V>> frozenLib_quilt$entryAddedEvent;
 
-
-	// HACK TODO for some reason initializing this like normal doesnt work. i dont care to figure out why - glitch
-	// thats quilt ignore it
 	@Inject(method = "<init>(Lnet/minecraft/resources/ResourceKey;Lcom/mojang/serialization/Lifecycle;Z)V", at = @At("TAIL"))
 	private void hackBecauseMixinHatesMe(ResourceKey<? extends Registry<V>> key, Lifecycle lifecycle, boolean useIntrusiveHolders, CallbackInfo ci) {
 		this.frozenLib_quilt$entryContext = new MutableRegistryEntryContextImpl<>(this);
 		this.frozenLib_quilt$entryAddedEvent = FrozenEvent.createEvent(RegistryEvents.EntryAdded.class);
 	}
-
 
 	@ModifyExpressionValue(
 		method = "register(Lnet/minecraft/resources/ResourceKey;Ljava/lang/Object;Lnet/minecraft/core/RegistrationInfo;)Lnet/minecraft/core/Holder$Reference;",
