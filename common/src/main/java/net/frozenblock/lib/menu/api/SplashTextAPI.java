@@ -27,9 +27,6 @@ import org.jetbrains.annotations.Unmodifiable;
 
 @Environment(EnvType.CLIENT)
 public final class SplashTextAPI {
-	private SplashTextAPI() {
-	}
-
 	private static final List<ResourceLocation> SPLASH_FILES = new ArrayList<>();
 	private static final List<String> ADDITIONS = new ArrayList<>();
 	private static final List<String> REMOVALS = new ArrayList<>();

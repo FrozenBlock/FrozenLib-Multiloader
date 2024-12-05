@@ -18,7 +18,7 @@
 package net.frozenblock.lib.worldgen.feature.api.features;
 
 import com.mojang.serialization.Codec;
-import net.frozenblock.lib.math.api.EasyNoiseSampler;
+import net.frozenblock.lib.math.EasyNoiseSampler;
 import net.frozenblock.lib.worldgen.feature.api.features.config.PathSwapUnderWaterFeatureConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

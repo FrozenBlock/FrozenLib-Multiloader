@@ -19,7 +19,7 @@ package net.frozenblock.lib.worldgen.structure.impl;
 
 import com.mojang.serialization.MapCodec;
 import net.frozenblock.lib.FrozenLibConstants;
-import net.frozenblock.lib.registry.api.FRegistry;
+import net.frozenblock.lib.registry.api.FrozenLibRegistry;
 import net.frozenblock.lib.worldgen.structure.api.AppendSherds;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.structure.templatesystem.rule.blockentity.RuleBlockEntityModifier;
@@ -33,6 +33,6 @@ public class FrozenRuleBlockEntityModifiers {
 	}
 
 	private static <P extends RuleBlockEntityModifier> @NotNull RuleBlockEntityModifierType<P> register(String name, MapCodec<P> codec) {
-		return FRegistry.register(BuiltInRegistries.RULE_BLOCK_ENTITY_MODIFIER, FrozenLibConstants.id(name), () -> codec);
+		return FrozenLibRegistry.register(BuiltInRegistries.RULE_BLOCK_ENTITY_MODIFIER, FrozenLibConstants.id(name), () -> codec);
 	}
 }

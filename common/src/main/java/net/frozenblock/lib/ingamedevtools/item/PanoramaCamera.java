@@ -32,9 +32,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-public class Camera extends Item {
+public class PanoramaCamera extends Item {
 
-    public Camera(Properties settings) {
+    public PanoramaCamera(Properties settings) {
         super(settings);
     }
 

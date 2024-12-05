@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
  * FRegistry makes sure that your registries are not frozen when adding stuff.
  * */
 @UtilityClass
-public class FRegistry {
+public class FrozenLibRegistry {
 	public static <V, T extends V> T register(Registry<? super T> registry, String name, T value) {
 		NeoForgeFreezer.unfreeze(registry);
 		return Registry.register(registry, name, value);

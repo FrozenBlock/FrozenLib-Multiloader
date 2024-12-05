@@ -37,12 +37,12 @@ public class ShapedRecipeBuilderMixin implements ShapedRecipeBuilderExtension {
 
 	@Unique
 	@Nullable
-	private DataComponentPatch patch;
+	private DataComponentPatch frozenLib$patch;
 
 	@Unique
 	@Override
 	public ShapedRecipeBuilder frozenLib$patch(@Nullable DataComponentPatch patch) {
-		this.patch = patch;
+		this.frozenLib$patch = patch;
 		return (ShapedRecipeBuilder) (Object) this;
 	}
 
@@ -53,8 +53,8 @@ public class ShapedRecipeBuilderMixin implements ShapedRecipeBuilderExtension {
 			target = "Lnet/minecraft/data/recipes/RecipeOutput;accept(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/world/item/crafting/Recipe;Lnet/minecraft/advancements/AdvancementHolder;)V"
 		)
 	)
-	private void modifySave(RecipeOutput instance, ResourceLocation recipeId, Recipe<?> recipe, AdvancementHolder holder, Operation<ShapedRecipe> operation) {
-		((ShapedRecipeBuilderExtension) recipe).frozenLib$patch(this.patch);
+	private void frozenLib$modifySave(RecipeOutput instance, ResourceLocation recipeId, Recipe<?> recipe, AdvancementHolder holder, Operation<ShapedRecipe> operation) {
+		((ShapedRecipeBuilderExtension) recipe).frozenLib$patch(this.frozenLib$patch);
 		operation.call(instance, recipeId, recipe, holder);
 	}
 

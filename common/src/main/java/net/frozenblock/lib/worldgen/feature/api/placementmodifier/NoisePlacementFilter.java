@@ -20,7 +20,7 @@ package net.frozenblock.lib.worldgen.feature.api.placementmodifier;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.frozenblock.lib.math.api.EasyNoiseSampler;
+import net.frozenblock.lib.math.EasyNoiseSampler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;

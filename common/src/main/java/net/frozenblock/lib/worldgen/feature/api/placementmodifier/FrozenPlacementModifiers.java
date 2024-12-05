@@ -19,7 +19,7 @@ package net.frozenblock.lib.worldgen.feature.api.placementmodifier;
 
 import com.mojang.serialization.MapCodec;
 import net.frozenblock.lib.FrozenLibConstants;
-import net.frozenblock.lib.registry.api.FRegistry;
+import net.frozenblock.lib.registry.api.FrozenLibRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
@@ -31,7 +31,7 @@ public class FrozenPlacementModifiers {
 
 	@NotNull
 	private static <P extends PlacementModifier> PlacementModifierType<P> register(String name, MapCodec<P> codec) {
-		return FRegistry.register(BuiltInRegistries.PLACEMENT_MODIFIER_TYPE, FrozenLibConstants.id(name), () -> codec);
+		return FrozenLibRegistry.register(BuiltInRegistries.PLACEMENT_MODIFIER_TYPE, FrozenLibConstants.id(name), () -> codec);
 	}
 
 	public static void init() {

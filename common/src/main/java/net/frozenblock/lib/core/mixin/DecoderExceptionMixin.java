@@ -27,7 +27,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class DecoderExceptionMixin {
 
     @Inject(method = "<init>(Ljava/lang/Throwable;)V", remap = false, at = @At("TAIL"))
-    private void init(Throwable cause, CallbackInfo info) {
+    private void frozenLib$init(Throwable cause, CallbackInfo info) {
         cause.printStackTrace();
     }
 }

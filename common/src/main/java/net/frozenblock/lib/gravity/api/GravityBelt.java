@@ -23,11 +23,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
-public record GravityBelt<T extends GravityFunction>(double minY, double maxY, boolean renderBottom, boolean renderTop,
-													 T function) {
-	public GravityBelt(double minY, double maxY, T function) {
-		this(minY, maxY, false, false, function);
-	}
+public record GravityBelt<T extends GravityFunction>(double minY, double maxY, T function) {
 
 	public boolean affectsPosition(double y) {
 		return y >= minY && y < maxY;

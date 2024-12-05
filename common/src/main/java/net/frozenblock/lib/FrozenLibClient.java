@@ -10,7 +10,7 @@ import net.frozenblock.lib.event.event.client.ClientChunkEvents;
 import net.frozenblock.lib.event.event.client.ClientPlayConnectionEvents;
 import net.frozenblock.lib.event.event.client.ClientTickEvents;
 import net.frozenblock.lib.mod_integration.api.ModIntegrations;
-import net.frozenblock.lib.menu.api.Panoramas;
+import net.frozenblock.lib.menu.api.PanoramaAPI;
 import net.frozenblock.lib.registry.api.client.FrozenLibClientRegistries;
 import net.frozenblock.lib.screenshake.api.client.ScreenShaker;
 import net.frozenblock.lib.sound.api.FlyBySoundHub;
@@ -36,7 +36,7 @@ public class FrozenLibClient {
 		registerClientEvents();
 		DebugRenderManager.init();
 
-		Panoramas.addPanorama(ResourceLocation.withDefaultNamespace("textures/gui/title/background/panorama"));
+		PanoramaAPI.addPanorama(ResourceLocation.withDefaultNamespace("textures/gui/title/background/panorama"));
 		ClientCapeData.init();
 
 		// TODO: Proper Resource Reload API

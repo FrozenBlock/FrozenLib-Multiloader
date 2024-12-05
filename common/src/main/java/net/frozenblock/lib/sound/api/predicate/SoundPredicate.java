@@ -20,7 +20,7 @@ package net.frozenblock.lib.sound.api.predicate;
 import java.util.function.Supplier;
 import net.frozenblock.lib.FrozenLibConstants;
 import net.frozenblock.lib.FrozenLibLogUtils;
-import net.frozenblock.lib.registry.api.FRegistry;
+import net.frozenblock.lib.registry.api.FrozenLibRegistry;
 import net.frozenblock.lib.registry.api.FrozenLibRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -35,11 +35,11 @@ public final class SoundPredicate<T extends Entity> {
 	private final Supplier<LoopPredicate<T>> predicateSupplier;
 
     public static <T extends Entity> void register(ResourceLocation id, Supplier<LoopPredicate<T>> predicateSupplier) {
-		FRegistry.register(FrozenLibRegistries.SOUND_PREDICATE, id, new SoundPredicate<>(predicateSupplier));
+		FrozenLibRegistry.register(FrozenLibRegistries.SOUND_PREDICATE, id, new SoundPredicate<>(predicateSupplier));
     }
 
 	public static <T extends Entity> void registerUnsynced(ResourceLocation id, Supplier<LoopPredicate<T>> predicateSupplier) {
-		FRegistry.register(FrozenLibRegistries.SOUND_PREDICATE_UNSYNCED, id, new SoundPredicate<>(predicateSupplier));
+		FrozenLibRegistry.register(FrozenLibRegistries.SOUND_PREDICATE_UNSYNCED, id, new SoundPredicate<>(predicateSupplier));
 	}
 
 	public SoundPredicate(Supplier<LoopPredicate<T>> predicateSupplier) {

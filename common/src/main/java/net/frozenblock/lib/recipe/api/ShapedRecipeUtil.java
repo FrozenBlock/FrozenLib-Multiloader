@@ -21,8 +21,6 @@ import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 
 public final class ShapedRecipeUtil {
-	private ShapedRecipeUtil() {}
-
 	public static ShapedRecipeBuilder withResultPatch(ShapedRecipeBuilder builder, DataComponentPatch patch) {
 		return ((ShapedRecipeBuilderExtension) builder).frozenLib$patch(patch);
 	}

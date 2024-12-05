@@ -20,7 +20,7 @@ package net.frozenblock.lib.wind.api;
 import java.util.Optional;
 import net.frozenblock.lib.FrozenLibConstants;
 import net.frozenblock.lib.FrozenLibLogUtils;
-import net.frozenblock.lib.math.api.AdvancedMath;
+import net.frozenblock.lib.math.AdvancedMath;
 import net.frozenblock.lib.registry.api.FrozenLibRegistries;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;

@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.math.api;
+package net.frozenblock.lib.math;
 
 import lombok.experimental.UtilityClass;
 import net.minecraft.core.Vec3i;

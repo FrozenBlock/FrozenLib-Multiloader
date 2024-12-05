@@ -9,6 +9,7 @@
   "mixins": [
     "BiomeManagerMixin",
     "BiomeMixin",
+    "LightningOverrideMixin",
     "MultiNoiseBiomeSourceMixin",
     "OverworldBiomeBuilderMixin",
     "OverworldBiomePresetMixin"

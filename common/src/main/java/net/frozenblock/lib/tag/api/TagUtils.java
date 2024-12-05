@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import lombok.experimental.UtilityClass;
-import net.frozenblock.lib.math.api.AdvancedMath;
+import net.frozenblock.lib.math.AdvancedMath;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;

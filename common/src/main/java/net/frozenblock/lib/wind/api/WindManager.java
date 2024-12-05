@@ -27,7 +27,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 import net.frozenblock.lib.config.frozenlib_config.FrozenLibConfig;
-import net.frozenblock.lib.math.api.EasyNoiseSampler;
+import net.frozenblock.lib.math.EasyNoiseSampler;
 import net.frozenblock.lib.networking.FrozenLibNetworking;
 import net.frozenblock.lib.platform.api.PacketHelper;
 import net.frozenblock.lib.wind.impl.WindManagerInterface;

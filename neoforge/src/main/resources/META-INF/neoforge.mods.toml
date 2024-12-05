@@ -81,9 +81,6 @@ config = "mixin/${mod_id}.spotting_icons.mixins.json"
 config = "mixin/${mod_id}.storage.mixins.json"
 
 [[mixins]]
-config = "mixin/${mod_id}.weather.mixins.json"
-
-[[mixins]]
 config = "mixin/${mod_id}.wind.mixins.json"
 
 [[mixins]]

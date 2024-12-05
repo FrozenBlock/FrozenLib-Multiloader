@@ -18,18 +18,18 @@
 package net.frozenblock.lib.ingamedevtools;
 
 import net.frozenblock.lib.FrozenLibConstants;
-import net.frozenblock.lib.ingamedevtools.item.Camera;
+import net.frozenblock.lib.ingamedevtools.item.PanoramaCamera;
 import net.frozenblock.lib.ingamedevtools.item.LootTableWhacker;
-import net.frozenblock.lib.registry.api.FRegistry;
+import net.frozenblock.lib.registry.api.FrozenLibRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 
 public class FrozenLibDevItems {
-	private static final Item CAMERA = new Camera(new Item.Properties().stacksTo(1));
+	private static final Item CAMERA = new PanoramaCamera(new Item.Properties().stacksTo(1));
 	private static final Item LOOT_TABLE_WHACKER = new LootTableWhacker(new Item.Properties().stacksTo(1));
 
 	public static void register() {
-		FRegistry.register(BuiltInRegistries.ITEM, FrozenLibConstants.id("camera"), CAMERA);
-		FRegistry.register(BuiltInRegistries.ITEM, FrozenLibConstants.string("loot_table_whacker"), LOOT_TABLE_WHACKER);
+		FrozenLibRegistry.register(BuiltInRegistries.ITEM, FrozenLibConstants.id("camera"), CAMERA);
+		FrozenLibRegistry.register(BuiltInRegistries.ITEM, FrozenLibConstants.string("loot_table_whacker"), LOOT_TABLE_WHACKER);
 	}
 }

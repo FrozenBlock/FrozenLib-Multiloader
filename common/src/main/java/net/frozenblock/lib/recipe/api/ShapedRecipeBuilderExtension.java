@@ -22,6 +22,5 @@ import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import org.jetbrains.annotations.Nullable;
 
 public interface ShapedRecipeBuilderExtension {
-
 	ShapedRecipeBuilder frozenLib$patch(@Nullable DataComponentPatch tag);
 }

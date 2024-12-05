@@ -31,8 +31,6 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
 public final class GravityAPI {
-    private GravityAPI() {}
-
     public static final Vec3 DEFAULT_GRAVITY = new Vec3(0D, 1D, 0D);
 
     public static final FrozenEvent<GravityModification> MODIFICATIONS = FrozenEvent.createEvent(GravityModification.class);
@@ -70,11 +68,11 @@ public final class GravityAPI {
         return context.gravity;
     }
 
-    public static Vec3 calculateGravity(Level level, double y) {
+    public static Vec3 calculateGravity(@NotNull Level level, double y) {
         return calculateGravity(level.dimension(), y);
     }
 
-    public static Vec3 calculateGravity(Entity entity) {
+    public static Vec3 calculateGravity(@NotNull Entity entity) {
         ResourceKey<Level> dimension = entity.level().dimension();
         double y = entity.getY();
         GravityContext context = new GravityContext(dimension, y, entity);
@@ -82,7 +80,7 @@ public final class GravityAPI {
         return context.gravity;
     }
 
-    public static Optional<GravityBelt<?>> getAffectingGravityBelt(List<GravityBelt<?>> belts, double y) {
+    public static Optional<GravityBelt<?>> getAffectingGravityBelt(@NotNull List<GravityBelt<?>> belts, double y) {
         Optional<GravityBelt<?>> optionalGravityBelt = Optional.empty();
         for (GravityBelt<?> belt : belts) {
             if (belt.affectsPosition(y)) {
