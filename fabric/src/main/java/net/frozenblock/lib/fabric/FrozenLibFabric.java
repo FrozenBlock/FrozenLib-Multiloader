@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerWorldEvents;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.frozenblock.lib.FrozenLib;
 import net.frozenblock.lib.debug.item.FrozenLibDevItems;
 import net.frozenblock.lib.event.event.RegisterCommandEvents;
@@ -87,6 +88,13 @@ public class FrozenLibFabric implements ModInitializer, DedicatedServerModInitia
 		);
 		ServerTickEvents.END_WORLD_TICK.register(
 			serverLevel -> net.frozenblock.lib.event.event.ServerTickEvents.END_LEVEL_TICK.invoke(e -> e.onEndTick(serverLevel))
+		);
+
+		ServerPlayConnectionEvents.JOIN.register(
+			(handler, sender, server) -> net.frozenblock.lib.event.event.ServerPlayConnectionEvents.JOIN.invoke(e -> e.onPlayReady(handler.getPlayer()))
+		);
+		ServerPlayConnectionEvents.DISCONNECT.register(
+			(serverGamePacketListener, server) -> net.frozenblock.lib.event.event.ServerPlayConnectionEvents.DISCONNECT.invoke(e -> e.onPlayDisconnect(serverGamePacketListener.getPlayer()))
 		);
 	}
 }

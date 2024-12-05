@@ -47,10 +47,12 @@ public class ServerCapeData {
 
 	public static void init() {
 		ServerLifecycleEvents.SERVER_STOPPING.register(client -> CAPES_IN_SERVER.clear());
-		ServerPlayConnectionEvents.DISCONNECT.register((serverGamePacketListener, minecraftServer) -> {
-			UUID uuid = serverGamePacketListener.getPlayer().getUUID();
-			if (CAPES_IN_SERVER.remove(uuid) != null) {
-				PacketHelper.sendToAllPlayers(minecraftServer, CapeCustomizePacket.createDisablePacket(uuid));
+		ServerPlayConnectionEvents.DISCONNECT.register((player) -> {
+			if (player instanceof ServerPlayer serverPlayer) {
+				UUID uuid = player.getUUID();
+				if (CAPES_IN_SERVER.remove(uuid) != null) {
+					PacketHelper.sendToAllPlayers(serverPlayer.getServer(), CapeCustomizePacket.createDisablePacket(uuid));
+				}
 			}
 		});
 

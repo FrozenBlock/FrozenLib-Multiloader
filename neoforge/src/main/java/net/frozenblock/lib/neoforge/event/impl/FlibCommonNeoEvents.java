@@ -2,6 +2,7 @@ package net.frozenblock.lib.neoforge.event.impl;
 
 import net.frozenblock.lib.event.event.RegisterCommandEvents;
 import net.frozenblock.lib.event.event.ServerLifecycleEvents;
+import net.frozenblock.lib.event.event.ServerPlayConnectionEvents;
 import net.frozenblock.lib.event.event.ServerTickEvents;
 import net.frozenblock.lib.item.api.bonemeal.BonemealApi;
 import net.minecraft.core.BlockPos;
@@ -11,6 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.player.BonemealEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.server.ServerStartedEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.event.server.ServerStoppedEvent;
@@ -91,7 +93,12 @@ public class FlibCommonNeoEvents {
 	}
 
 	@SubscribeEvent
-	public static void beforeConfigure() {
+	public static void joinServer(PlayerEvent.PlayerLoggedInEvent event) {
+		ServerPlayConnectionEvents.JOIN.invoke(e -> e.onPlayReady(event.getEntity()));
+	}
 
+	@SubscribeEvent
+	public static void leaveServer(PlayerEvent.PlayerLoggedOutEvent event) {
+		ServerPlayConnectionEvents.DISCONNECT.invoke(e -> e.onPlayDisconnect(event.getEntity()));
 	}
 }
