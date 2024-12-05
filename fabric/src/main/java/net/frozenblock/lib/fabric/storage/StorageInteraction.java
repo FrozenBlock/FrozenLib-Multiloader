@@ -17,14 +17,16 @@
 
 package net.frozenblock.lib.fabric.storage;
 
+import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
 import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
+import net.fabricmc.fabric.api.transfer.v1.transaction.TransactionContext;
 
 /**
  * @param <T> The type of resource being moved.
  * @since 1.3.8
  */
 
-//@FunctionalInterface
+@FunctionalInterface
 public interface StorageInteraction<T> {
 	/**
 	 * Behavior that dictates where to move an item to.
