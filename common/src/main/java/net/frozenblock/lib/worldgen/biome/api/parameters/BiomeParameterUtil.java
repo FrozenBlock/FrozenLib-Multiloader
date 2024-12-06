@@ -404,18 +404,6 @@ public class BiomeParameterUtil {
 			splitParameters.add(
 				new Climate.Parameter(refMin, refMax)
 			);
-		} else {
-			if (min > refMin) {
-				splitParameters.add(
-					new Climate.Parameter(refMin, min)
-				);
-			}
-
-			if (max < refMax && refMin <= max) {
-				splitParameters.add(
-					new Climate.Parameter(refMin, max)
-				);
-			}
 		}
 
 		return splitParameters;
