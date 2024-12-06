@@ -41,13 +41,13 @@ public class OverworldBiomeInjector {
 	 */
     public static void addOverworldBiome(ResourceKey<Biome> biome, Climate.@NotNull TargetPoint targetPoint) {
         OverworldBiomeData.addOverworldBiome(biome, Climate.parameters(
-                targetPoint.temperature(),
-                targetPoint.humidity(),
-                targetPoint.continentalness(),
-                targetPoint.erosion(),
-                targetPoint.depth(),
-                targetPoint.weirdness(),
-                0
+			targetPoint.temperature(),
+			targetPoint.humidity(),
+			targetPoint.continentalness(),
+			targetPoint.erosion(),
+			targetPoint.depth(),
+			targetPoint.weirdness(),
+			0F
         ));
     }
 
@@ -69,13 +69,13 @@ public class OverworldBiomeInjector {
 	 * @param weirdnesses	The specific weirdnesses the biome should be added to.
 	 */
 	public static void addOverworldBiome(
-			ResourceKey<Biome> biome,
-			Climate.Parameter temperature,
-			Climate.Parameter humidity,
-			Climate.Parameter continentalness,
-			Climate.Parameter erosion,
-			float offset,
-			Climate.Parameter... weirdnesses
+		ResourceKey<Biome> biome,
+		Climate.Parameter temperature,
+		Climate.Parameter humidity,
+		Climate.Parameter continentalness,
+		Climate.Parameter erosion,
+		float offset,
+		Climate.Parameter... weirdnesses
 	) {
 		addOverworldBiome(biome, temperature, humidity, continentalness, erosion, offset, List.of(weirdnesses));
 	}
@@ -87,13 +87,13 @@ public class OverworldBiomeInjector {
 	 * @param weirdnesses	The specific weirdnesses the biome should be added to.
 	 */
 	public static void addOverworldBiome(
-			ResourceKey<Biome> biome,
-			Climate.Parameter temperature,
-			Climate.Parameter humidity,
-			Climate.Parameter continentalness,
-			Climate.Parameter erosion,
-			float offset,
-			List<Climate.Parameter> weirdnesses
+		ResourceKey<Biome> biome,
+		Climate.Parameter temperature,
+		Climate.Parameter humidity,
+		Climate.Parameter continentalness,
+		Climate.Parameter erosion,
+		float offset,
+		List<Climate.Parameter> weirdnesses
 	) {
 		addOverworldBiome(biome, temperature, humidity, continentalness, Climate.Parameter.point(0.0F), erosion, offset, weirdnesses);
 		addOverworldBiome(biome, temperature, humidity, continentalness, Climate.Parameter.point(1.0F), erosion, offset, weirdnesses);
@@ -106,14 +106,14 @@ public class OverworldBiomeInjector {
 	 * @param weirdnesses	The specific weirdnesses the biome should be added to.
 	 */
 	public static void addOverworldBiome(
-			ResourceKey<Biome> biome,
-			Climate.Parameter temperature,
-			Climate.Parameter humidity,
-			Climate.Parameter continentalness,
-			Climate.Parameter erosion,
-			Climate.Parameter depth,
-			float offset,
-			Climate.Parameter... weirdnesses
+		ResourceKey<Biome> biome,
+		Climate.Parameter temperature,
+		Climate.Parameter humidity,
+		Climate.Parameter continentalness,
+		Climate.Parameter erosion,
+		Climate.Parameter depth,
+		float offset,
+		Climate.Parameter... weirdnesses
 	) {
 		addOverworldBiome(biome, temperature, humidity, continentalness, erosion, depth, offset, List.of(weirdnesses));
 	}
@@ -125,25 +125,26 @@ public class OverworldBiomeInjector {
 	 * @param weirdnesses	The specific weirdnesses the biome should be added to.
 	 */
 	public static void addOverworldBiome(
-			ResourceKey<Biome> biome,
-			Climate.Parameter temperature,
-			Climate.Parameter humidity,
-			Climate.Parameter continentalness,
-			Climate.Parameter erosion,
-			Climate.Parameter depth,
-			float offset,
-			List<Climate.Parameter> weirdnesses
+		ResourceKey<Biome> biome,
+		Climate.Parameter temperature,
+		Climate.Parameter humidity,
+		Climate.Parameter continentalness,
+		Climate.Parameter erosion,
+		Climate.Parameter depth,
+		float offset,
+		List<Climate.Parameter> weirdnesses
 	) {
 		BiomeParameterUtil.addWeirdness(weirdness -> OverworldBiomeData.addOverworldBiome(
-				biome, Climate.parameters(
-						temperature,
-						humidity,
-						continentalness,
-						erosion,
-						depth,
-						weirdness,
-						offset
-				)
+			biome,
+			Climate.parameters(
+				temperature,
+				humidity,
+				continentalness,
+				erosion,
+				depth,
+				weirdness,
+				offset
+			)
 		), weirdnesses);
 	}
 

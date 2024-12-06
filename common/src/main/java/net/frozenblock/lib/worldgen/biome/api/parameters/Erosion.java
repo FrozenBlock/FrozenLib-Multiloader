@@ -25,7 +25,7 @@ import net.minecraft.world.level.biome.Climate;
 public final class Erosion {
     public static final Climate.Parameter EROSION_0 = Climate.Parameter.span(-1F, -0.78F);
     public static final Climate.Parameter EROSION_1 = Climate.Parameter.span(-0.78F, -0.375F);
-    public static final Climate.Parameter EROSION_2 = Climate.Parameter.span(-0.78F, -0.375F);
+    public static final Climate.Parameter EROSION_2 = Climate.Parameter.span(-0.375F, -0.2225F);
     public static final Climate.Parameter EROSION_3 = Climate.Parameter.span(-0.2225F, 0.05F);
     public static final Climate.Parameter EROSION_4 = Climate.Parameter.span(0.05F, 0.45F);
     public static final Climate.Parameter EROSION_5 = Climate.Parameter.span(0.45F, 0.55F);

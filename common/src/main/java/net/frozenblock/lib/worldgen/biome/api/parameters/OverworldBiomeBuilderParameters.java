@@ -34,9 +34,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * This class contains a copy of {@link OverworldBiomeBuilder}'s data, for ease of use.
- * <p>
- * It also lets you obtain the parameters for any vanilla biome.
+ * Lets you obtain the parameters for any vanilla biome.
  */
 @UtilityClass
 public class OverworldBiomeBuilderParameters {
@@ -111,7 +109,7 @@ public class OverworldBiomeBuilderParameters {
 
 	private static void addBiomes(Consumer<Pair<ResourceLocation, Climate.ParameterPoint>> key) {
 		ImmutableList.Builder<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> builder = new ImmutableList.Builder<>();
-		new OverworldBiomeBuilder().addBiomes(parameterPointResourceKeyPair -> builder.add(parameterPointResourceKeyPair));
+		new OverworldBiomeBuilder().addBiomes(builder::add);
 		builder.build().forEach(parameterPointResourceKeyPair -> key.accept(new Pair<>(parameterPointResourceKeyPair.getSecond().location(), parameterPointResourceKeyPair.getFirst())));
 	}
 }
