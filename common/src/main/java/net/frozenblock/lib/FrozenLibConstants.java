@@ -41,8 +41,8 @@ public class FrozenLibConstants {
 	public static final boolean HAS_SODIUM = hasMod("sodium");
 	public static final boolean HAS_TERRABLENDER = hasMod("terrablender");
 	public static final boolean HAS_TERRALITH = hasMod("terralith");
-	public static final boolean HAS_WILDER_WILD = hasMod("wilder_wild");
-	public static final boolean HAS_TRAILIER_TALES = hasMod("trailier_tales");
+	public static final boolean HAS_WILDER_WILD = hasMod("wilderwild");
+	public static final boolean HAS_TRAILIER_TALES = hasMod("trailiertales");
 	/**
 	 * Used for features that may be unstable and crash in public builds.
 	 * <p>
