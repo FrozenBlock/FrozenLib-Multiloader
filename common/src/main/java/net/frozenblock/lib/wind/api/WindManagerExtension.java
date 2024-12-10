@@ -17,6 +17,7 @@
 
 package net.frozenblock.lib.wind.api;
 
+import net.frozenblock.lib.wind.impl.WindManager;
 import net.frozenblock.lib.wind.impl.networking.WindSyncPacket;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;

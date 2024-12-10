@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import net.frozenblock.lib.FrozenLibLogUtils;
 import net.frozenblock.lib.sound.api.predicate.SoundPredicate;
+import net.frozenblock.lib.sound.impl.networking.FrozenLibSoundPackets;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;

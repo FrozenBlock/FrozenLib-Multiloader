@@ -15,11 +15,11 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.sound.api.instances.distance_based;
+package net.frozenblock.lib.sound.client.api.sounds.distance_based;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.frozenblock.lib.sound.api.RestrictedSoundInstance;
+import net.frozenblock.lib.sound.client.api.sounds.RestrictedSoundInstance;
 import net.frozenblock.lib.sound.api.predicate.SoundPredicate;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.sounds.SoundInstance;
@@ -28,14 +28,15 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 
 @Environment(EnvType.CLIENT)
-public class RestrictedMovingFadingDistanceSwitchingSoundLoop<T extends Entity> extends RestrictedSoundInstance<T> {
+public class RestrictedMovingFadingDistanceSwitchingSound<T extends Entity> extends RestrictedSoundInstance<T> {
 
+	private final boolean stopOnDeath;
     private final boolean isFarSound;
     private final double maxDist;
     private final double fadeDist;
     private final float maxVol;
 
-    public RestrictedMovingFadingDistanceSwitchingSoundLoop(
+    public RestrictedMovingFadingDistanceSwitchingSound(
 		T entity,
 		SoundEvent sound,
 		SoundSource category,
@@ -57,6 +58,7 @@ public class RestrictedMovingFadingDistanceSwitchingSoundLoop<T extends Entity> 
         this.x = entity.getX();
         this.y = entity.getY();
         this.z = entity.getZ();
+		this.stopOnDeath = stopOnDeath;
         this.isFarSound = isFarSound;
         this.maxDist = maxDist;
         this.fadeDist = fadeDist;

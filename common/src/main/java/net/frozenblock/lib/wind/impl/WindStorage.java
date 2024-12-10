@@ -19,7 +19,6 @@ package net.frozenblock.lib.wind.impl;
 
 import net.frozenblock.lib.FrozenLibConstants;
 import net.frozenblock.lib.FrozenLibLogUtils;
-import net.frozenblock.lib.wind.api.WindManager;
 import net.frozenblock.lib.wind.api.WindManagerExtension;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;

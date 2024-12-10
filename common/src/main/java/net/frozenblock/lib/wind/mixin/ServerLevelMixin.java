@@ -17,7 +17,7 @@
 
 package net.frozenblock.lib.wind.mixin;
 
-import net.frozenblock.lib.wind.api.WindManager;
+import net.frozenblock.lib.wind.impl.WindManager;
 import net.frozenblock.lib.wind.impl.WindManagerInterface;
 import net.minecraft.server.level.ServerLevel;
 import org.spongepowered.asm.mixin.Mixin;

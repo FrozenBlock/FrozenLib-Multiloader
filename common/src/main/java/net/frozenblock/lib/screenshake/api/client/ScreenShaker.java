@@ -84,6 +84,18 @@ public class ScreenShaker {
 	}
 
 	@ApiStatus.Internal
+	public static void reset() {
+		prevXRot = 0F;
+		prevYRot = 0F;
+		prevZRot = 0F;
+		xRot = 0F;
+		yRot = 0F;
+		zRot = 0F;
+
+		clear();
+	}
+
+	@ApiStatus.Internal
 	public static void shake(@NotNull PoseStack poseStack, float partialTicks) {
 		poseStack.mulPose(Axis.XP.rotationDegrees(Mth.lerp(partialTicks, prevYRot, yRot)));
 		poseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(partialTicks, prevXRot, xRot)));
@@ -98,6 +110,7 @@ public class ScreenShaker {
 		SCREEN_SHAKES.add(new ClientEntityScreenShake(entity, intensity, duration, falloffStart, maxDistance, ticks));
 	}
 
+	@ApiStatus.Internal
 	public static void clear() {
 		SCREEN_SHAKES.clear();
 	}

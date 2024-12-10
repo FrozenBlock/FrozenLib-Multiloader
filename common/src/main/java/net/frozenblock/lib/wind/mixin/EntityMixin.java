@@ -21,7 +21,7 @@ import java.util.Optional;
 import net.frozenblock.lib.wind.api.WindDisturbance;
 import net.frozenblock.lib.wind.api.WindDisturbanceLogic;
 import net.frozenblock.lib.wind.api.WindDisturbingEntity;
-import net.frozenblock.lib.wind.api.WindManager;
+import net.frozenblock.lib.wind.impl.WindManager;
 import net.frozenblock.lib.wind.impl.WindDisturbingEntityImpl;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;

@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.wind.api;
+package net.frozenblock.lib.wind.impl;
 
 import com.mojang.datafixers.util.Pair;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
@@ -30,8 +30,8 @@ import net.frozenblock.lib.config.frozenlib_config.FrozenLibConfig;
 import net.frozenblock.lib.math.EasyNoiseSampler;
 import net.frozenblock.lib.networking.FrozenLibNetworking;
 import net.frozenblock.lib.platform.api.PacketHelper;
-import net.frozenblock.lib.wind.impl.WindManagerInterface;
-import net.frozenblock.lib.wind.impl.WindStorage;
+import net.frozenblock.lib.wind.api.WindDisturbance;
+import net.frozenblock.lib.wind.api.WindManagerExtension;
 import net.frozenblock.lib.wind.impl.networking.WindAccessPacket;
 import net.frozenblock.lib.wind.impl.networking.WindDisturbancePacket;
 import net.frozenblock.lib.wind.impl.networking.WindSyncPacket;

@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.sound.api.networking;
+package net.frozenblock.lib.sound.impl.networking;
 
 import net.frozenblock.lib.FrozenLibConstants;
 import net.minecraft.core.Holder;
@@ -24,48 +24,38 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import org.jetbrains.annotations.NotNull;
 
-public record StartingMovingRestrictionSoundLoopPacket(
+public record FlyBySoundPacket(
 	int id,
-	Holder<SoundEvent> startingSound,
 	Holder<SoundEvent> sound,
 	SoundSource category,
 	float volume,
-	float pitch,
-	ResourceLocation predicateId,
-	boolean stopOnDeath
+	float pitch
 ) implements CustomPacketPayload {
-	public static final Type<StartingMovingRestrictionSoundLoopPacket> PACKET_TYPE = new Type<>(
-		FrozenLibConstants.id("starting_moving_restriction_looping_sound")
+	public static final Type<FlyBySoundPacket> PACKET_TYPE = new Type<>(
+		FrozenLibConstants.id("flyby_sound")
 	);
-	public static final StreamCodec<RegistryFriendlyByteBuf, StartingMovingRestrictionSoundLoopPacket> CODEC = StreamCodec.ofMember(StartingMovingRestrictionSoundLoopPacket::write, StartingMovingRestrictionSoundLoopPacket::new);
+	public static final StreamCodec<RegistryFriendlyByteBuf, FlyBySoundPacket> CODEC = StreamCodec.ofMember(FlyBySoundPacket::write, FlyBySoundPacket::new);
 
-	public StartingMovingRestrictionSoundLoopPacket(@NotNull RegistryFriendlyByteBuf buf) {
+	public FlyBySoundPacket(@NotNull RegistryFriendlyByteBuf buf) {
 		this(
 			buf.readVarInt(),
 			ByteBufCodecs.holderRegistry(Registries.SOUND_EVENT).decode(buf),
-			ByteBufCodecs.holderRegistry(Registries.SOUND_EVENT).decode(buf),
 			buf.readEnum(SoundSource.class),
 			buf.readFloat(),
-			buf.readFloat(),
-			buf.readResourceLocation(),
-			buf.readBoolean()
+			buf.readFloat()
 		);
 	}
 
 	public void write(@NotNull RegistryFriendlyByteBuf buf) {
 		buf.writeVarInt(this.id);
-		ByteBufCodecs.holderRegistry(Registries.SOUND_EVENT).encode(buf, this.startingSound);
 		ByteBufCodecs.holderRegistry(Registries.SOUND_EVENT).encode(buf, this.sound);
 		buf.writeEnum(this.category);
 		buf.writeFloat(this.volume);
 		buf.writeFloat(this.pitch);
-		buf.writeResourceLocation(predicateId);
-		buf.writeBoolean(this.stopOnDeath);
 	}
 
 	@Override

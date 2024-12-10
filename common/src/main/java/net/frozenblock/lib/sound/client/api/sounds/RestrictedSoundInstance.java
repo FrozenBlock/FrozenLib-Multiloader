@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.sound.api;
+package net.frozenblock.lib.sound.client.api.sounds;
 
 import net.frozenblock.lib.sound.api.predicate.SoundPredicate;
 import net.minecraft.client.resources.sounds.AbstractTickableSoundInstance;

@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.wind.api;
+package net.frozenblock.lib.wind.client.impl;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
@@ -28,6 +28,9 @@ import net.fabricmc.api.Environment;
 import net.frozenblock.lib.config.frozenlib_config.FrozenLibConfig;
 import net.frozenblock.lib.math.AdvancedMath;
 import net.frozenblock.lib.math.EasyNoiseSampler;
+import net.frozenblock.lib.wind.api.WindDisturbance;
+import net.frozenblock.lib.wind.client.api.ClientWindManagerExtension;
+import net.frozenblock.lib.wind.impl.WindManager;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
@@ -47,28 +50,34 @@ import org.jetbrains.annotations.Unmodifiable;
  */
 @Environment(EnvType.CLIENT)
 public final class ClientWindManager {
+	@ApiStatus.Internal
 	public static final List<ClientWindManagerExtension> EXTENSIONS = new ObjectArrayList<>();
 	private static final List<WindDisturbance<?>> WIND_DISTURBANCES_A = new ArrayList<>();
 	private static final List<WindDisturbance<?>> WIND_DISTURBANCES_B = new ArrayList<>();
 	private static boolean isSwitched;
 
+	@ApiStatus.Internal
 	public static List<WindDisturbance<?>> getWindDisturbances() {
 		return !isSwitched ? WIND_DISTURBANCES_A : WIND_DISTURBANCES_B;
 	}
 
+	@ApiStatus.Internal
 	public static List<WindDisturbance<?>> getWindDisturbanceStash() {
 		return isSwitched ? WIND_DISTURBANCES_A : WIND_DISTURBANCES_B;
 	}
 
+	@ApiStatus.Internal
 	public static void clearWindDisturbances() {
 		getWindDisturbances().clear();
 	}
 
+	@ApiStatus.Internal
 	public static void clearAllWindDisturbances() {
 		getWindDisturbances().clear();
 		getWindDisturbanceStash().clear();
 	}
 
+	@ApiStatus.Internal
 	public static void clearAndSwitchWindDisturbances() {
 		clearWindDisturbances();
 		isSwitched = !isSwitched;
@@ -191,6 +200,32 @@ public final class ClientWindManager {
 				hasInitialized = true;
 			}
 		}
+	}
+
+	@ApiStatus.Internal
+	public static void reset() {
+		hasInitialized = false;
+		overrideWind = false;
+		commandWind = Vec3.ZERO;
+
+		time = 0L;
+
+		prevWindX = 0D;
+		prevWindY = 0D;
+		prevWindZ = 0D;
+		windX = 0D;
+		windY = 0D;
+		windZ = 0D;
+
+		prevLaggedWindX = 0D;
+		prevLaggedWindY = 0D;
+		prevLaggedWindZ = 0D;
+		laggedWindX = 0D;
+		laggedWindY = 0D;
+		laggedWindZ = 0D;
+
+		isSwitched = false;
+		clearAllWindDisturbances();
 	}
 
 	/**

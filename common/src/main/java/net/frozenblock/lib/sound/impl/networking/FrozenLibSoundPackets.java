@@ -15,17 +15,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.sound.api;
+package net.frozenblock.lib.sound.impl.networking;
 
 import lombok.experimental.UtilityClass;
 import net.frozenblock.lib.platform.api.PacketHelper;
-import net.frozenblock.lib.sound.api.networking.FadingDistanceSwitchingSoundPacket;
-import net.frozenblock.lib.sound.api.networking.FlyBySoundPacket;
-import net.frozenblock.lib.sound.api.networking.LocalPlayerSoundPacket;
-import net.frozenblock.lib.sound.api.networking.LocalSoundPacket;
-import net.frozenblock.lib.sound.api.networking.MovingFadingDistanceSwitchingRestrictionSoundPacket;
-import net.frozenblock.lib.sound.api.networking.MovingRestrictionSoundPacket;
-import net.frozenblock.lib.sound.api.networking.StartingMovingRestrictionSoundLoopPacket;
 import net.frozenblock.lib.sound.impl.EntityLoopingFadingDistanceSoundInterface;
 import net.frozenblock.lib.sound.impl.EntityLoopingSoundInterface;
 import net.minecraft.core.BlockPos;

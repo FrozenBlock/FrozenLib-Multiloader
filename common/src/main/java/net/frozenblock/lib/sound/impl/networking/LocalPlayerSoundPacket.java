@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.sound.api.networking;
+package net.frozenblock.lib.sound.impl.networking;
 
 import net.frozenblock.lib.FrozenLibConstants;
 import net.minecraft.core.Holder;
@@ -25,35 +25,24 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
 import org.jetbrains.annotations.NotNull;
 
-public record FlyBySoundPacket(
-	int id,
-	Holder<SoundEvent> sound,
-	SoundSource category,
-	float volume,
-	float pitch
-) implements CustomPacketPayload {
-	public static final Type<FlyBySoundPacket> PACKET_TYPE = new Type<>(
-		FrozenLibConstants.id("flyby_sound")
+public record LocalPlayerSoundPacket(Holder<SoundEvent> sound, float volume, float pitch) implements CustomPacketPayload {
+	public static final Type<LocalPlayerSoundPacket> PACKET_TYPE = new Type<>(
+		FrozenLibConstants.id("local_player_sound")
 	);
-	public static final StreamCodec<RegistryFriendlyByteBuf, FlyBySoundPacket> CODEC = StreamCodec.ofMember(FlyBySoundPacket::write, FlyBySoundPacket::new);
+	public static final StreamCodec<RegistryFriendlyByteBuf, LocalPlayerSoundPacket> CODEC = StreamCodec.ofMember(LocalPlayerSoundPacket::write, LocalPlayerSoundPacket::new);
 
-	public FlyBySoundPacket(@NotNull RegistryFriendlyByteBuf buf) {
+	public LocalPlayerSoundPacket(@NotNull RegistryFriendlyByteBuf buf) {
 		this(
-			buf.readVarInt(),
 			ByteBufCodecs.holderRegistry(Registries.SOUND_EVENT).decode(buf),
-			buf.readEnum(SoundSource.class),
 			buf.readFloat(),
 			buf.readFloat()
 		);
 	}
 
 	public void write(@NotNull RegistryFriendlyByteBuf buf) {
-		buf.writeVarInt(this.id);
 		ByteBufCodecs.holderRegistry(Registries.SOUND_EVENT).encode(buf, this.sound);
-		buf.writeEnum(this.category);
 		buf.writeFloat(this.volume);
 		buf.writeFloat(this.pitch);
 	}

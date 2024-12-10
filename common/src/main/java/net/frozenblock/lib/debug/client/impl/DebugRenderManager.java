@@ -39,7 +39,7 @@ import net.frozenblock.lib.debug.networking.ImprovedGameEventListenerDebugPayloa
 import net.frozenblock.lib.debug.networking.ImprovedGoalDebugPayload;
 import net.frozenblock.lib.event.event.client.ClientTickEvents;
 import net.frozenblock.lib.platform.impl.ClientPayloadContext;
-import net.frozenblock.lib.wind.api.ClientWindManager;
+import net.frozenblock.lib.wind.client.impl.ClientWindManager;
 import net.frozenblock.lib.wind.impl.networking.WindAccessPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;

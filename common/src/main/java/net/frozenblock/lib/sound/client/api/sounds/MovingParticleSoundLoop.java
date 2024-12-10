@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.sound.api.instances;
+package net.frozenblock.lib.sound.client.api.sounds;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

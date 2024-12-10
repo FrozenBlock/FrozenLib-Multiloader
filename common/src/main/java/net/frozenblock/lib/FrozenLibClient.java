@@ -13,8 +13,8 @@ import net.frozenblock.lib.menu.api.PanoramaAPI;
 import net.frozenblock.lib.mod_integration.api.ModIntegrations;
 import net.frozenblock.lib.registry.api.client.FrozenLibClientRegistries;
 import net.frozenblock.lib.screenshake.api.client.ScreenShaker;
-import net.frozenblock.lib.sound.api.FlyBySoundHub;
-import net.frozenblock.lib.wind.api.ClientWindManager;
+import net.frozenblock.lib.sound.client.impl.FlyBySoundHub;
+import net.frozenblock.lib.wind.client.impl.ClientWindManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.protocol.common.ServerboundCustomPayloadPacket;
 import net.minecraft.resources.ResourceLocation;
@@ -53,8 +53,8 @@ public class FrozenLibClient {
 		);
 		ClientTickEvents.START_CLIENT_TICK.register(client -> ClientWindManager.clearAndSwitchWindDisturbances());
 		ClientPlayConnectionEvents.DISCONNECT.register((handler, client) -> {
-			ScreenShaker.clear();
-			ClientWindManager.clearAllWindDisturbances();
+			ScreenShaker.reset();
+			ClientWindManager.reset();
 		});
 		ClientChunkEvents.CHUNK_LOAD.register(
 			(world, chunk) -> {
