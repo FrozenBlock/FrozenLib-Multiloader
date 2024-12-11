@@ -80,7 +80,7 @@ public class SaveableItemCooldowns {
 			ItemCooldowns itemCooldowns = player.getCooldowns();
 			int tickCount = itemCooldowns.tickCount;
 
-			// TODO: [Liuk] this causes a crash. Isn't registered. You register on both client and server, and register the receiving method on client.
+			// TODO: [Liuk] Test if this is fixed
 			PacketHelper.sendToPlayer(player, new CooldownTickCountPacket(tickCount));
 
 			for (SaveableCooldownInstance saveableCooldownInstance : saveableCooldownInstances) {

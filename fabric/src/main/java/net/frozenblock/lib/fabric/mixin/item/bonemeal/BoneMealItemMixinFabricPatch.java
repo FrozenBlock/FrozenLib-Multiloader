@@ -18,7 +18,7 @@
 package net.frozenblock.lib.fabric.mixin.item.bonemeal;
 
 import com.llamalad7.mixinextras.sugar.Local;
-import net.frozenblock.lib.item.api.bonemeal.BonemealApi;
+import net.frozenblock.lib.item.api.bone_meal.BoneMealApi;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.BoneMealItem;
@@ -45,11 +45,11 @@ public class BoneMealItemMixinFabricPatch {
 		ItemStack stack, Level world, BlockPos pos, CallbackInfoReturnable<Boolean> info,
 		@Local(ordinal = 0) BlockState blockState
 	) {
-		BonemealApi.BonemealBehavior bonemealBehavior = BonemealApi.get(blockState.getBlock());
+		BoneMealApi.BoneMealBehavior bonemealBehavior = BoneMealApi.get(blockState.getBlock());
         if (bonemealBehavior != null && bonemealBehavior.meetsRequirements(world, pos, blockState)) {
 			if (world instanceof ServerLevel serverLevel) {
-				if (bonemealBehavior.isBonemealSuccess(world, world.random, pos, blockState)) {
-					bonemealBehavior.performBonemeal(serverLevel, world.random, pos, blockState);
+				if (bonemealBehavior.isBoneMealSuccess(world, world.random, pos, blockState)) {
+					bonemealBehavior.performBoneMeal(serverLevel, world.random, pos, blockState);
 				}
 				stack.shrink(1);
 			}

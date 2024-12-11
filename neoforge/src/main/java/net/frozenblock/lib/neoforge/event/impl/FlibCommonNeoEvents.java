@@ -4,7 +4,7 @@ import net.frozenblock.lib.event.event.RegisterCommandEvents;
 import net.frozenblock.lib.event.event.ServerLifecycleEvents;
 import net.frozenblock.lib.event.event.ServerPlayConnectionEvents;
 import net.frozenblock.lib.event.event.ServerTickEvents;
-import net.frozenblock.lib.item.api.bonemeal.BonemealApi;
+import net.frozenblock.lib.item.api.bone_meal.BoneMealApi;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
@@ -27,11 +27,11 @@ public class FlibCommonNeoEvents {
 		BlockState blockState = event.getState();
 		BlockPos pos = event.getPos();
 		Level world = event.getLevel();
-		BonemealApi.BonemealBehavior bonemealBehavior = BonemealApi.get(blockState.getBlock());
+		BoneMealApi.BoneMealBehavior bonemealBehavior = BoneMealApi.get(blockState.getBlock());
 		if (bonemealBehavior != null && bonemealBehavior.meetsRequirements(world, pos, blockState)) {
 			if (world instanceof ServerLevel serverLevel) {
-				if (bonemealBehavior.isBonemealSuccess(world, world.random, pos, blockState)) {
-					bonemealBehavior.performBonemeal(serverLevel, world.random, pos, blockState);
+				if (bonemealBehavior.isBoneMealSuccess(world, world.random, pos, blockState)) {
+					bonemealBehavior.performBoneMeal(serverLevel, world.random, pos, blockState);
 				}
 				event.getStack().shrink(1);
 			}

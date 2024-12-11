@@ -18,7 +18,7 @@
 package net.frozenblock.lib.item.mixin.bonemeal;
 
 import com.llamalad7.mixinextras.sugar.Local;
-import net.frozenblock.lib.item.api.bonemeal.BonemealApi;
+import net.frozenblock.lib.item.api.bone_meal.BoneMealApi;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.ParticleUtils;
@@ -44,7 +44,7 @@ public class BoneMealItemMixin {
 	private static void frozenLib$addGrowthParticles(
 		LevelAccessor world, BlockPos pos, int count, CallbackInfo info, @Local(ordinal = 0) BlockState blockState
 	) {
-		BonemealApi.BonemealBehavior bonemealBehavior = BonemealApi.get(blockState.getBlock());
+		BoneMealApi.BoneMealBehavior bonemealBehavior = BoneMealApi.get(blockState.getBlock());
 		if (bonemealBehavior != null) {
 			BlockPos particlePos = bonemealBehavior.getParticlePos(blockState, pos);
 			if (bonemealBehavior.isNeighborSpreader()) {
