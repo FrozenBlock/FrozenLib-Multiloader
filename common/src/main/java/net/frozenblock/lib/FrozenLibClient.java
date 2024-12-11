@@ -48,7 +48,7 @@ public class FrozenLibClient {
 			world -> {
 				ClientWindManager.tick(world);
 				ScreenShaker.tick(world);
-				FlyBySoundHub.update(Minecraft.getInstance(), Minecraft.getInstance().getCameraEntity(), true);
+				FlyBySoundHub.tick(Minecraft.getInstance(), Minecraft.getInstance().getCameraEntity(), true);
 			}
 		);
 		ClientTickEvents.START_CLIENT_TICK.register(client -> ClientWindManager.clearAndSwitchWindDisturbances());

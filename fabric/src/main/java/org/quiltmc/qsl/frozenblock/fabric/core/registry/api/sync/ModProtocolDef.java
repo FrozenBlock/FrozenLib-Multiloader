@@ -21,17 +21,19 @@ package org.quiltmc.qsl.frozenblock.fabric.core.registry.api.sync;
 import it.unimi.dsi.fastutil.ints.IntCollection;
 import it.unimi.dsi.fastutil.ints.IntList;
 import net.minecraft.network.FriendlyByteBuf;
+import org.jetbrains.annotations.NotNull;
 import org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync.ProtocolVersions;
 
 public record ModProtocolDef(String id, String displayName, IntList versions, boolean optional) {
-	public static void write(FriendlyByteBuf buf, ModProtocolDef def) {
+
+	public static void write(@NotNull FriendlyByteBuf buf, @NotNull ModProtocolDef def) {
 		buf.writeUtf(def.id);
 		buf.writeUtf(def.displayName);
 		buf.writeIntIdList(def.versions);
 		buf.writeBoolean(def.optional);
 	}
 
-	public static ModProtocolDef read(FriendlyByteBuf buf) {
+	public static @NotNull ModProtocolDef read(@NotNull FriendlyByteBuf buf) {
 		var id = buf.readUtf();
 		var name = buf.readUtf();
 		var versions = buf.readIntIdList();

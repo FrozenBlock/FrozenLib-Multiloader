@@ -58,15 +58,16 @@ public final class FlyBySoundHub {
      * Cooldowns for playing a sound from the same entity.
      */
     public static final Map<Entity, Integer> ENTITY_COOLDOWNS = new Object2ObjectOpenHashMap<>();
-	//private static int checkAroundCooldown;
 
-	// TODO: [Liuk] tick on client tick
-    public static void update(@NotNull Minecraft client, Entity cameraEntity, boolean autoSounds) {
+    public static void tick(@NotNull Minecraft client, Entity cameraEntity, boolean autoSounds) {
 		if (client.level != null && cameraEntity != null && client.level.tickRateManager().runsNormally()) {
 			Vec3 cameraPos = cameraEntity.getEyePosition();
 			double cameraEntityWidth = cameraEntity.getBbWidth();
-			double detectionWidth = cameraEntityWidth * 2;
-			AABB playerHeadBox = new AABB(cameraEntity.getEyePosition().add(-detectionWidth, -detectionWidth, -detectionWidth), cameraEntity.getEyePosition().add(detectionWidth, detectionWidth, detectionWidth));
+			double detectionSize = cameraEntityWidth * 2D;
+			AABB playerHeadBox = new AABB(
+				cameraEntity.getEyePosition().add(-detectionSize, -detectionSize, -detectionSize),
+				cameraEntity.getEyePosition().add(detectionSize, detectionSize, detectionSize)
+			);
 
 			for (Entity entity : FLYBY_ENTITIES_AND_SOUNDS.keySet()) {
 				if (entity != null) {
@@ -121,9 +122,9 @@ public final class FlyBySoundHub {
 	}
 
 	public static boolean hasPassed(@NotNull Vec3 cameraPos, double cameraWidth, @NotNull Vec3 oldCoord, @NotNull Vec3 newCoord) {
-		return hasPassedCoordinate(cameraPos.x(), cameraWidth, 0.35, oldCoord.x(), newCoord.x()) ||
-			hasPassedCoordinate(cameraPos.z(), cameraWidth, 0.35, oldCoord.z(), newCoord.z()) ||
-			hasPassedCoordinate(cameraPos.y(), cameraWidth, 0.25, oldCoord.y(), newCoord.y());
+		return hasPassedCoordinate(cameraPos.x(), cameraWidth, 0.35D, oldCoord.x(), newCoord.x()) ||
+			hasPassedCoordinate(cameraPos.z(), cameraWidth, 0.35D, oldCoord.z(), newCoord.z()) ||
+			hasPassedCoordinate(cameraPos.y(), cameraWidth, 0.25D, oldCoord.y(), newCoord.y());
 	}
 
 	public static boolean hasPassedCoordinate(double cameraCoord, double cameraWidth, double triggerWidth, double oldCoord, double newCoord) {
