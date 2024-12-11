@@ -32,6 +32,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.contents.PlainTextContents;
 import org.jetbrains.annotations.ApiStatus;
+import org.jetbrains.annotations.NotNull;
 import org.quiltmc.qsl.frozenblock.fabric.core.registry.api.sync.ModProtocol;
 import org.quiltmc.qsl.frozenblock.fabric.core.registry.api.sync.ModProtocolDef;
 import org.quiltmc.qsl.frozenblock.fabric.core.registry.impl.sync.ClientPackets;
@@ -69,7 +70,7 @@ public final class ClientRegistrySync {
 		ClientConfigurationNetworking.registerGlobalReceiver(ServerPackets.ModProtocol.PACKET_TYPE, ClientRegistrySync::handleModProtocol);
 	}
 
-	private static void handleModProtocol(ServerPackets.ModProtocol modProtocol, Context ctx) {
+	private static void handleModProtocol(ServerPackets.@NotNull ModProtocol modProtocol, Context ctx) {
 		var prioritizedId = modProtocol.prioritizedId();
 		var protocols = modProtocol.protocols();
 
