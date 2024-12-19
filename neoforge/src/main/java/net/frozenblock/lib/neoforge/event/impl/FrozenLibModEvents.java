@@ -52,10 +52,11 @@ public class FrozenLibModEvents {
 
 	@SubscribeEvent
 	public static void registerEvent(RegisterEvent event) {
-		if (event.getRegistry() == BuiltInRegistries.ITEM) {
-			if (PlatformHelper.isDevelopmentEnvironment()) {
-				FrozenLibDevItems.register();
-			}
+		if (event.getRegistry() != BuiltInRegistries.ITEM)
+			return;
+
+		if (PlatformHelper.isDevelopmentEnvironment()) {
+			FrozenLibDevItems.register();
 		}
 	}
 }
