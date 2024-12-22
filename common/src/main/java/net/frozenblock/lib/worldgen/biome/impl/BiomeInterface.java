@@ -21,8 +21,8 @@ import net.minecraft.resources.ResourceLocation;
 
 public interface BiomeInterface {
 
-	void frozenLib$setBiomeID(ResourceLocation biomeID);
+	void frozenLib$setFrozenGrassColorModifier(FrozenGrassColorModifier frozenGrassColorModifier);
 
-	ResourceLocation frozenLib$getBiomeID();
+	FrozenGrassColorModifier frozenLib$getFrozenGrassColorModifier();
 
 }
