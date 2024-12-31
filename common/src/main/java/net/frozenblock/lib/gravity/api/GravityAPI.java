@@ -27,14 +27,11 @@ import net.frozenblock.lib.event.entrypoint.CommonEventEntrypoint;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
 public final class GravityAPI {
-    public static final Vec3 DEFAULT_GRAVITY = new Vec3(0D, 1D, 0D);
-
+    public static final double DEFAULT_GRAVITY = 1D;
     public static final FrozenEvent<GravityModification> MODIFICATIONS = FrozenEvent.createEvent(GravityModification.class);
-
     private static final Map<ResourceKey<Level>, List<GravityBelt<?>>> GRAVITY_BELTS = new HashMap<>();
 
     public static void register(ResourceKey<Level> dimension, GravityBelt<?> gravityBelt) {
@@ -46,7 +43,7 @@ public final class GravityAPI {
         return GRAVITY_BELTS.computeIfAbsent(dimension, dimension1 -> new ArrayList<>());
     }
 
-    public static List<GravityBelt<?>> getAllBelts(Level level) {
+    public static @NotNull List<GravityBelt<?>> getAllBelts(@NotNull Level level) {
         return getAllBelts(level.dimension());
     }
 
@@ -62,20 +59,10 @@ public final class GravityAPI {
         });
     }
 
-    public static Vec3 calculateGravity(ResourceKey<Level> dimension, double y) {
-        GravityContext context = new GravityContext(dimension, y, null);
-        MODIFICATIONS.invoke(e->e.modifyGravity(context));
-        return context.gravity;
-    }
-
-    public static Vec3 calculateGravity(@NotNull Level level, double y) {
-        return calculateGravity(level.dimension(), y);
-    }
-
-    public static Vec3 calculateGravity(@NotNull Entity entity) {
+    public static double calculateGravity(@NotNull Entity entity) {
         ResourceKey<Level> dimension = entity.level().dimension();
         double y = entity.getY();
-        GravityContext context = new GravityContext(dimension, y, entity);
+        GravityContext context = new GravityContext(dimension, y, entity, entity.getInBlockState());
         MODIFICATIONS.invoke(e->e.modifyGravity(context));
         return context.gravity;
     }

@@ -15,23 +15,28 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.gravity.mixin;
+package net.frozenblock.lib.recipe.mixin;
 
-import net.frozenblock.lib.gravity.impl.EntityGravityInterface;
-import net.minecraft.world.entity.projectile.ThrowableProjectile;
+import net.frozenblock.lib.recipe.api.ShapelessRecipeBuilderExtension;
+import net.minecraft.core.component.DataComponentPatch;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.ShapelessRecipe;
+import org.jetbrains.annotations.Nullable;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.Unique;
 
-@Mixin(ThrowableProjectile.class)
-public abstract class ThrowableProjectileMixin implements EntityGravityInterface {
+@Mixin(ShapelessRecipe.class)
+public class ShapelessRecipeMixin implements ShapelessRecipeBuilderExtension {
 
 	@Shadow
-	protected abstract double getDefaultGravity();
+	@Final
+	ItemStack result;
 
-	@Unique
 	@Override
-	public double frozenLib$getGravity() {
-		return this.getDefaultGravity();
+	public ShapelessRecipeBuilder frozenLib$patch(@Nullable DataComponentPatch patch) {
+		if (patch != null) this.result.applyComponents(patch);
+		return null;
 	}
 }

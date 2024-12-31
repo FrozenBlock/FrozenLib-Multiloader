@@ -15,13 +15,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.frozenblock.lib.gravity.impl;
+package net.frozenblock.lib.recipe.api;
 
-import net.minecraft.world.phys.Vec3;
+import net.minecraft.core.component.DataComponentPatch;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import org.jetbrains.annotations.Nullable;
 
-public interface EntityGravityInterface {
-
-	double frozenLib$getGravity();
-
-	Vec3 frozenLib$getEffectiveGravity();
+public interface ShapelessRecipeBuilderExtension {
+	ShapelessRecipeBuilder frozenLib$patch(@Nullable DataComponentPatch tag);
 }

@@ -38,8 +38,7 @@ public class ShapedRecipeMixin implements ShapedRecipeBuilderExtension {
 	@Unique
 	@Override
 	public ShapedRecipeBuilder frozenLib$patch(@Nullable DataComponentPatch patch) {
-		if (patch != null)
-			this.result.applyComponents(patch);
+		if (patch != null) this.result.applyComponents(patch);
 		return null;
 	}
 }

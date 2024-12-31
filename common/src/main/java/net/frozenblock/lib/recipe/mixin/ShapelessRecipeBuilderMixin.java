@@ -19,11 +19,11 @@ package net.frozenblock.lib.recipe.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.frozenblock.lib.recipe.api.ShapedRecipeBuilderExtension;
+import net.frozenblock.lib.recipe.api.ShapelessRecipeBuilderExtension;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.ShapedRecipe;
@@ -32,8 +32,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 
-@Mixin(ShapedRecipeBuilder.class)
-public class ShapedRecipeBuilderMixin implements ShapedRecipeBuilderExtension {
+@Mixin(ShapelessRecipeBuilder.class)
+public class ShapelessRecipeBuilderMixin implements ShapelessRecipeBuilderExtension {
 
 	@Unique
 	@Nullable
@@ -41,9 +41,9 @@ public class ShapedRecipeBuilderMixin implements ShapedRecipeBuilderExtension {
 
 	@Unique
 	@Override
-	public ShapedRecipeBuilder frozenLib$patch(@Nullable DataComponentPatch patch) {
+	public ShapelessRecipeBuilder frozenLib$patch(@Nullable DataComponentPatch patch) {
 		this.frozenLib$patch = patch;
-		return (ShapedRecipeBuilder) (Object) this;
+		return (ShapelessRecipeBuilder) (Object) this;
 	}
 
 	@WrapOperation(
@@ -53,8 +53,8 @@ public class ShapedRecipeBuilderMixin implements ShapedRecipeBuilderExtension {
 			target = "Lnet/minecraft/data/recipes/RecipeOutput;accept(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/world/item/crafting/Recipe;Lnet/minecraft/advancements/AdvancementHolder;)V"
 		)
 	)
-	private void frozenLib$modifySave(RecipeOutput instance, ResourceLocation recipeId, Recipe<?> recipe, AdvancementHolder holder, Operation<ShapedRecipe> operation) {
-		((ShapedRecipeBuilderExtension) recipe).frozenLib$patch(this.frozenLib$patch);
+	private void modifySave(RecipeOutput instance, ResourceLocation recipeId, Recipe<?> recipe, AdvancementHolder holder, Operation<ShapedRecipe> operation) {
+		((ShapelessRecipeBuilderExtension) recipe).frozenLib$patch(this.frozenLib$patch);
 		operation.call(instance, recipeId, recipe, holder);
 	}
 }
