@@ -180,7 +180,7 @@ public class CapeUtil {
 	}
 
 	/**
-	 * Registers a selected cape from a URK.
+	 * Registers a selected cape from a URL.
 	 *
 	 * @param urlString The cape's URL.
 	 */

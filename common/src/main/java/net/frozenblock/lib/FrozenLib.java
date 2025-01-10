@@ -9,6 +9,7 @@ import net.frozenblock.lib.entity.api.EntityUtils;
 import net.frozenblock.lib.entity.api.command.ScaleEntityCommand;
 import net.frozenblock.lib.event.event.PlayerJoinEvents;
 import net.frozenblock.lib.event.event.RegisterCommandEvents;
+import net.frozenblock.lib.event.event.RegistryDataLoaderEvents;
 import net.frozenblock.lib.event.event.RegistryFreezeEvents;
 import net.frozenblock.lib.event.event.ServerLevelEvents;
 import net.frozenblock.lib.event.event.ServerTickEvents;
@@ -28,6 +29,9 @@ import net.frozenblock.lib.wind.api.WindDisturbanceLogic;
 import net.frozenblock.lib.wind.impl.WindManager;
 import net.frozenblock.lib.wind.command.WindCommand;
 import net.frozenblock.lib.wind.impl.WindStorage;
+import net.frozenblock.lib.worldgen.biome.api.FrozenGrassColorModifiers;
+import net.frozenblock.lib.worldgen.biome.impl.BiomeInterface;
+import net.frozenblock.lib.worldgen.biome.impl.FrozenGrassColorModifier;
 import net.frozenblock.lib.worldgen.feature.api.FrozenFeatures;
 import net.frozenblock.lib.worldgen.feature.api.placementmodifier.FrozenPlacementModifiers;
 import net.frozenblock.lib.worldgen.structure.impl.FrozenRuleBlockEntityModifiers;
@@ -39,6 +43,7 @@ import net.minecraft.server.commands.WardenSpawnTrackerCommand;
 import net.minecraft.world.level.storage.DimensionDataStorage;
 import org.jetbrains.annotations.ApiStatus;
 import org.quiltmc.qsl.frozenblock.misc.datafixerupper.impl.ServerFreezer;
+import java.util.Optional;
 
 @ApiStatus.Internal
 public class FrozenLib {
@@ -118,6 +123,13 @@ public class FrozenLib {
 
 			for (Config<?> config : ConfigRegistry.getAllConfigs()) {
 				config.save();
+			}
+		});
+
+		RegistryDataLoaderEvents.REGISTER_RESOURCE.register((object, resourceKey, loadedFromNetwork) -> {
+			if (object instanceof BiomeInterface biomeInterface) {
+				Optional<FrozenGrassColorModifier> optionalFrozenGrassColorModifier = FrozenGrassColorModifiers.getGrassColorModifier(resourceKey.location());
+				optionalFrozenGrassColorModifier.ifPresent(biomeInterface::frozenLib$setFrozenGrassColorModifier);
 			}
 		});
 

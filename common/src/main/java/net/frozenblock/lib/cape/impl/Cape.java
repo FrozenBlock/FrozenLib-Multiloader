@@ -18,6 +18,7 @@
 package net.frozenblock.lib.cape.impl;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 import net.minecraft.network.chat.Component;
@@ -25,6 +26,20 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.ApiStatus;
 
 @ApiStatus.Internal
-public record Cape(ResourceLocation registryId, Component capeName, ResourceLocation texture,
-				   Optional<List<UUID>> allowedPlayers) {
+public record Cape(ResourceLocation registryId, Component capeName, ResourceLocation texture, Optional<List<UUID>> allowedPlayers) {
+
+	@Override
+	public boolean equals(Object o) {
+		if (o == null || getClass() != o.getClass()) return false;
+		Cape cape = (Cape) o;
+		return Objects.equals(capeName, cape.capeName)
+			&& Objects.equals(texture, cape.texture)
+			&& Objects.equals(registryId, cape.registryId)
+			&& Objects.equals(allowedPlayers, cape.allowedPlayers);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(registryId, capeName, texture, allowedPlayers);
+	}
 }

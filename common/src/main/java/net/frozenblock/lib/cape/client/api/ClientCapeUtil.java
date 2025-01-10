@@ -35,6 +35,7 @@ import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
+@ApiStatus.Internal
 @UtilityClass
 @Environment(EnvType.CLIENT)
 public class ClientCapeUtil {
@@ -44,6 +45,7 @@ public class ClientCapeUtil {
 	public static final Path CAPE_CACHE_PATH = Minecraft.getInstance().gameDirectory.toPath().resolve("frozenlib_cape_cache");
 	private static final Map<String, Pair<ResourceLocation, ResourceLocation>> CAPES = new Object2ObjectLinkedOpenHashMap<>();
 
+	@ApiStatus.Internal
 	public static void registerCapeTextureFromURL(
 		@NotNull ResourceLocation capeLocation, ResourceLocation capeTextureLocation, String textureURL
 	) throws JsonIOException {
